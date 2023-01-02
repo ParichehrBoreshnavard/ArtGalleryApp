@@ -1,0 +1,167 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+      
+    }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url("../images/pexels-erik-mclean-6159732.jpg");
+ 
+}
+.ourcontact h1, .ourcontact h2, .ourcontact h3 {
+    margin: 0 auto 35px auto;
+    font-family: 'Patua One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:black;
+   
+}
+
+.ourcontact p {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.6em;
+    color: black;
+}
+
+.ourcontact a {
+    color: #26a5d3;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    justify-content:center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+
+
+    .ourcontact a:hover, .ourcontact a:focus {
+        text-decoration: none;
+        color: #26a5d3;
+    }
+
+.ourcontact #contact {
+    background: #333333;
+    color: #f4f4f4;
+    padding-bottom: 80px;
+}
+
+.ourcontact textarea.form-control {
+    height: 100px;
+}
+.formContainer {
+    margin-left: auto;
+    margin-right:auto;
+}
+
+
+#contact {
+    padding-top: 25px;
+    padding-bottom: 0px;
+    /*margin-top:200px;*/
+}
+
+.form-group{
+    margin-top:10px;
+}
+
+.contactLabel {
+    margin-bottom: 7px;
+}
+
+.contactBody {
+    left: 0;
+  
+    background-color:dimgrey;
+}
+
+.contactFooter{
+    background-color:black;
+} 
+.submitBtn{
+    background-color:white;
+    margin-top:10px;
+}
+
+.navFooter {
+   /* left: 0;
+    position: absolute;*/
+}
+
+.recentArtWorks {
+    /*left: 0;*/
+    /*position: absolute;*/
+
+}
+.main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.aboutTitle {
+    color: white;
+    text-align: center;
+    font-family: 'Patua One', cursive;
+}
+
+
+
+
+
+
+.artistsListcontainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 10%;
+    grid-row-gap: 25px;
+    color:white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.artistsListItem {
+    background-color: black;
+   
+    padding: 10px;
+    font-size: 24px;
+    text-align: left;
+}
+
+
+.artistsTitleCard{
+    color:white;
+    font-weight:200;
+}
