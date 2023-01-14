@@ -1,24 +1,19 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-      
-    }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
-    margin-bottom: 60px;
-    background-image: url("../images/pexels-erik-mclean-6159732.jpg");
- 
+  font-size:16px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin:0px;
+  padding:0px;
+
 }
+nav {
+    background-color: #272727 !important;
+}
+    nav a {
+        color: white;
+    }
+
 .ourcontact h1, .ourcontact h2, .ourcontact h3 {
     margin: 0 auto 35px auto;
     font-family: 'Patua One', cursive;
@@ -142,19 +137,18 @@ body {
 
 
 
-.artistsListcontainer {
+.artistsNamecontainer {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     grid-column-gap: 10%;
     grid-row-gap: 25px;
     color:white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 50px;
+    border-radius: 50px;
 }
 
 .artistsListItem {
     background-color: black;
-   
     padding: 10px;
     font-size: 24px;
     text-align: left;
@@ -165,3 +159,188 @@ body {
     color:white;
     font-weight:200;
 }
+
+.recentArtWorks {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 500px;
+}
+
+footer a{
+    color:red;
+}
+footer a:hover{
+    color:green;
+}
+.navFooter a{
+    color:red;
+}
+.navFooter a:hover {
+    color: green;
+}
+
+
+
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        max-width: 100% !important;
+    }
+}
+
+@media (min-width: 768px){
+    .container {
+        max-width: 100% !important;
+    } 
+}
+
+@media (min-width: 576px){
+    .container {
+        max-width: 100% !important;
+    }
+}
+.w-30 {
+    width: 30% !important;
+}
+.w-40 {
+    width: 40% !important;
+}
+.w-80{
+    width:80% !important;
+}
+.w-85 {
+    width: 85% !important;
+}
+.h-80 {
+    height: 80% !important;
+}
+
+w-90 {
+    width: 90% !important;
+}
+
+.h-90 {
+    height: 90% !important;
+}
+
+.card-text
+{
+    text-decoration:none !important;
+    color:white;
+}
+
+.no-underline,.no-underline:hover {
+    text-decoration: none !important;
+}
+.art-work-container-center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/*.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}*/
+/*@media (min-width: 1400px) .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1320px;
+}
+
+@media (min-width: 1200px) .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1140px;
+}
+
+@media (min-width: 992px) .container, .container-lg, .container-md, .container-sm {
+    max-width: 960px;
+}
+
+@media (min-width: 768px) .container, .container-md, .container-sm {
+    max-width: 720px;
+}
+
+@media (min-width: 576px) .container, .container-sm {
+    max-width: 540px;
+}*/
+.homeSliderBg {
+    background-image: url('../images/blog/pexels-ann-h-2838545.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.artistListContainer {
+    padding-left: 50px;
+    padding-top: 50px;
+}
+.artistsListContainer ul {
+    justify-content: left;
+    font-family: "Amatic SC";
+}
+.artistsListContainer li {
+    list-style: none;
+}
+.artistsListContainer a {
+    text-decoration: none;
+    color: white;
+    font-size:24px;
+    font-family: "Amatic SC";
+    font-weight: 400;
+}
+    .artistsListContainer a:hover{
+    color:aqua;
+    }
+
+.text-uppercas h5{
+    color:red;
+}
+.footerTitleContainer {
+    flex: 0 0 20% !important;
+    color:#474747
+}
+
+
+.blogHeader {
+    background-image: url(../images/blog/pexels-ann-h-2838545.jpg);
+    background-repeat: no-repeat;
+}
+
+.blogTitle {
+    font-family: "EB Garamond";
+    color: #c9ab81;
+}
+.blogAuthor {
+    font-family: "EB Garamond";
+}
+
+
+.reletedBlog {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+.eventHeaderDesc {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: 20%;
+    border: 1px solid black;
+    background-color:rgb(33, 123, 126, 0.50);
+    text-align:justify;
+}
+    .eventHeaderDesc p {
+        color: #FFE7A8;
+    }
+    .eventHeaderTitle {
+        position: absolute;
+        left: 20%;
+        top: 40%;
+    }

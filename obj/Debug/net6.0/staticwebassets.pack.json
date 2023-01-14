@@ -5,8 +5,8 @@
       "PackagePath": "staticwebassets\\ArtGalleryApp.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\css\\Contact.css",
-      "PackagePath": "staticwebassets\\css\\Contact.css"
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\css\\StyleSheet.scss",
+      "PackagePath": "staticwebassets\\css\\StyleSheet.scss"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\css\\site.css",
@@ -33,12 +33,60 @@
       "PackagePath": "staticwebassets\\images\\artistsImages\\olga-guryanova-Th-i7Z1ufK8-unsplash.jpg"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\artistsImages\\pexels-trinity-kubassek-445109.jpg",
+      "PackagePath": "staticwebassets\\images\\artistsImages\\pexels-trinity-kubassek-445109.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\artur-matosyan-4YWUMaftmag-unsplash.jpg",
       "PackagePath": "staticwebassets\\images\\artur-matosyan-4YWUMaftmag-unsplash.jpg"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-ann-h-2838545.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\pexels-ann-h-2838545.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-jj-jordan-4014053.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\pexels-jj-jordan-4014053.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-jose-antonio-gallego-vázquez-2167395.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\pexels-jose-antonio-gallego-vázquez-2167395.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-marshall-jones-3652853.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\pexels-marshall-jones-3652853.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-pixabay-220783.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\pexels-pixabay-220783.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-vin-aug-5634525.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\pexels-vin-aug-5634525.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\dannie-jing-3GZlhROZIQg-unsplash.jpg",
       "PackagePath": "staticwebassets\\images\\dannie-jing-3GZlhROZIQg-unsplash.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\events\\pexels-annam-w-1120162.jpg",
+      "PackagePath": "staticwebassets\\images\\events\\pexels-annam-w-1120162.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\events\\pexels-dalila-dalprat-2244441.jpg",
+      "PackagePath": "staticwebassets\\images\\events\\pexels-dalila-dalprat-2244441.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\events\\pexels-davide-de-giovanni-1649683.jpg",
+      "PackagePath": "staticwebassets\\images\\events\\pexels-davide-de-giovanni-1649683.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\events\\pexels-jj-jordan-4014053.jpg",
+      "PackagePath": "staticwebassets\\images\\events\\pexels-jj-jordan-4014053.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\events\\pexels-wendy-wei-1918160.jpg",
+      "PackagePath": "staticwebassets\\images\\events\\pexels-wendy-wei-1918160.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg",
@@ -49,8 +97,16 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-davide-de-giovanni-1649683 (1).jpg",
+      "PackagePath": "staticwebassets\\images\\pexels-davide-de-giovanni-1649683 (1).jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-erik-mclean-6159732.jpg",
       "PackagePath": "staticwebassets\\images\\pexels-erik-mclean-6159732.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-steve-johnson-1550562.jpg",
+      "PackagePath": "staticwebassets\\images\\pexels-steve-johnson-1550562.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-steve-johnson-2422457.jpg",

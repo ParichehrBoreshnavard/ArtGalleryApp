@@ -3,40 +3,40 @@
     Layout = "_Layout";
     ViewData["Title"] = "Home Page";
 }
-<link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<div class="Carouselcontainer w-75 h-100 bg-white bg-opacity-75 p-4 mt-4">
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
+    <div class="Carouselcontainer w-75 h-75 bg-white  p-4" >
     <div class="text-center">
 
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div id="carouselExampleDark" class="carousel carousel-dark  d-flex flex-nowrap justify-content-center slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
 
-            <div class="carousel-inner w-75 justify-content-center " style="left:22.5%">
+            <div class="carousel-inner w-80 h-80 mt-3 mb-3">
 
                 <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="~/images/roberto-contreras-KyFajImq1-A-unsplash.jpg" class="d-block w-75 h-75 " alt="gallery_1">
-                    <div class="carousel-caption d-none d-md-block " style="left:0;right:25%">
+                    <img src="~/images/roberto-contreras-KyFajImq1-A-unsplash.jpg" class="w-75" alt="gallery_1">
+                    <div class="carousel-caption d-none d-md-block">
                         <h1 style="color:red">EVENT_1</h1>
                         <h3>Feb 19 - Feb 23 2023 </h3>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="~/images/dannie-jing-3gzlhroziqg-unsplash.jpg" class="d-block w-75 h-75" alt="gallery_2">
-                    <div class="carousel-caption d-none d-md-block" style="left:0;right:25%">
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/images/dannie-jing-3gzlhroziqg-unsplash.jpg" class="w-75" alt="gallery_2">
+                    <div class="carousel-caption d-none d-md-block">
                         <h1 style="color:aqua">EVENT_2</h1>
                         <h3>May 12 - JON 20 2023 </h3>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="~/images/raychan-kJQ6cDyodAM-unsplash.jpg" class="d-block w-75 h-75" alt="gallery_3">
-                    <div class="carousel-caption d-none d-md-block" style="left:0;right:25%">
+                    <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/images/dannie-jing-3gzlhroziqg-unsplash.jpg" class="w-75" alt="gallery_3">
+                    <div class="carousel-caption d-none d-md-block">
                         <h1 style="color:yellowgreen">EVENT_3</h1>
                         <h3>SEP 12 - SEP 20 2023 </h3>
                         <p>Some representative placeholder content for the third slide.</p>
@@ -56,13 +56,13 @@
     </div>
 
 </div>
+</div>
 
 
 
-
-<div class="container-fluid bg-secondary   mt-5 recentArtWorks">
+<div class="container-fluid bg-secondary  recentArtWorksDiv">
     <section class="pt-5 pb-5">
-        <div class="container w-100 h-100 bg-white">
+        <div class="container w-80 h-80 bg-white">
             <div class="row">
                 <div class="col-6">
                     <h3 class="mb-3">Recent Artworks </h3>
@@ -76,7 +76,7 @@
                     </a>
                 </div>
                 <div class="col-12">
-                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators2" class="carousel slide" >
 
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -200,33 +200,35 @@
 <div id="ABOUT" class="container-fluid bg-black  ">
     <section class="pt-5">
         <h2 class="aboutTitle">About Us</h2>
-        <div class="container w-100 h-100 bg-white mt-3">
-            
-            <div class="card mb-3" style="max-width: 540px;">
-                 
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="img-fluid rounded-start" alt="...">
+        <div class="container w-80 h-100 bg-white mt-3">
+            <div class="row g-0 p-5">
+                    <div class="col-md-5">
+                        <img src="~/images/artistsImages/pexels-trinity-kubassek-445109.jpg" class="img-fluid rounded-start mt-3 mb-3" alt="...">
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                    <div class="col-md-6">
+                    <div class="card-body   mt-2">
+                            <h5 class="card-title mt-3">Card title</h5>
+                             <div class="card-body  bg-black opacity-25 mt-5 mb-5">
                             <p class="card-text">This is a wider card This is a wider caThis is a wider caThis is a wider caThis is a wider caThis is a wider card with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentwith supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
+            @*<div class="card mb-3" style="max-width: 540px;">
+                 
+                
+            </div>*@
         </div>
     </section>
 
-    <section class="pt-5 pb-5">
-        <div class="container w-100 h-100 pb-5" style="background-color:cadetblue ">
-            <h1 style="color:white">Our Team</h1>
+    <section  class="pb-5">
+        <div id="ourTeam" class="container w-80 h-80 pb-5 pl-5" style="background-color:cadetblue ">
+            <h1  style="color:white">Our Team</h1>
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
                             <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -234,7 +236,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" >
                             <img src="~/images/artistsImages/olga-guryanova-Th-i7Z1ufK8-unsplash.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -242,7 +244,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" >
                             <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -252,29 +254,27 @@
                 </div>
             </div>
         </div>
-    </section>
-
-</div>
-
+ </section>
+    </div>
 
 
 
 
 
-<div class="container-fluid " style=" background-color:slategray">
-    <section class="pt-5 pb-5">
+
+<div id="sponsers" class="container-fluid " style=" background-color:slategray">
+        <section class="pt-5 pb-5">
         <h1>Sponsors</h1>
-    </section>
-
-</div>
-
+        </section>
+   </div>
 
 
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+@*<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>*@
 
 
 

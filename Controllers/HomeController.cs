@@ -17,6 +17,18 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
+        public IActionResult LoBLoB()
+        {
+            return View();
+        }
+        public IActionResult Blog()
+        {
+            return View();
+        }
+        public IActionResult blogPage()
+        {
+            return View();
+        }
         public IActionResult Events()
         {
             return View();
@@ -36,13 +48,12 @@ namespace ArtGalleryApp.Controllers
         public IActionResult ArtworkPage()
         {
             return View();
-        }
-        public IActionResult Gallery()
+        } 
+         public IActionResult Gallery()
         {
             return View();
         }
-
-        public IActionResult Blog()
+        public IActionResult Test()
         {
             return View();
         }
