@@ -21,6 +21,10 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
+        public IActionResult Testtt()
+        {
+            return View();
+        }
         public IActionResult Blog()
         {
             return View();
@@ -59,6 +63,10 @@ namespace ArtGalleryApp.Controllers
         }
 
         public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult ArtistRegistration()
         {
             return View();
         }

@@ -16,3 +16,4 @@ searchBtn.addEventListener("click", expand);
 $('.search-button').click(function () {
     $(this).parent().toggleClass('open');
 });
+

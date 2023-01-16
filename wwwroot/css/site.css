@@ -159,6 +159,9 @@ nav {
     color:white;
     font-weight:200;
 }
+.carousel-caption {
+    background-color: #7ad6e27d;
+}
 
 .recentArtWorks {
     display: flex;
@@ -204,10 +207,16 @@ footer a:hover{
         max-width: 100% !important;
     }
 }
+.w-20 {
+    width:20% !important;
+}
 .w-30 {
     width: 30% !important;
 }
 .w-40 {
+    width: 40% !important;
+}
+.h-40 {
     width: 40% !important;
 }
 .w-80{
@@ -344,3 +353,73 @@ w-90 {
         left: 20%;
         top: 40%;
     }
+    .eventContainers {
+    border-bottom: solid black 1px;
+}
+.event-section1_position-relative {
+    position: relative;
+    z-index: 1;
+    color: #272727;
+}
+    .eventSection_1 {
+        margin-right: auto;
+        margin-left: auto;
+        background-image: url(../images/events/pexels-annam-w-1120162.jpg);
+        background-size: cover;
+        position: relative;
+        border-bottom:1px solid black;
+    }
+
+.eventsText {
+    text-align: justify;
+    font-size: 24px;
+    font-family: "Amatic SC";
+}
+.buyTicketsBtn {
+    border-radius: 5px 5px;
+    font-family: "Amatic SC";
+    background-color: white !important;
+    background-image: unset;
+    width: 300px;
+    color: black;
+    position: relative;
+    z-index: 1;
+    right:130px;
+}
+
+
+.eventSection_1:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom:0px;
+    left: 0px;
+    right: 0px;
+    background-color:rgba(255,255,255,0.8);
+}
+.event-about-image {
+    float: right;
+    margin-left: 30px;
+}
+
+.eventSection1-1 {
+    margin-right: auto;
+    margin-left: auto;
+    background-color:#abd3ce;
+    border-bottom: 1px solid black;
+
+}
+.eventSection1-2 {
+        margin-right: auto;
+        margin-left: auto;
+        background-image: url(../images/events/pexels-wendy-wei-1918160.jpg);
+        background-size: cover;
+        position: relative;
+        border-bottom: 1px solid black;
+    }
+.eventSection1-4 {
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom: 1px solid black;
+}
+
