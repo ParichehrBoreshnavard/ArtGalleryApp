@@ -22,6 +22,7 @@ namespace ArtGalleryApp.Models.Data
         [Required]
         public bool IsTicket { get; set; }=false;
         public string? UrlTicketStore { get; set; }
+        public Event_ Events_ { get; set; }
         
 
     }

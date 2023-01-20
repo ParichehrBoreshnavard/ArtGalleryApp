@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Signin";
+    Layout = "_Layout";
+}
+
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
+    <div class="Carouselcontainer w-30 h-30 bg-white p-5">
+        <form class="signin-form form-check w-80 ml-5 ">
+            <h3>log in</h3>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email...">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password...">
+            </div>
+
+            <div class="signup-bottom-container text-center">
+                <div class="form-group d-flex have-account">
+                    <a href="#" class="sign-in-link">forget your password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+                <div class="form-group d-flex have-account">
+                    <h6>don't have accoount?</h6>
+                    <a asp-controller="Home" asp-action="Signup" class="sign-in-link">Sign up</a>
+                </div>
+                <label for="CreatAccountWith">..............................or sign in with..............................</label>
+                <div class="form-group sign-in-with">
+                    <a href="#" class="btn btn-danger">Google</a>
+                    <a href="#" class="btn btn-primary">Facebook</a>
+                    <a href="#" class="btn btn-secondary">Apple</a>
+                </div>
+                <div class="form-group d-flex have-account">
+                    <h6>need help?</h6>
+                    <a asp-action="Contact" class="sign-in-link">contact us</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

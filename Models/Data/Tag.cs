@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.Data
 {
-    public class Role
+    public class Tag
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
-        
-        public Collection<RoleUser> RoleUsers { get; set; }
-
+        public string Name { get; set; }
+        [Required]
+        public Collection<TagBlog> TagBlogs { get; set; }
     }
 }
+

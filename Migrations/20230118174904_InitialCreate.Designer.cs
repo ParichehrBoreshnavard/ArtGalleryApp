@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtGalleryApp.Migrations
 {
     [DbContext(typeof(dbSarvContext))]
-    [Migration("20230116211048_add User,EventUser")]
-    partial class addUserEventUser
+    [Migration("20230118174904_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,8 +59,8 @@ namespace ArtGalleryApp.Migrations
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("price")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -104,7 +104,69 @@ namespace ArtGalleryApp.Migrations
                     b.ToTable("Banners");
                 });
 
-            modelBuilder.Entity("ArtGalleryApp.Models.Data.Event", b =>
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Article")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("WrittenDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Contact", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Event_", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,7 +206,7 @@ namespace ArtGalleryApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Events_");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.EventUser", b =>
@@ -192,6 +254,37 @@ namespace ArtGalleryApp.Migrations
                     b.ToTable("Fields");
                 });
 
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.General", b =>
+                {
+                    b.Property<int>("AboutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AboutId"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Creator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("AboutId");
+
+                    b.ToTable("Generals");
+                });
+
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Medium", b =>
                 {
                     b.Property<int>("Id")
@@ -229,6 +322,29 @@ namespace ArtGalleryApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Rols");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.RoleUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Role_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("User_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Role_Id");
+
+                    b.HasIndex("User_Id");
+
+                    b.ToTable("RoleUser");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Size", b =>
@@ -291,7 +407,7 @@ namespace ArtGalleryApp.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EventId")
+                    b.Property<int>("Events_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("ImgUrl")
@@ -314,9 +430,68 @@ namespace ArtGalleryApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
+                    b.HasIndex("Events_Id");
 
                     b.ToTable("SubEvents");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.TagBlog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Blog_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tag_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Blog_Id");
+
+                    b.HasIndex("Tag_Id");
+
+                    b.ToTable("TagBlog");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.TeamMember", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("User_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("User_Id");
+
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.User", b =>
@@ -365,14 +540,9 @@ namespace ArtGalleryApp.Migrations
                     b.Property<DateTime>("YearOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("roleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Field_Id");
-
-                    b.HasIndex("roleId");
 
                     b.ToTable("Users");
                 });
@@ -388,7 +558,7 @@ namespace ArtGalleryApp.Migrations
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Banner", b =>
                 {
-                    b.HasOne("ArtGalleryApp.Models.Data.Event", "Event_")
+                    b.HasOne("ArtGalleryApp.Models.Data.Event_", "Event_")
                         .WithMany()
                         .HasForeignKey("Event_Id");
 
@@ -397,7 +567,7 @@ namespace ArtGalleryApp.Migrations
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.EventUser", b =>
                 {
-                    b.HasOne("ArtGalleryApp.Models.Data.Event", "Event_")
+                    b.HasOne("ArtGalleryApp.Models.Data.Event_", "Event_")
                         .WithMany("EventUsers")
                         .HasForeignKey("Event_Id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -428,6 +598,25 @@ namespace ArtGalleryApp.Migrations
                         .HasForeignKey("ArtworkId");
                 });
 
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.RoleUser", b =>
+                {
+                    b.HasOne("ArtGalleryApp.Models.Data.Role", "Role_")
+                        .WithMany("RoleUsers")
+                        .HasForeignKey("Role_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArtGalleryApp.Models.Data.User", "User_")
+                        .WithMany("RoleUsers")
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role_");
+
+                    b.Navigation("User_");
+                });
+
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Size", b =>
                 {
                     b.HasOne("ArtGalleryApp.Models.Data.Artwork", null)
@@ -444,9 +633,43 @@ namespace ArtGalleryApp.Migrations
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.SubEvent", b =>
                 {
-                    b.HasOne("ArtGalleryApp.Models.Data.Event", null)
+                    b.HasOne("ArtGalleryApp.Models.Data.Event_", "Events_")
                         .WithMany("SubEvents")
-                        .HasForeignKey("EventId");
+                        .HasForeignKey("Events_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Events_");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.TagBlog", b =>
+                {
+                    b.HasOne("ArtGalleryApp.Models.Data.Blog", "Blog_")
+                        .WithMany("TagBlogs")
+                        .HasForeignKey("Blog_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArtGalleryApp.Models.Data.Tag", "Tag_")
+                        .WithMany("TagBlogs")
+                        .HasForeignKey("Tag_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog_");
+
+                    b.Navigation("Tag_");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.TeamMember", b =>
+                {
+                    b.HasOne("ArtGalleryApp.Models.Data.User", "User_")
+                        .WithMany("TeamMembers")
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User_");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.User", b =>
@@ -455,15 +678,7 @@ namespace ArtGalleryApp.Migrations
                         .WithMany()
                         .HasForeignKey("Field_Id");
 
-                    b.HasOne("ArtGalleryApp.Models.Data.Role", "role")
-                        .WithMany()
-                        .HasForeignKey("roleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Field_");
-
-                    b.Navigation("role");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Artwork", b =>
@@ -477,11 +692,26 @@ namespace ArtGalleryApp.Migrations
                     b.Navigation("Styles");
                 });
 
-            modelBuilder.Entity("ArtGalleryApp.Models.Data.Event", b =>
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Blog", b =>
+                {
+                    b.Navigation("TagBlogs");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Event_", b =>
                 {
                     b.Navigation("EventUsers");
 
                     b.Navigation("SubEvents");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Role", b =>
+                {
+                    b.Navigation("RoleUsers");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Tag", b =>
+                {
+                    b.Navigation("TagBlogs");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.User", b =>
@@ -489,6 +719,10 @@ namespace ArtGalleryApp.Migrations
                     b.Navigation("Artworks");
 
                     b.Navigation("EventUsers");
+
+                    b.Navigation("RoleUsers");
+
+                    b.Navigation("TeamMembers");
                 });
 #pragma warning restore 612, 618
         }

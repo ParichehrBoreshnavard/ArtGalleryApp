@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.Data
 {
-    public class Event
+    public class Event_
     {
         [Key]
         public int Id { get; set; }

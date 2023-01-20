@@ -2,14 +2,13 @@
 
 namespace ArtGalleryApp.Models.Data
 {
-    public class EventUser
+    public class TagBlog
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public Event_ Event_ { get; set; }
+        public Tag Tag_ { get; set; }
         [Required]
-        public User User_ { get; set; }
-       
+        public Blog Blog_ { get; set; }
     }
 }

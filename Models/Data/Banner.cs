@@ -8,7 +8,7 @@ namespace ArtGalleryApp.Models.Data
         public int Id { get; set; }
         [Required]
         public string Titel { get; set; }
-        public Event? Event_ { get; set; }
+        public Event_? Event_ { get; set; }
         public string? SubDescription { get; set; }
         public DateTime PublishStartDate { get; set; }
         public DateTime? PublishEndDate { get; set; }

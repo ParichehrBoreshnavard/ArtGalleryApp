@@ -207,6 +207,9 @@ footer a:hover{
         max-width: 100% !important;
     }
 }
+.w-10 {
+    width: 10% !important;
+}
 .w-20 {
     width:20% !important;
 }
@@ -423,3 +426,41 @@ w-90 {
     border-bottom: 1px solid black;
 }
 
+.signup-form{
+    position:relative;
+    left:15%;
+}
+    .signup-form h3{
+        color:#34b9b5;
+    }
+.register-form h3 {
+    color: #34b9b5;
+}
+.have-account {
+    justify-content: flex-end;
+}
+
+    .signin-form h3 {
+        color: #34b9b5;
+    }
+
+.admin-table-header{
+    justify-content:space-between;
+}
+    .admin-table-header h4 {
+        color: #34b9b5;
+    }
+    .modal-title h5{
+        color: #34b9b5;
+    }
+
+.AdminBg {
+    background-image: url('../images/pexels-erik-mclean-6159732.jpg');
+     background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.AdminContainer {
+    border: 2px solid black;
+}

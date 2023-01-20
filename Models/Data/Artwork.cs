@@ -21,7 +21,7 @@ namespace ArtGalleryApp.Models.Data
         [Required]
         public string Description { get; set; }
         [Required]
-        public decimal price { get; set; }
+        public double price { get; set; }
         public User? Artist_ { get; set; }
         public string ImgUrl { get; set; }
         public Collection<Field> Fields { get; set; }

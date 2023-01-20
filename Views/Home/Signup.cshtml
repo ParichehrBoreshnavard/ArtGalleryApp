@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Signup";
+    Layout = "_Layout";
+}
+
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
+    <div class="Carouselcontainer w-30 h-30 bg-white p-5">
+        <form class="signin-form form-check w-80 ml-5 ">
+            <h3> Create Your Account</h3>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm password">
+            </div>
+            <div class="password-strength">
+                <div class="password-strength-viewport">
+                    <div class="password-strength-progress">
+                        <label for="password-strength">Password Strength</label>
+                        <label for="password-roles">Password must be a minimum of 8 characters. lnclude one latter, and one number or symbol.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="signup-bottom-container text-center">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <div class="form-group d-flex have-account">
+                    <h6>already have an account?</h6>
+                    <a asp-controller="Home" asp-action="Signin" class="sign-in-link">   Sign In</a>
+                </div>
+                <label for="CreatAccountWith">..............................or create an account with..............................</label>
+                <div class="form-group sign-in-with">
+                    <a href="#" class="btn btn-danger">Google</a>
+                    <a href="#" class="btn btn-primary">Facebook</a>
+                    <a href="#" class="btn btn-secondary">Apple</a>
+                </div>
+                <div class="form-group d-flex have-account">
+                    <h6>need help?</h6>
+                    <a asp-action="Contact" class="sign-in-link">contact us</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

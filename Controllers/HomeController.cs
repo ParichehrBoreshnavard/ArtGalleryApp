@@ -1,4 +1,5 @@
 ﻿using ArtGalleryApp.Models;
+using ArtGalleryApp.Models.DataViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -29,7 +30,7 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
-        public IActionResult blogPage()
+        public IActionResult BlogPage()
         {
             return View();
         }
@@ -67,6 +68,43 @@ namespace ArtGalleryApp.Controllers
             return View();
         }
         public IActionResult ArtistRegistration()
+        {
+            return View();
+        }
+        public IActionResult Signin()
+        {
+            return View();
+        }
+        public IActionResult Signup()
+        {
+            return View();
+        }
+        public IActionResult UploadFile()
+        {
+            return View();
+        }
+        public IActionResult AdminTeam()
+        {
+            return View();
+        }
+        public IActionResult AdminArtist()
+        {
+            ArtistViewModel Item = new ArtistViewModel();
+            return View();
+        }
+        public IActionResult AdminCoustomer()
+        {
+            return View();
+        }
+        public IActionResult AdminEdit()
+        {
+            return View();
+        }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+        public IActionResult SigninAdmin()
         {
             return View();
         }

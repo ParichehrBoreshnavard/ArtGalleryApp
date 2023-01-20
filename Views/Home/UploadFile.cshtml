@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "UploadFile";
+    Layout = "_Layout";
+}
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
+    <div class="Carouselcontainer w-40 h-40 bg-white  p-5 d-flex">
+        <form class="register-form  form-check w-90">
+            <h3>Upload your artwork</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="artwork-title">Title</label>
+                        <input type="text" class="form-control" id="artwork-title" placeholder="Enter the name of your artwork...">
+                    </div>
+                    <div class="form-group">
+                        <label for="artwork-field">Field</label>
+                        <input type="text" class="form-control" id="artwork-field" placeholder="Enter your artwork field...">
+                    </div>
+                    <div class="form-group">
+                        <label for="field">Style</label>
+                        <input type="text" class="form-control" id="field" placeholder="Enter your artwork style...">
+                    </div>
+                    <div class="form-group">
+                        <label for="technique">Technique</label>
+                        <input type="text" class="form-control" id="technique" placeholder="Enter your technique">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yearOfProduce">Produce Year</label>
+                        <input type="text" class="form-control" id="yearOfProduce" placeholder="Produce Year...">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" class="form-control" id="price" placeholder="Price...">
+                    </div>
+
+                </div>
+                <div class="col-md-6 position-relative">
+                    <div class="form-group">
+                        <label for="photo">Upload a Photo</label>
+                        <input type="file" class="form-control-file" id="photo">
+                    </div>
+                    <img class="w-100 position-relative" src="~/images/events/pexels-jj-jordan-4014053.jpg" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shortDescription">short description about Your artwork</label>
+                <textarea class="form-control" id="shortDescription" rows="3" placeholder="Write a short description about Your artwork..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+

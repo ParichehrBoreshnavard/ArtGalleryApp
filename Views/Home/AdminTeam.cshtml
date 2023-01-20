@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewData["Title"] = "AdminTeam";
+    Layout = "_LayoutAdmin";
+}
+
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg">
+    <div class="Carouselcontainer w-90 h-90 bg-white  p-5 ">
+        <div class="admin-table-header d-flex  flex-nowrap justify-content-space-between">
+        <div class=" mb-3 mt-3 mt-md-0 mb-md-0">
+            <h4>Team Table</h4>
+        </div>
+        <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
+            <label class="mr-2">Sort by:</label>
+            <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+                <a class="dropdown-item" href="#">Relevance</a>
+                <a class="dropdown-item" href="#">Price Descending</a>
+                <a class="dropdown-item" href="#">Price Ascending</a>
+                <a class="dropdown-item" href="#">Best Selling</a>
+            </div>
+        </div>
+    </div>
+        
+        <table class="table table-striped Team">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Position</th>
+                    <th>Joining Date</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Image Url</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  
+                    <td>Vincent</td>
+                    <td>Van Gogh</td>
+                    <td>Manager</td>
+                     <td>01-12-1853</td>
+                     <td>416-(500)9181</td>
+                    <td>Cherboren@gmail.com</td>
+                    <td>HH3322</td>
+                    <td><img class="w-100 position-relative" src=" ~ /images/events/pexels-jj-jordan-4014053.jpg" /></td>
+                     <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
+                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+
+                    <td>Vincent</td>
+                    <td>Van Gogh</td>
+                    <td>Manager</td>
+                    <td>01-12-1853</td>
+                    <td>416-(500)9181</td>
+                    <td>Cherboren@gmail.com</td>
+                    <td>HH3322</td>
+                    <td><img class="w-100 position-relative" src=" ~ /images/events/pexels-jj-jordan-4014053.jpg" /></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
+                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+
+                    <td>Vincent</td>
+                    <td>Van Gogh</td>
+                    <td>Manager</td>
+                    <td>01-12-1853</td>
+                    <td>416-(500)9181</td>
+                    <td>Cherboren@gmail.com</td>
+                    <td>HH3322</td>
+                    <td><img class="w-100 position-relative" src=" ~ /images/events/pexels-jj-jordan-4014053.jpg" /></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
+                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+
+                    <td>Vincent</td>
+                    <td>Van Gogh</td>
+                    <td>Manager</td>
+                    <td>01-12-1853</td>
+                    <td>416-(500)9181</td>
+                    <td>Cherboren@gmail.com</td>
+                    <td>HH3322</td>
+                    <td><img class="w-100 position-relative" src=" ~ /images/events/pexels-jj-jordan-4014053.jpg" /></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
+                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+           
+        </table>
+
+        <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add Member</button>
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Member</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName">
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Position</label>
+                                <input type="text" class="form-control" id="position">
+                            </div>
+                            <div class="form-group">
+                                <label for="joiningDate">Joining Date</label>
+                                <input type="text" class="form-control" id="joiningDatey">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumberh">Phone Number</label>
+                                <input type="text" class="form-control" id="phoneNumberh">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control" id="password">
+                            </div>
+                            <div class="form-group">
+                                <label for="imageUrl">Image Url</label>
+                                <input type="text" class="form-control" id="imageUrl">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add A Member</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form >
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="text" class="form-control" id="position">
+                    </div>
+                    <div class="form-group">
+                        <label for="joiningDate">Joining Date</label>
+                        <input type="text" class="form-control" id="joiningDatey">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumberh">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumberh">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Image Url</label>
+                        <input type="text" class="form-control" id="imageUrl">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary ">Add A Member</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "AdminEdit";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-75 h-75 bg-white  p-5 d-flex">
+        <form class="register-form ml-2 form-check ">
+            <h3>Update Informations</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter first name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter last name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="field">Field</label>
+                        <input type="text" class="form-control" id="field" placeholder="Enter your field...">
+                    </div>
+                    <div class="form-group">
+                        <label for="yearOfBirth">Year of Birth</label>
+                        <input type="text" class="form-control" id="yearOfBirth" placeholder="Enter your year of birth...">
+                    </div>
+
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="form-group">
+                        <label for="countryOfOrigin">Country of Origin</label>
+                        <input type="text" class="form-control" id="countryOfOrigin" placeholder="Enter your country of origin (optional)...">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your phoneNumber...">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email...">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="phoneNumber" placeholder="Enter password...">
+                    </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="form-group">
+                        <label for="photo">Upload a Photo</label>
+                        <input type="file" class="form-control-file" id="photo">
+                    </div>
+                    <img class="w-100 position-relative" src="~/images/blog/pexels-marshall-jones-3652853.jpg" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shortStatement">Short Statement about Yourself</label>
+                <textarea class="form-control" id="shortStatement" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+

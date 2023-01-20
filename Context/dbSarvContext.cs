@@ -18,7 +18,7 @@ namespace ArtGalleryApp.Context
 
 
         public DbSet<Banner> Banners { get; set; }
-        public DbSet<Event> Events { get; set; }
+        public DbSet<Event_> Events_ { get; set; }
         public DbSet<SubEvent> SubEvents { get; set; }
         public DbSet<Artwork> Artworks { get; set; }
         public DbSet<User> Users { get; set; }
@@ -28,5 +28,10 @@ namespace ArtGalleryApp.Context
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Role> Rols { get; set; }
         public Collection<EventUser> EventUsers { get; set; }
+        public DbSet<Contact> Contacts{ get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<TeamMember> Teams { get; set; }
+        public DbSet<General> Generals { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }
