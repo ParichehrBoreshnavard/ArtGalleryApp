@@ -4,6 +4,7 @@ using ArtGalleryApp.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtGalleryApp.Migrations
 {
     [DbContext(typeof(dbSarvContext))]
-    partial class dbSarvContextModelSnapshot : ModelSnapshot
+    [Migration("20230123143740_update_6")]
+    partial class update_6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -553,13 +555,10 @@ namespace ArtGalleryApp.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UnitNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("YearOfBirth")
+                    b.Property<DateTime>("YearOfBirth")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

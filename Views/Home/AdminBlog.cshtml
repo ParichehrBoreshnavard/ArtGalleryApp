@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewData["Title"] = "AdminArtist";
+    ViewData["Title"] = "AdminBlog";
     Layout = "_LayoutAdmin";
 }
-
 <div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg  ">
     <div class="Carouselcontainer  w-75 h-75 bg-white  p-5 ">
         <div class="admin-table-header d-flex  flex-nowrap justify-content-space-between">
@@ -47,7 +46,7 @@
                     <td><a data-toggle="modal" data-target="#add-modal-description">Click Here</a> </td>
                     <td>416-(500)9181</td>
                     <td>Cherboren@gmail.com</td>
-                 <td>
+                    <td>
                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
                         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
                     </td>
@@ -122,10 +121,7 @@
                 </tr>
             </tbody>
         </table>
-        <a style="background-color: #193C8D" class="btn btn-success" asp-area="Identity" asp-action="AdminEditArtist">Add Member</a>
-  </div>
+        <a style="background-color: #193C8D" class="btn btn-success" asp-area="Identity" asp-action="AdminEditBlog">Add Member</a>
+    </div>
 </div>
-
-
-
 

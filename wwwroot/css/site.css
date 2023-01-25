@@ -1,5 +1,6 @@
 
 
+
 body {
   font-size:16px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -463,4 +464,26 @@ w-90 {
 
 .AdminContainer {
     border: 2px solid black;
+}
+
+.BasketContainer {
+    max-width: 960px;
+}
+
+.lh-condensed {
+    line-height: 1.25;
+}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
 }

@@ -17,17 +17,27 @@ namespace ArtGalleryApp.Models.Data
         public string? Country { get; set; }
         [Required]
         public string Password { get; set; }
-        public DateTime YearOfBirth { get; set; }
+        public DateTime? YearOfBirth { get; set; }
        
         public Field? Field_ { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
         public string Phone { get; set; }
-       
+        public string? FullAddress { get; set; }
+        public string? PostalCode { get; set; }
+
+
         public string? ImgUrl { get; set; }
         
         public string? PortfolioUrl { get; set; }
+
+        public string? City { get; set; }
+
+        public string? Address { get; set; }
+        public string? State { get; set; }
+
+        public string? UnitNumber { get; set; }
         public Collection<Artwork> Artworks { get; set; }
  
         [Required]

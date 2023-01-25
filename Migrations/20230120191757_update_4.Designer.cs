@@ -4,6 +4,7 @@ using ArtGalleryApp.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtGalleryApp.Migrations
 {
     [DbContext(typeof(dbSarvContext))]
-    partial class dbSarvContextModelSnapshot : ModelSnapshot
+    [Migration("20230120191757_update_4")]
+    partial class update_4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,16 +46,10 @@ namespace ArtGalleryApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Inventory")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("ProduceDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("PublishDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("SoldDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -553,13 +549,10 @@ namespace ArtGalleryApp.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UnitNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("YearOfBirth")
+                    b.Property<DateTime>("YearOfBirth")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

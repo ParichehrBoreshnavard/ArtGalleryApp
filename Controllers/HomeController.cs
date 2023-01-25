@@ -18,10 +18,7 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
-        public IActionResult LoBLoB()
-        {
-            return View();
-        }
+      
         public IActionResult Testtt()
         {
             return View();
@@ -75,7 +72,13 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
+       
         public IActionResult Signup()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Signup(SignupViewModel signupViewModel)
         {
             return View();
         }
@@ -87,24 +90,101 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
+        public IActionResult AdminEditTeam()
+        {
+            TeamViewModel item = new TeamViewModel();
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult AdminEditTeam(TeamViewModel item)
+        {
+            return View(item);
+        }
+        
         public IActionResult AdminArtist()
         {
-            ArtistViewModel Item = new ArtistViewModel();
+         
             return View();
         }
-        public IActionResult AdminCoustomer()
+        public IActionResult AdminEditCustomer()
         {
-            return View();
+            CustomerViewModel item = new CustomerViewModel();
+            return View(item);
         }
-        public IActionResult AdminEdit()
+        [HttpPost]
+        public IActionResult AdminEditCustomer(CustomerViewModel item)
         {
-            return View();
+            return View(item);
         }
+        public IActionResult AdminCustomer()
+        {
+           return View();
+        }
+     
+    public IActionResult AdminEditArtist()
+        {
+            ArtistViewModel item = new ArtistViewModel();
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult AdminEditArtist(ArtistViewModel item)
+        {
+            return View(item);
+        }
+
         public IActionResult Dashboard()
         {
             return View();
         }
         public IActionResult SigninAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SignupAdmin(SignupViewModel item)
+        {
+            return View(item);
+        }
+        public IActionResult ForgetPassword()
+        {
+            return View(); 
+        }
+        [HttpPost]
+        public IActionResult SigninAdmin(SigninViewModel item)
+        {
+            return View(item);
+        }
+        public IActionResult AdminGallery()
+        {
+            return View(); 
+        }
+        public IActionResult AdminEditGallery()
+        {
+            GalleryViewModel item = new GalleryViewModel();
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult AdminEditGallery(GalleryViewModel item)
+        {
+            return View(item);
+        }
+
+        public IActionResult AdminBlog()
+        {
+            return View();
+        }
+        public IActionResult AdminEditBlog()
+        {
+            BlogViewModel item = new BlogViewModel();
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult AdminEditBlog(BlogViewModel item)
+        {
+            return View(item);
+        }
+        public IActionResult Basket()
         {
             return View();
         }

@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "AdminEditCustomer";
+    Layout = "_LayoutAdmin";
+}
+@model ArtGalleryApp.Models.DataViewModel.CustomerViewModel
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-75 h-75 bg-white  p-5 d-flex">
+        <form class="register-form ml-2 form-check " action="/home/AdminEdit" method="post">
+            <h3>Update Informations</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input type="text" class="form-control" asp-for="FirstName" placeholder="Enter first name...">
+                        <span style="color:darkred" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input type="text" class="form-control" asp-for="LastName" placeholder="Enter last name...">
+                        <span style="color:darkred" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <input type="text" class="form-control" asp-for="Phone" placeholder="Phone Number...">
+                        <span style="color:darkred" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input class="form-control" asp-for="Email" placeholder="Enter your email...">
+                        <span style="color:darkred" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Enter password...">
+                        <span style="color:darkred" asp-validation-for="Password"></span>
+                    </div>
+                  
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="form-group">
+                        <label asp-for="Country"></label>
+                        <input type="text" class="form-control" asp-for="Country" placeholder="Enter your country of origin (optional)...">
+                        <span style="color:darkred" asp-validation-for="Country"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City"></label>
+                        <input type="text" class="form-control" asp-for="City" placeholder="City...">
+                        <span style="color:darkred" asp-validation-for="City"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address"></label>
+                        <input type="text" class="form-control" asp-for="Address" placeholder="Address...">
+                        <span style="color:darkred" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UnitNumber"></label>
+                        <input type="text" class="form-control" asp-for="UnitNumber" placeholder="UnitNumber...">
+                        <span style="color:darkred" asp-validation-for="UnitNumber"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PostalCode"></label>
+                        <input type="text" class="form-control" asp-for="PostalCode" placeholder="PostalCode...">
+                        <span style="color:darkred" asp-validation-for="PostalCode"></span>
+                    </div>
+                   
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="form-group">
+                        <label asp-for="ImgUrl">Upload a Photo</label>
+                        <input type="file" class="form-control-file" asp-for="ImgUrl">
+                        <span style="color:darkred" asp-validation-for="ImgUrl"></span>
+                    </div>
+                    <img class="w-100 position-relative" src="~/images/blog/pexels-marshall-jones-3652853.jpg" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                <span style="color:darkred" asp-validation-for="Description"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

@@ -1,53 +1,55 @@
 ﻿using ArtGalleryApp.Models.Data;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
+
 {
-    public class ArtistViewModel
+ public class CustomerViewModel
     {
-      
         public int Id { get; set; }
         [Required]
-        [Display(Name = "First Name")]
+        [Display(Name ="First Name")]
         public string FirstName { get; set; }
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Required]
-        [Display(Name = "Artist Statement ")]
-        [StringLength(500)]
+
         public string? Description { get; set; }
-        [Display(Name = "Country of Origin")]
-       
+        [Required]
+        [Display(Name = "Country")]
         public string? Country { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public string? City { get; set; }
+        [Required]
+        [Display(Name = "Home Address")]
+        public string? Address { get; set; }
+        [Required]
+        [Display(Name = "Postal Code")]
+        public string? PostalCode { get; set; }
+
+        [Required]
+        [Display(Name = "Unit Number")]
+        public string? UnitNumber { get; set; }
         [Required]
         [Display(Name = "Password")]
         [PasswordPropertyText]
-        
         public string Password { get; set; }
         public DateTime YearOfBirth { get; set; }
-        [Required]
-        [Display(Name = "Field")]
-     
+
         public Field? Field_ { get; set; }
-        [Required(ErrorMessage ="enter an email format")]
-        [Display(Name ="Email")]
+        [Required]
+        [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Phone")]
         [Phone]
         public string Phone { get; set; }
-        [Display(Name = "Artist Image")]
+      
         public string? ImgUrl { get; set; }
-        [Required]
-        [Display(Name ="Portfolio Link")]
-        [Url]
+
         public string? PortfolioUrl { get; set; }
-     
     }
 }
-

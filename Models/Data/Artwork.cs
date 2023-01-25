@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Humanizer;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Policy;
@@ -24,6 +25,9 @@ namespace ArtGalleryApp.Models.Data
         public double price { get; set; }
         public User? Artist_ { get; set; }
         public string ImgUrl { get; set; }
+        public DateTime? SoldDate { get; set; }
+        [Required]
+        public int Inventory { get; set; } = 0;
         public Collection<Field> Fields { get; set; }
         public Collection<Medium> Mediums { get; set; }
         public Collection<Style> Styles { get; set; }
