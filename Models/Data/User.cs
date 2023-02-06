@@ -38,7 +38,7 @@ namespace ArtGalleryApp.Models.Data
         public string? State { get; set; }
 
         public string? UnitNumber { get; set; }
-        public Collection<Artwork> Artworks { get; set; }
+        public Collection<Gallery> Gallery { get; set; }
  
         [Required]
         public Collection<EventUser> EventUsers { get; set; }

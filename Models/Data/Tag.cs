@@ -11,6 +11,8 @@ namespace ArtGalleryApp.Models.Data
         public string Name { get; set; }
         [Required]
         public Collection<TagBlog> TagBlogs { get; set; }
+        [Required]
+        public Collection<TagGallery> TagGallery { get; set; }
     }
 }
 

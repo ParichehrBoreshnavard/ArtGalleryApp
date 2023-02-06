@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ArtGalleryApp.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class update22 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,10 +32,12 @@ namespace ArtGalleryApp.Migrations
                 name: "Contacts",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,6 +65,19 @@ namespace ArtGalleryApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Fields",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fields", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Generals",
                 columns: table => new
                 {
@@ -80,6 +95,19 @@ namespace ArtGalleryApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Mediums",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mediums", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Rols",
                 columns: table => new
                 {
@@ -90,6 +118,19 @@ namespace ArtGalleryApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rols", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Styles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Styles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -155,6 +196,40 @@ namespace ArtGalleryApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YearOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Field_Id = table.Column<int>(type: "int", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PortfolioUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UnitNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Fields_Field_Id",
+                        column: x => x.Field_Id,
+                        principalTable: "Fields",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TagBlog",
                 columns: table => new
                 {
@@ -181,132 +256,7 @@ namespace ArtGalleryApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Artworks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UploadDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProduceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Availability = table.Column<bool>(type: "bit", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    price = table.Column<double>(type: "float", nullable: false),
-                    Artist_Id = table.Column<int>(type: "int", nullable: true),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Artworks", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Fields",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Fields", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Fields_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Mediums",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Mediums", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Mediums_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sizes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sizes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Sizes_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Styles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Styles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Styles_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    YearOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Field_Id = table.Column<int>(type: "int", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PortfolioUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Fields_Field_Id",
-                        column: x => x.Field_Id,
-                        principalTable: "Fields",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EventUser",
+                name: "EventUsers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -316,19 +266,54 @@ namespace ArtGalleryApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventUser", x => x.Id);
+                    table.PrimaryKey("PK_EventUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EventUser_Events__Event_Id",
+                        name: "FK_EventUsers_Events__Event_Id",
                         column: x => x.Event_Id,
                         principalTable: "Events_",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EventUser_Users_User_Id",
+                        name: "FK_EventUsers_Users_User_Id",
                         column: x => x.User_Id,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Gallery",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Artist = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Field = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Medium = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Style = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Size = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProduceYear = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Price = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SoldDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Availability = table.Column<bool>(type: "bit", nullable: false),
+                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UploadDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProduceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Inventory = table.Column<int>(type: "int", nullable: false),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gallery", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Gallery_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -376,10 +361,31 @@ namespace ArtGalleryApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Artworks_Artist_Id",
-                table: "Artworks",
-                column: "Artist_Id");
+            migrationBuilder.CreateTable(
+                name: "TagGallery",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Tag_Id = table.Column<int>(type: "int", nullable: false),
+                    Gallery_Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TagGallery", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TagGallery_Gallery_Gallery_Id",
+                        column: x => x.Gallery_Id,
+                        principalTable: "Gallery",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TagGallery_Tags_Tag_Id",
+                        column: x => x.Tag_Id,
+                        principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Banners_Event_Id",
@@ -387,24 +393,19 @@ namespace ArtGalleryApp.Migrations
                 column: "Event_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventUser_Event_Id",
-                table: "EventUser",
+                name: "IX_EventUsers_Event_Id",
+                table: "EventUsers",
                 column: "Event_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventUser_User_Id",
-                table: "EventUser",
+                name: "IX_EventUsers_User_Id",
+                table: "EventUsers",
                 column: "User_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fields_ArtworkId",
-                table: "Fields",
-                column: "ArtworkId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Mediums_ArtworkId",
-                table: "Mediums",
-                column: "ArtworkId");
+                name: "IX_Gallery_UserId",
+                table: "Gallery",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleUser_Role_Id",
@@ -415,16 +416,6 @@ namespace ArtGalleryApp.Migrations
                 name: "IX_RoleUser_User_Id",
                 table: "RoleUser",
                 column: "User_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sizes_ArtworkId",
-                table: "Sizes",
-                column: "ArtworkId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Styles_ArtworkId",
-                table: "Styles",
-                column: "ArtworkId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SubEvents_Events_Id",
@@ -442,6 +433,16 @@ namespace ArtGalleryApp.Migrations
                 column: "Tag_Id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TagGallery_Gallery_Id",
+                table: "TagGallery",
+                column: "Gallery_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TagGallery_Tag_Id",
+                table: "TagGallery",
+                column: "Tag_Id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Teams_User_Id",
                 table: "Teams",
                 column: "User_Id");
@@ -450,21 +451,10 @@ namespace ArtGalleryApp.Migrations
                 name: "IX_Users_Field_Id",
                 table: "Users",
                 column: "Field_Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Artworks_Users_Artist_Id",
-                table: "Artworks",
-                column: "Artist_Id",
-                principalTable: "Users",
-                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Artworks_Users_Artist_Id",
-                table: "Artworks");
-
             migrationBuilder.DropTable(
                 name: "Banners");
 
@@ -472,7 +462,7 @@ namespace ArtGalleryApp.Migrations
                 name: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "EventUser");
+                name: "EventUsers");
 
             migrationBuilder.DropTable(
                 name: "Generals");
@@ -484,9 +474,6 @@ namespace ArtGalleryApp.Migrations
                 name: "RoleUser");
 
             migrationBuilder.DropTable(
-                name: "Sizes");
-
-            migrationBuilder.DropTable(
                 name: "Styles");
 
             migrationBuilder.DropTable(
@@ -494,6 +481,9 @@ namespace ArtGalleryApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "TagBlog");
+
+            migrationBuilder.DropTable(
+                name: "TagGallery");
 
             migrationBuilder.DropTable(
                 name: "Teams");
@@ -508,6 +498,9 @@ namespace ArtGalleryApp.Migrations
                 name: "Blogs");
 
             migrationBuilder.DropTable(
+                name: "Gallery");
+
+            migrationBuilder.DropTable(
                 name: "Tags");
 
             migrationBuilder.DropTable(
@@ -515,9 +508,6 @@ namespace ArtGalleryApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Fields");
-
-            migrationBuilder.DropTable(
-                name: "Artworks");
         }
     }
 }

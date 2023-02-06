@@ -5,13 +5,16 @@ namespace ArtGalleryApp.Models.Data
     public class Contact
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        public string Subject { get; set; }
         [Required]
-        public string Message { get; set; }
-       
+        [MaxLength(300)]
+        public string Body { get; set; }
+
     }
 }

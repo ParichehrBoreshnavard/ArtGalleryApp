@@ -22,7 +22,7 @@
 
     @*<link rel="stylesheet" href="~/ArtGalleryApp.styles.css" asp-append-version="true" />*@
 </head>
-<body>
+<body class="admin-body">
     
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm   navbar-light border-bottom box-shadow  py-1">
             <div class="container-fluid m-4">
@@ -32,61 +32,153 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ml-3">
-                    <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
-                        </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Users</a>
-                        <ul class="dropdown-menu">
+                    
+                        <a class="nav-link text-white" asp-controller="Home" asp-action="index">SARV INDEPENDENT ARTISTS</a>
 
-                            <li><a class="dropdown-item" asp-action="AdminArtist">Artist</a></li>
-                            <li><a class="dropdown-item" asp-action="AdminTeam">Team</a></li>
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="AdminCustomer">Customer</a></li>
-                        </ul>
-                    </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Events</a>
-                            <ul class="dropdown-menu">
-                            
-                            <li><a class="dropdown-item" asp-action="AdminEvent-1">Event-1</a></li>
-                            <li><a class="dropdown-item" asp-action="AdminEvent-2">Event-2</a></li>
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="AdminEvent-3">Event-3</a></li>
-                            </ul>
-                        </li>
-                      
-                        <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminGallery">GALLERY</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminBlog">BLOG</a>
-                        </li>
-                       
-                    </ul>
-                      
-                         <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Home" asp-action="SigninAdmin">
+
+                <li class="nav-item d-flex">
+                    <div class="container DateAndTimeAdmin ">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="date-time" class="text-center"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function updateDateTime() {
+                            var date = new Date();
+                            var dateTime = date.toLocaleString();
+                            document.getElementById("date-time").innerHTML = dateTime;
+                        }
+                        setInterval(updateDateTime, 1000);
+                    </script>
+
+                    <a class="nav-link text-white" asp-controller="Home" asp-action="AdminStartPage">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                         </svg>
-                         </a>
-                        </li>
+                    </a>
+                </li>
                    
                 </div>
             </div>
         </nav>
     
-        <main role="main" class=" main">
-            @RenderBody()
-          
-        </main>
+    <div class="d-flex AdminBg  ">
+        <nav class="admin-nav offcanvas-body  w-20 sidebar-filter pt-5 pb-5">
 
-     <footer class="mb-0">
+            <form class="form-inline my-2 my-lg-0 justify-content-center">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="divider mt-5 mb-5 border-bottom border-white"></div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                
+
+                <li class="nav-item ">
+                    <a class="admin-nav-link " asp-action="Dashboard">
+                        Dashboard
+                    </a>
+                </li>
+                <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+                <li class="nav-item dropdown">
+                    <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        USERS
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" asp-action="AdminArtist">Artists</a>
+                        <a class="dropdown-item" asp-action="AdminCustomer">Customers</a>
+                        <a class="dropdown-item" asp-action="AdminTeam">Team</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown3">
+                        <a class="dropdown-item" asp-action="AdminGallery">Gallery</a>
+                        <a class="dropdown-item" asp-action="AdminBlog">Blog</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" asp-action="Admin-Event_1">Orders</a>
+                    </div>              
+                </li>
+            </ul>
+            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="admin-nav-link dropdown">
+                    <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        EVENTS
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" asp-action="Admin-Event_1">Event_1</a>
+                        <a class="dropdown-item" asp-action="Admin-Event_1">Event_2</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" asp-action="Admin-Event_1">Event_3</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="admin-nav-link dropdown">
+                    <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        SOCIAL ENGAGEMENT
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="#">Messgage</a>
+                        <a class="dropdown-item" href="#">Review</a>
+                        <a class="dropdown-item" href="#">Like</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">request</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="admin-nav-link dropdown">
+                    <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        TO DO
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown3">
+                        <a class="dropdown-item" href="#">Follow ups</a>
+                        <a class="dropdown-item" href="#">Appointments</a>
+                        <a class="dropdown-item" href="#">Meetings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Urgent</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="divider mt-5 mb-5 border-bottom border-white"></div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="admin-nav-link dropdown">
+                    <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       ARCHIVE
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown3">
+                        <a class="dropdown-item" href="#">Events Reports</a>
+                        <a class="dropdown-item" href="#">Employees</a>
+                        <a class="dropdown-item" href="#">Sale Diagram</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Financial Archive</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <main role="main" class=" main w-80 h-100 container d-flex flex-nowrap justify-content-center pt-2 pb-2  ">
+            @RenderBody()
+        </main>
+      
+        
+    </div>
+        <footer class="mb-0">
            <div class="container text-center text-lg-start py-2 bg-secondary ">
                 &copy; 2022 - ArtGalleryApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div> 
+            </div>
         </footer>
-   
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @*<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>*@

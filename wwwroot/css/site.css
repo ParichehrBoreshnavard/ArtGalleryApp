@@ -1,4 +1,4 @@
-
+d
 
 
 body {
@@ -7,6 +7,12 @@ body {
   margin:0px;
   padding:0px;
 
+}
+.admin-body {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 nav {
     background-color: #272727 !important;
@@ -182,7 +188,14 @@ footer a:hover{
 .navFooter a:hover {
     color: green;
 }
+admin-nav {
+    background-color: #282828 !important;
+}
 
+admin-nav-link a {
+    color: white;
+    font-size:x-large;
+}
 
 
 
@@ -487,3 +500,14 @@ w-90 {
         font-size: 3.5rem;
     }
 }
+
+.DateAndTimeAdmin{
+    color:white;
+}
+.list-group-item {
+    position: relative;
+}
+
+
+
+

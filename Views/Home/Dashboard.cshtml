@@ -2,126 +2,250 @@
     ViewData["Title"] = "Dashboard";
     Layout = "_LayoutAdmin";
 }
-<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg  ">
-    <div class="Carouselcontainer  w-75 h-75 bg-white  p-5 ">
-        <div class="admin-table-header d-flex  flex-nowrap justify-content-space-between">
-            <div class=" mb-3 mt-3 mt-md-0 mb-md-0">
-                <h4>Team Table</h4>
+
+
+@model ArtGalleryApp.Models.DataViewModel.SigninViewModel
+
+<H1 class="pt-5">Welcome Admin</H1>
+
+<div class="container pt-5">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="container">
+                            <h2>Today's Events</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Event</th>
+                                        <th>Place</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10:00 AM</td>
+                                        <td>Meeting with team</td>
+                                        <td>Conference Room A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1:00 PM</td>
+                                        <td>Lunch with colleagues</td>
+                                        <td>Cafeteria</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3:00 PM</td>
+                                        <td>Presentation to clients</td>
+                                        <td>Conference Room B</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-            <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
-                <label class="mr-2">Sort by:</label>
-                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" href="#">Relevance</a>
-                    <a class="dropdown-item" href="#">Price Descending</a>
-                    <a class="dropdown-item" href="#">Price Ascending</a>
-                    <a class="dropdown-item" href="#">Best Selling</a>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <h2>New Messages</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Sender</th>
+                                    <th>Read</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="messageList">
+                                <tr>
+                                    <td>2022-10-01</td>
+                                    <td>08:30 AM</td>
+                                    <td>John Doe</td>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="deleteMessage(this)">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2022-10-01</td>
+                                    <td>11:15 AM</td>
+                                    <td>Jane Smith</td>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="deleteMessage(this)">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2022-10-01</td>
+                                    <td>02:00 PM</td>
+                                    <td>Bob Johnson</td>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="deleteMessage(this)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary" onclick="saveChanges()">Save Changes</button>
+                    </div>
+
+                    <script>
+                        function deleteMessage(elem) {
+                            elem.parentNode.parentNode.remove();
+                        }
+
+                        function saveChanges() {
+                            // Code to save changes to the message list, such as updating a database
+                        }
+                    </script>
+
+                    <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+
+                    <div class="container">
+                        <h1>To Do list</h1>
+                        <ul id="reminder-list" class="list-group">
+                            <!-- List items will be added here dynamically -->
+                        </ul>
+                        <br>
+                        <form>
+                            <div class="form-group">
+                                <label for="new-reminder">Add a new reminder:</label>
+                                <input type="text" class="form-control" id="new-reminder">
+                            </div>
+                            <button type="button" class="btn btn-primary" id="add-reminder">Add</button>
+                        </form>
+                    </div>
+                    <script>
+                        // Add click event to the "Add" button
+                        document.querySelector("#add-reminder").addEventListener("click", function () {
+                            // Get the value of the input field
+                            let newReminder = document.querySelector("#new-reminder").value;
+
+                            // Create a new list item
+                            let newLi = document.createElement("li");
+                            newLi.classList.add("list-group-item");
+                            newLi.innerHTML = newReminder;
+
+                            // Create a new checkbox
+                            let newCheckbox = document.createElement("input");
+                            newCheckbox.type = "checkbox";
+                            newCheckbox.classList.add("float-right");
+                            newCheckbox.addEventListener("click", function () {
+                                if (this.checked) {
+                                    newLi.style.textDecoration = "line-through";
+                                } else {
+                                    newLi.style.textDecoration = "none";
+                                }
+                            });
+
+                            // Append the checkbox to the list item
+                            newLi.appendChild(newCheckbox);
+
+                            // Append the list item to the reminder list
+                            document.querySelector("#reminder-list").appendChild(newLi);
+                        });
+                    </script>
+
                 </div>
             </div>
         </div>
 
-        <table class="table table-striped Team">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Field</th>
-                    <th>Year of Birth</th>
-                    <th>Nationality</th>
-                    <td>Statement</td>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <h3>Today's Report</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="orders">Orders</label>
+                                <input type="number" class="form-control" id="orders" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sales">Sales</label>
+                                <input type="number" class="form-control" id="sales" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Notes</label>
+                                <textarea class="form-control" id="notes" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="submitReport()">Submit Report</button>
+                        </form>
+                    </div>
 
-                    <td>Cher</td>
-                    <td>Boren</td>
-                    <td>Painter</td>
-                    <td>1980</td>
-                    <td>Persian</td>
-                    <td><a data-toggle="modal" data-target="#add-modal-description">Click Here</a> </td>
-                    <td>416-(500)9181</td>
-                    <td>Cherboren@gmail.com</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
-                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
+                    <script>
+                        function submitReport() {
+                            var orders = document.getElementById("orders").value;
+                            var sales = document.getElementById("sales").value;
+                            var notes = document.getElementById("notes").value;
 
-                    <td>Cher</td>
-                    <td>Boren</td>
-                    <td>Painter</td>
-                    <td>1980</td>
-                    <td>Persian</td>
-                    <td><a data-toggle="modal" data-target="#add-modal-description">Click Here</a> </td>
-                    <td>416-(500)9181</td>
-                    <td>Cherboren@gmail.com</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
-                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
+                            console.log("Orders: " + orders);
+                            console.log("Sales: " + sales);
+                            console.log("Notes: " + notes);
+                            /*
+                            You can also send the data to the server using ajax, fetch or xhr to save or process the data
+                            */
+                        }
+                    </script>
 
-                    <td>Cher</td>
-                    <td>Boren</td>
-                    <td>Painter</td>
-                    <td>1980</td>
-                    <td>Persian</td>
-                    <td><a data-toggle="modal" data-target="#add-modal-description">Click Here</a> </td>
-                    <td>416-(500)9181</td>
-                    <td>Cherboren@gmail.com</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
-                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <h3>Set Reminder</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="reminderTime">Reminder Time</label>
+                                <input type="time" class="form-control" id="reminderTime" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reminderMessage">Reminder Message</label>
+                                <textarea class="form-control" id="reminderMessage" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="setReminder()">Set Reminder</button>
+                        </form>
+                    </div>
 
-                    <td>Cher</td>
-                    <td>Boren</td>
-                    <td>Painter</td>
-                    <td>1980</td>
-                    <td>Persian</td>
-                    <td><a data-toggle="modal" data-target="#add-modal-description">Click Here</a> </td>
-                    <td>416-(500)9181</td>
-                    <td>Cherboren@gmail.com</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
-                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
+                    <script>
+                        function setReminder() {
+                            var reminderTime = document.getElementById("reminderTime").value;
+                            var reminderMessage = document.getElementById("reminderMessage").value;
 
-                    <td>Cher</td>
-                    <td>Boren</td>
-                    <td>Painter</td>
-                    <td>1980</td>
-                    <td>Persian</td>
-                    <td><a data-toggle="modal" data-target="#add-modal-description">Click Here</a> </td>
-                    <td>416-(500)9181</td>
-                    <td>Cherboren@gmail.com</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">Update</button>
-                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a style="background-color: #193C8D" class="btn btn-success" asp-area="Identity" asp-action="AdminEdit">Add Member</a>
+                            var currentTime = new Date();
+                            var reminderDate = new Date();
+                            reminderDate.setHours(reminderTime.substring(0, 2));
+                            reminderDate.setMinutes(reminderTime.substring(3, 5));
+                            reminderDate.setSeconds(0);
+
+                            var timeUntilReminder = reminderDate - currentTime;
+
+                            if (timeUntilReminder < 0) {
+                                alert("Please enter a valid time that is in the future.");
+                            } else {
+                                setTimeout(function () {
+                                    alert(reminderMessage);
+                                }, timeUntilReminder);
+                            }
+                        }
+                    </script>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-
-

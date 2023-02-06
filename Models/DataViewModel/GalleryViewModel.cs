@@ -1,48 +1,61 @@
-﻿
-
-using ArtGalleryApp.Models.Data;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
     public class GalleryViewModel
     {
-   
-        [Display(Name ="Name")]
+        public int Id { get; set; }
+        [Required]
+        [Display(Name = "Artwork Name:")]
+
         public string Title { get; set; }
         [Required]
-        [Display(Name = "Publish Date")]
-
-        public DateTime? PublishDate { get; set; }
-        [Required]
-        [Display(Name = "Upload Date")]
-        public DateTime UploadDate { get; set; } = DateTime.Now;
-        [Required]
-        [Display(Name = "Produce Date")]
-        public DateTime ProduceDate { get; set; }
-        [Required]
-        [Display(Name = "Condition")]
-        public bool Availability { get; set; } = false;
-
-        [Required]
-        [Display(Name = "Inventory")]
-        public int Inventory { get; set; } = 0;
-        [Required]
-        [Display(Name = "Description")]
-        [StringLength(200)]
+        [Display (Name="Statement")]
+        [MaxLength(400)]
         public string Description { get; set; }
         [Required]
-        [Display(Name = "Price")]
-        public double price { get; set; }
-        [Required]
-        [Display(Name = "Artist Name")]
-        public User? Artist_ { get; set; }
+        [Display(Name = "Artist:")]
 
+        public string Artist { get; set; }
         [Required]
-        [Display(Name = "Image File")]
-        public string ImgUrl { get; set; }
-     
-        [Display(Name = "Sold Date")]
+        [Display(Name = "Artwork Field:")]
+        public string Field { get; set; }
+        [Required]
+        [Display(Name = "Medium:")]
+
+        public string Medium { get; set; }
+        [Required]
+        [Display(Name = "Imsge File")]
+        [FileExtensions]
+        public string ImgUrl { get; internal set; }
+        [Required]
+        [Display(Name = "Style:")]
+
+        public string Style { get; set; }
+        [Display(Name = "Size:")]
+
+        public string Size { get; set; }
+        [Display(Name = "Produce Year:")]
+
+        public DateTime ProduceYear { get; set; }
+        [Required]
+        [Display(Name = "Price:")]
+        public string Price { get; set; }
+        [Display(Name = "Produce Year:")]
         public DateTime? SoldDate { get; set; }
+        [Required]
+        [Display(Name = "Produce Year:")]
+        public bool Availability { get; set; } = false;
+        [Display(Name = "Produce Year:")]
+        public DateTime? PublishDate { get; set; }
+        [Required]
+        [Display(Name = "Produce Year:")]
+        public DateTime UploadDate { get; set; } = DateTime.Now;
+        [Required]
+        [Display(Name = "Produce Year:")]
+        public DateTime ProduceDate { get; set; }
+        [Display(Name = "Produce Year:")]
+        public int? Inventory { get; set; } = 0;
+       
     }
 }
