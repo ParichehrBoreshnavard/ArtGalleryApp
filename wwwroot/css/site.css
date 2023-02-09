@@ -18,7 +18,7 @@ nav {
     background-color: #272727 !important;
 }
     nav a {
-        color: white;
+        color:#b1fba0ff
     }
 
 .ourcontact h1, .ourcontact h2, .ourcontact h3 {
@@ -221,6 +221,57 @@ admin-nav-link a {
         max-width: 100% !important;
     }
 }
+
+/*@media (min-width: 1200px) {
+    .Carouselcontainer {
+        max-width: 90% !important;
+        min-width: 960px;
+    }
+}
+
+@media (min-width: 992px) {
+    .Carouselcontainer {
+        max-width: 90% !important;
+        min-width: 737px;
+    }
+}
+
+@media (min-width: 768px) {
+    .Carouselcontainer {
+        max-width: 90% !important;
+        min-width: 614px;
+    }
+}
+@media (min-width: 576px) {
+    .Carouselcontainer {
+        max-width: 90% !important;
+        min-width: 460px;
+    }
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .w-10 {
     width: 10% !important;
 }

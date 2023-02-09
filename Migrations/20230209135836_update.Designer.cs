@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtGalleryApp.Migrations
 {
     [DbContext(typeof(dbSarvContext))]
-    [Migration("20230203155818_update23")]
-    partial class update23
+    [Migration("20230209135836_update")]
+    partial class update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,67 @@ namespace ArtGalleryApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.About", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Team_")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("About");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.ArtistField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArtistFields");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.ArtworkField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArtworkFields");
+                });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Banner", b =>
                 {
@@ -48,7 +109,7 @@ namespace ArtGalleryApp.Migrations
                     b.Property<string>("SubDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Titel")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -195,23 +256,6 @@ namespace ArtGalleryApp.Migrations
                     b.ToTable("EventUsers");
                 });
 
-            modelBuilder.Entity("ArtGalleryApp.Models.Data.Field", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Fields");
-                });
-
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Gallery", b =>
                 {
                     b.Property<int>("Id")
@@ -224,14 +268,14 @@ namespace ArtGalleryApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ArtworkField")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Availability")
                         .HasColumnType("bit");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -533,6 +577,9 @@ namespace ArtGalleryApp.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ArtistField_Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
@@ -545,9 +592,6 @@ namespace ArtGalleryApp.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Field_Id")
-                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -588,7 +632,7 @@ namespace ArtGalleryApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Field_Id");
+                    b.HasIndex("ArtistField_Id");
 
                     b.ToTable("Users");
                 });
@@ -709,11 +753,11 @@ namespace ArtGalleryApp.Migrations
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.User", b =>
                 {
-                    b.HasOne("ArtGalleryApp.Models.Data.Field", "Field_")
+                    b.HasOne("ArtGalleryApp.Models.Data.ArtistField", "ArtistField_")
                         .WithMany()
-                        .HasForeignKey("Field_Id");
+                        .HasForeignKey("ArtistField_Id");
 
-                    b.Navigation("Field_");
+                    b.Navigation("ArtistField_");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Blog", b =>

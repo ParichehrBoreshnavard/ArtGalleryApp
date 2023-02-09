@@ -6,7 +6,9 @@ namespace ArtGalleryApp.Context
 {
     public class dbSarvContext : DbContext
     {
-        public dbSarvContext(DbContextOptions<dbSarvContext> options) : base(options) 
+        
+
+        public dbSarvContext(DbContextOptions<dbSarvContext> options) : base(options)
         {
 
         }
@@ -18,11 +20,13 @@ namespace ArtGalleryApp.Context
 
 
         public DbSet<Banner> Banners { get; set; }
-        public DbSet<Event_> Events_ { get; set; }
+        public DbSet<About> About { get; set; }
+       public DbSet<Event_> Events_ { get; set; }
         public DbSet<SubEvent> SubEvents { get; set; }
         public DbSet<Gallery> Gallery { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Field> Fields { get; set; }
+        public DbSet<ArtistField> ArtistFields { get; set; }
+        public DbSet<ArtworkField> ArtworkFields { get; set; }
         public DbSet<Medium> Mediums { get; set; }
         public DbSet<Style> Styles { get; set; }
         public DbSet<Role> Rols { get; set; }
@@ -35,7 +39,8 @@ namespace ArtGalleryApp.Context
         public DbSet<TeamMember> Teams { get; set; }
         public DbSet<General> Generals { get; set; }
         public DbSet<Tag> Tags { get; set; }
- 
-
+        public object Artists { get; internal set; }
+        public IEnumerable<object> artists;
+        public IEnumerable<object> Event_ { get; internal set; }
     }
 }

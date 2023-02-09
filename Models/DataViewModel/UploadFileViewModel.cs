@@ -38,7 +38,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         public User Artist_ { get; set; }
         [Required(ErrorMessage = "Field is required.")]
         [Display(Name = "Field")]
-        public Field? Field_ { get; set; }
+        public ArtworkField? ArtworkField_ { get; set; }
         [Required(ErrorMessage = "Style is required.")]
         [Display(Name = "Style")]
         public Style Style_ { get; set; }

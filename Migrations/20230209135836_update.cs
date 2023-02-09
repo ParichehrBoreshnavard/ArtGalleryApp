@@ -5,10 +5,52 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ArtGalleryApp.Migrations
 {
-    public partial class update22 : Migration
+    public partial class update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "About",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Team_ = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_About", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArtistFields",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArtistFields", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArtworkFields",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArtworkFields", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Blogs",
                 columns: table => new
@@ -37,7 +79,7 @@ namespace ArtGalleryApp.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Body = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,19 +104,6 @@ namespace ArtGalleryApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Events_", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Fields",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Fields", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -147,12 +176,46 @@ namespace ArtGalleryApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YearOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ArtistField_Id = table.Column<int>(type: "int", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PortfolioUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UnitNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_ArtistFields_ArtistField_Id",
+                        column: x => x.ArtistField_Id,
+                        principalTable: "ArtistFields",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Banners",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Titel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Event_Id = table.Column<int>(type: "int", nullable: true),
                     SubDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PublishStartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -193,40 +256,6 @@ namespace ArtGalleryApp.Migrations
                         principalTable: "Events_",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    YearOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Field_Id = table.Column<int>(type: "int", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PortfolioUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UnitNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Fields_Field_Id",
-                        column: x => x.Field_Id,
-                        principalTable: "Fields",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -290,7 +319,7 @@ namespace ArtGalleryApp.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Artist = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Field = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArtworkField = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Medium = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Style = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -448,13 +477,19 @@ namespace ArtGalleryApp.Migrations
                 column: "User_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Field_Id",
+                name: "IX_Users_ArtistField_Id",
                 table: "Users",
-                column: "Field_Id");
+                column: "ArtistField_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "About");
+
+            migrationBuilder.DropTable(
+                name: "ArtworkFields");
+
             migrationBuilder.DropTable(
                 name: "Banners");
 
@@ -507,7 +542,7 @@ namespace ArtGalleryApp.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Fields");
+                name: "ArtistFields");
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string Password { get; set; }
         public DateTime YearOfBirth { get; set; }
 
-        public Field? Field_ { get; set; }
+        public ArtistField? ArtistField_ { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

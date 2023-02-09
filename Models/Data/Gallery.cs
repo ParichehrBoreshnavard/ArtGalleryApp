@@ -10,7 +10,7 @@ namespace ArtGalleryApp.Models.Data
         public string Title { get; set; }
         public string Description { get; set; }
         public string Artist { get; set; }
-        public string Field { get; set; }
+        public string ArtworkField { get; set; }
         public string Medium { get; set; }
         public string Image { get; set; }
         public string Style { get; set; }

@@ -19,7 +19,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string Artist { get; set; }
         [Required]
         [Display(Name = "Artwork Field:")]
-        public string Field { get; set; }
+        public string ArtworkField { get; set; }
         [Required]
         [Display(Name = "Medium:")]
 

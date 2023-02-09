@@ -8,7 +8,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         public int Id { get; set; }
         [Required]
         [Display(Name = "Banner Name")]
-        public string Titel { get; set; }
+        public string Title { get; set; }
         [Display(Name = "Description")]
         public string? SubDescription { get; set; }
         [Required]

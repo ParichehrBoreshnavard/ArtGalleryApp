@@ -109,7 +109,7 @@ namespace ArtGalleryApp.Controllers
             newAccount.LastName = artistRegistrationViewModel.LastName;
             newAccount.YearOfBirth = artistRegistrationViewModel.YearOfBirth;
             newAccount.Country = artistRegistrationViewModel.Country;
-            newAccount.Field_ = artistRegistrationViewModel.Field_;
+            newAccount.ArtistField_ = artistRegistrationViewModel.ArtistField_;
             newAccount.ImgUrl = artistRegistrationViewModel.ImgUrl;
             newAccount.PortfolioUrl = artistRegistrationViewModel.PortfolioUrl;
             newAccount.Password = artistRegistrationViewModel.Password;
@@ -198,11 +198,11 @@ namespace ArtGalleryApp.Controllers
      
     public IActionResult AdminEditArtist()
         {
-            ArtistViewModel item = new ArtistViewModel();
+            ArtistsViewModel item = new ArtistsViewModel();
             return View(item);
         }
         [HttpPost]
-        public IActionResult AdminEditArtist(ArtistViewModel item)
+        public IActionResult AdminEditArtist(ArtistsViewModel item)
         {
             return View(item);
         }
@@ -257,7 +257,7 @@ namespace ArtGalleryApp.Controllers
             newArtPiece.ImgUrl = uploadFileViewModel.ImgUrl;
             newArtPiece.Availability = uploadFileViewModel.Availability;
             newArtPiece.Price = uploadFileViewModel.Price.ToString(); 
-            newArtPiece.Field= uploadFileViewModel.Field_.ToString();
+            newArtPiece.ArtworkField= uploadFileViewModel.ArtworkField_.ToString();
             newArtPiece.Description = uploadFileViewModel.Description;
             TagGallery artworkTag = new TagGallery();
             artworkTag.Gallery_ = newArtPiece;

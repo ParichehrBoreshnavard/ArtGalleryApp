@@ -23,7 +23,7 @@ namespace ArtGalleryApp.Controllers
                 SubDescription=s.SubDescription,
                 PublishEndDate=s.PublishEndDate,
                 PublishStartDate=s.PublishStartDate,
-                Titel=s.Titel
+                Title = s.Title
             }).ToList();
 
             return View(banners);
@@ -47,7 +47,7 @@ namespace ArtGalleryApp.Controllers
             {
                 Banner newBanner= new Banner();
                 db.Banners.Add(newBanner);
-                newBanner.Titel= bannersViewModel.Titel;
+                newBanner.Title= bannersViewModel.Title;
                 newBanner.SubDescription= bannersViewModel.SubDescription;
                 newBanner.PublishStartDate= bannersViewModel.PublishStartDate;
                 newBanner.PublishEndDate= bannersViewModel.PublishEndDate;

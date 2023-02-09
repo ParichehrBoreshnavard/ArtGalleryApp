@@ -1,0 +1,56 @@
+﻿@using ArtGalleryApp.Models.DataViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
+}
+@model List<ArtGalleryApp.Models.DataViewModel.AboutViewModel>
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg  ">
+    <div class="Carouselcontainer  w-90 h-90 bg-white  p-5 ">
+        <div class="admin-table-header d-flex  flex-nowrap justify-content-space-between">
+            <div class=" mb-3 mt-3 mt-md-0 mb-md-0">
+                <h4>About Table</h4>
+            </div>
+            <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
+                <label class="mr-2">Sort by:</label>
+                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+                    <a class="dropdown-item" href="#">Relevance</a>
+                    <a class="dropdown-item" href="#">Price Descending</a>
+                    <a class="dropdown-item" href="#">Price Ascending</a>
+                    <a class="dropdown-item" href="#">Best Selling</a>
+                </div>
+            </div>
+        </div>
+        <a style="background-color: #193C8D" class="btn btn-success" asp-controller="About" asp-action="New">Add About</a>
+
+        <table class="table table-striped Team">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <td>ImgUrl</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (AboutViewModel row in Model)
+                {
+                    <tr>
+
+                        <td>@row.Title</td>
+                        <td>@row.Description</td>
+                        <td><img src="@row.ImgUrl" style="width:40px" /></td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-controller="Banners" asp-route-id="@row.Id">Update</a>
+                            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

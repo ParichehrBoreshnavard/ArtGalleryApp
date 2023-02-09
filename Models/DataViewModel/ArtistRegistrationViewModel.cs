@@ -35,8 +35,8 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string ConfirmPassword { get; set; }
         public DateTime YearOfBirth { get; set; }
         [Required]
-        [Display(Name = "Field")]
-        public Field? Field_ { get; set; }
+        [Display(Name = "Artist Field:")]
+        public ArtistField? ArtistField_ { get; set; }
         [Required(ErrorMessage = "Email address is required.")]
         [EmailAddress(ErrorMessage = "Invalid email address.")]
         [Display(Name = "Email")]

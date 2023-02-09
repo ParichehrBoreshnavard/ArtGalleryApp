@@ -2,13 +2,11 @@
 
 namespace ArtGalleryApp.Models.Data
 {
-    public class Field
+    public class ArtistField
     {
         [Key]
-       
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        
     }
 }
