@@ -70,6 +70,7 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Contact(ContactViewModel contactViewModel)
         {
@@ -78,16 +79,16 @@ namespace ArtGalleryApp.Controllers
             //    ViewBag.Error = "There is an error in record information";
             //    return View();
             //}
-            Contact newMessage = new Contact ();
+            Contact newMessage = new Contact();
+            
             dbSarv.Contacts.Add(newMessage);
             newMessage.Name = contactViewModel.Name;
             newMessage.Email = contactViewModel.Email.ToString();
-            newMessage.Subject= contactViewModel.Subject;
+            newMessage.Subject = contactViewModel.Subject;
             newMessage.Body = contactViewModel.Body;
-            Contact contact = new Contact();
-            dbSarv.Contacts.Add(contact);
+        
             dbSarv.SaveChanges();
-            return Redirect("Contact");
+            return Redirect("/Home/Contact");
 
         }
         public IActionResult ArtistRegistration()

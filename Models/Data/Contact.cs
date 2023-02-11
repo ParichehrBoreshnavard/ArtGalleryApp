@@ -14,7 +14,10 @@ namespace ArtGalleryApp.Models.Data
         public string Subject { get; set; }
         [Required]
         [MaxLength(300)]
-        public string Body { get; set; }
+        public string? Body { get; set; }
+    
+       [MaxLength(300)]
+       public string? Response { get; set; }
 
     }
 }

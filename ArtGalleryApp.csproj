@@ -28,10 +28,12 @@
     <Folder Include="wwwroot\AdminAssessts\Banners\" />
     <Folder Include="wwwroot\AdminAssessts\About\" />
     <Folder Include="wwwroot\AdminAssessts\Artists\" />
-    <Folder Include="wwwroot\Artists\" />
+    <Folder Include="wwwroot\ArtistsField\" />
     <Folder Include="wwwroot\AdminAssessts\Events\" />
     <Folder Include="wwwroot\Event_\" />
-    <Folder Include="wwwroot\Medium\" />
+    <Folder Include="wwwroot\Style\Medium\" />
+    <Folder Include="wwwroot\ArtworkField\" />
+    <Folder Include="wwwroot\Contact\" />
     <Folder Include="wwwroot\Style\" />
   </ItemGroup>
 

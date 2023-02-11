@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtGalleryApp.Migrations
 {
     [DbContext(typeof(dbSarvContext))]
-    [Migration("20230209135836_update")]
-    partial class update
+    [Migration("20230210182247_update-4")]
+    partial class update4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,6 +180,10 @@ namespace ArtGalleryApp.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Response")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("Subject")
                         .IsRequired()

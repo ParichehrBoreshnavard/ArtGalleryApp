@@ -28,12 +28,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/ArtistField/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0RmllbGRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/ArtworkField/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0d29ya0ZpZWxkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Banners/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFubmVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Banners/New.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFubmVyc1xOZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Event_/Index.cshtml]
@@ -50,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminBlog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkJsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminContact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkNvbnRhY3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminCustomer.cshtml]
@@ -74,10 +90,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEditTeam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkVkaXRUZWFtLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEvent_1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkV2ZW50XzEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminGallery.cshtml]
@@ -106,10 +118,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Artists.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpc3RzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ArtworkField.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnR3b3JrRmllbGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ArtworkPage.cshtml]

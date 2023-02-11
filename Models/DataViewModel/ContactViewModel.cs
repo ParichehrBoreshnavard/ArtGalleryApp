@@ -5,7 +5,7 @@ namespace ArtGalleryApp.Models.DataViewModel
 {
     public class ContactViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Name is required.")]
         [Display(Name = "fULL Name")]
         public string Name { get; set; }
@@ -16,6 +16,10 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string Subject { get; set; }
         [Required(ErrorMessage = "Please enter your message/request here.")]
         [Display(Name = "Message")]
-        public string Body { get; set; }
+        public string? Body { get; set; }
+        [Display(Name = "Ressponse")]
+        public string? Response { get; set; }
+        public List<ContactViewModel> lstContact { get; set; }
+
     }
 }

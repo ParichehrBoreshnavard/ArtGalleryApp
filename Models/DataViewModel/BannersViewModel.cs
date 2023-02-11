@@ -20,5 +20,10 @@ namespace ArtGalleryApp.Models.DataViewModel
         public IFormFile UploadImgUrl { get; set; }
         
         public string ImgUrl { get; set; }
+
+        public static implicit operator BannersViewModel(ContactViewModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,0 +1,43 @@
+﻿@using ArtGalleryApp.Models.DataViewModel;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
+}
+@model ArtGalleryApp.Models.DataViewModel.ArtworkFieldViewModel
+<div class="container  AdminBg  ">
+    <div class="container  w-50 bg-white p-5 mt-5 mb-5">
+        <h1 class="text-center">Artwork Field Collection</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Artwork Field</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="art-artworkField-list">
+                @foreach (var row in Model.lstArtworkField)
+                {
+                    <tr>
+                        <td>@row.Name</td>
+                        <td><a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="ArtworkField" asp-route-id="@row.Id">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <form method="post" asp-controller="ArtworkField" asp-action="index">
+            <div class="form-group">
+                <input class="form-control" asp-for="Name" placeholder="Add a new ArtworkField">
+                <span style="color:darkred" asp-validation-for="Name"></span>
+
+            </div>
+            <button type="submit" class="btn btn-primary float-end" id="add-artworkField-btn">Add</button>
+        </form>
+    </div>
+
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}
+
