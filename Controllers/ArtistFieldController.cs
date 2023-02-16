@@ -16,7 +16,7 @@ namespace ArtGalleryApp.Controllers
             ArtistFieldViewModel artistFieldViewModel = new ArtistFieldViewModel();
 
 
-            artistFieldViewModel.lstArtistField = db.ArtistFields.Select(s => new ArtistFieldViewModel
+            artistFieldViewModel.lstArtistField = db.ArtistField_.Select(s => new ArtistFieldViewModel
             {
                 Id = s.Id,
                 Name = s.Name
@@ -34,7 +34,7 @@ namespace ArtGalleryApp.Controllers
             //   if (ModelState.IsValid)
             {
                 ArtistField newArtistField = new ArtistField();
-                db.ArtistFields.Add(newArtistField);
+                db.ArtistField_.Add(newArtistField);
                 newArtistField.Name = artistFieldViewModel.Name;
                 db.SaveChanges();
                 return Redirect("/ArtistField");
@@ -46,10 +46,10 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Delete(int Id)
         {
-            var artistFieldName = db.ArtistFields.FirstOrDefault(s => s.Id == Id);
+            var artistFieldName = db.ArtistField_.FirstOrDefault(s => s.Id == Id);
             if (artistFieldName != null)
             {
-                db.ArtistFields.Remove(artistFieldName);
+                db.ArtistField_.Remove(artistFieldName);
                 db.SaveChanges();
             }
             return Redirect("/ArtistField");

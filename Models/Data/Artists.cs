@@ -36,6 +36,6 @@ namespace ArtGalleryApp.Models.Data
         public string? ImgUrl { get; set; }
         [Required]
         public string? PortfolioUrl { get; set; }
-        public object? UploadImgUrl { get; internal set; }
+       
     }
 }

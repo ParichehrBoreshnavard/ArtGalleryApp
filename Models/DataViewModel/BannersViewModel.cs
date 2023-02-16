@@ -18,12 +18,12 @@ namespace ArtGalleryApp.Models.DataViewModel
         public DateTime? PublishEndDate { get; set; }
         [Display(Name = "Upload Image")]
         public IFormFile UploadImgUrl { get; set; }
-        
+        [Display(Name = "Image Url")]
         public string ImgUrl { get; set; }
 
-        public static implicit operator BannersViewModel(ContactViewModel v)
-        {
-            throw new NotImplementedException();
-        }
+        public List <Event_> lstEvent { get; set; }
+        [Display(Name ="Event:")]
+        public int? EventId { get; set; }
+        public string EventTitle { get; set; }
     }
 }

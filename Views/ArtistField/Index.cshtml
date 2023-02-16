@@ -20,7 +20,8 @@
                 {
                     <tr>
                         <td>@row.Name</td>
-                        <td><button type="submit" class="btn btn-primary float-end" id="add-artistField-btn">Add</button></td>
+                        <td><a class="btn btn-danger  float-end" asp-action="Delete" asp-controller="ArtistField" asp-route-id="@row.Id">Delete</a></td>
+                        
                     </tr>
                 }
             </tbody>

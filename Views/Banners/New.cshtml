@@ -11,7 +11,7 @@
         <form class="register-form ml-2 form-check " asp-action="New" asp-controller="Banners" method="post" enctype="multipart/form-data">
             <h3>Update Informations</h3>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Title"></label>
                         <input class="form-control" asp-for="Title" placeholder="Enter Banner name...">
@@ -36,19 +36,26 @@
 
                 </div>
                 
-                <div class="col-md-4 position-relative">
+                <div class="col-md-6 position-relative">
                     <div class="form-group">
                         <label asp-for="UploadImgUrl"></label>
                         <input type="file" class="form-control-file" asp-for="UploadImgUrl">
                         <span style="color:darkred" asp-validation-for="UploadImgUrl"></span>
-                        <span style="color:darkred">@ViewBag.Error</span>
-                         
+                        <span style="color:darkred">@ViewBag.Error</span>  
                     </div>
-                    <img class="w-100 position-relative" src="@Model.ImgUrl" />
-
+                    @*<img class="w-100 position-relative" src="@Model.ImgUrl" />*@
+                    <div class="form-group">
+                        <label asp-for="EventId"></label>
+                        <select asp-for="EventId" asp-items="@(new SelectList(Model.lstEvent,"Id","Title"))"  class="form-control">
+                            <option >select Event</option>   
+                        </select>
+                        <span style="color:darkred" asp-validation-for="EventId"></span>
+                    </div>
                 </div>
+
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+    
         </form>
 
     </div>

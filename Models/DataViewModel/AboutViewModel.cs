@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ArtGalleryApp.Models.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
@@ -16,7 +17,10 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string ImgUrl { get; set; }
         [Display(Name = "Upload Image")]
         public IFormFile UploadImgUrl { get; set; }
-    
-   
+        public List<TeamMember> lstTeam { get; set; }
+        [Display(Name = "Team:")]
+        public int? TeamId { get; set; }
+        public string TeamName { get; set; }
+
     }
 }

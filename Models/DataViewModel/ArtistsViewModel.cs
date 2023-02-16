@@ -53,7 +53,12 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Portfolio Link")]
         [Url]
         public string? PortfolioUrl { get; set; }
-        public object? UploadImgUrl { get; internal set; }
+        public IFormFile? UploadImgUrl { get;  set; }
+        public List<ArtistField>? lstArtistField { get; set; }
+        [Display(Name = "Artist Field:")]
+        public int? ArtistFieldId { get; set; }
+        public string? ArtistFieldName { get; set; }
+      
     }
 }
 

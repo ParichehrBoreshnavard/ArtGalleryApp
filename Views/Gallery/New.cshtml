@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "New";
+    Layout = "_LayoutAdmin";
+}
+
+@model ArtGalleryApp.Models.DataViewModel.GalleryViewModel
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-90 h-90 bg-white  p-3 d-flex">
+        <form class="register-form ml-2 form-check " asp-action="New" asp-controller="Banners" method="post" enctype="multipart/form-data">
+            <h3>Update Informations</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input class="form-control" asp-for="Title" placeholder="Enter artwork name...">
+                        <span style="color:darkred" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Artist"></label>
+                        <input class="form-control" asp-for="Artist" placeholder="Enter the Artist Name...">
+                        <span style="color:darkred" asp-validation-for="Artist"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subject"></label>
+                        <input class="form-control" asp-for="Subject" placeholder="Enter artwork subject...">
+                        <span style="color:darkred" asp-validation-for="Subject"></span>
+
+                        <div class="form-group">
+                            <label asp-for="Medium"></label>
+                            <input class="form-control" asp-for="Medium" placeholder="Enter the medium...">
+                            <span style="color:darkred" asp-validation-for="Medium"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Style"></label>
+                            <input class="form-control" asp-for="Style" placeholder="Enter the style...">
+                            <span style="color:darkred" asp-validation-for="Style"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Size"></label>
+                            <input class="form-control" asp-for="Size" placeholder="Enter the size...">
+                            <span style="color:darkred" asp-validation-for="Size"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ProduceYear"></label>
+                            <input class="form-control" asp-for="ProduceYear" placeholder="Enter produce year...">
+                            <span style="color:darkred" asp-validation-for="ProduceYear"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Inventory"></label>
+                            <input class="form-control" asp-for="Inventory" placeholder="Enter upload date end date...">
+                            <span style="color:darkred" asp-validation-for="Inventory"></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-4 position-relative">
+                        <div class="form-group">
+                            <label asp-for="UploadDate"></label>
+                            <input class="form-control" asp-for="UploadDate" placeholder="Enter upload date end date...">
+                            <span style="color:darkred" asp-validation-for="UploadDate"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PublishDate"></label>
+                            <input class="form-control" asp-for="PublishDate" placeholder="Enter upload date end date...">
+                            <span style="color:darkred" asp-validation-for="PublishDate"></span>
+                        </div>
+                         <div class="form-group">
+                            <label asp-for="SoldDate"></label>
+                            <input class="form-control" asp-for="SoldDate" placeholder="Enter upload date end date...">
+                            <span style="color:darkred" asp-validation-for="SoldDate"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImgUrl"></label>
+                            <input type="file" class="form-control-file" asp-for="ImgUrl">
+                            <span style="color:darkred" asp-validation-for="ImgUrl"></span>
+                            <span style="color:darkred">@ViewBag.Error</span>
+
+                        </div>
+                        <img class="w-100 position-relative" src="@Model.ImgUrl" />
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <textarea class="form-control row-3" asp-for="Description" placeholder="Enter description..."></textarea>
+                        <span style="color:darkred" asp-validation-for="Description"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

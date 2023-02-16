@@ -25,7 +25,7 @@ namespace ArtGalleryApp.Context
         public DbSet<SubEvent> SubEvents { get; set; }
         public DbSet<Gallery> Gallery { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<ArtistField> ArtistFields { get; set; }
+        public DbSet<ArtistField> ArtistField_ { get; set; }
         public DbSet<ArtworkField> ArtworkFields { get; set; }
         public DbSet<Medium> Mediums { get; set; }
         public DbSet<Style> Styles { get; set; }
@@ -39,8 +39,9 @@ namespace ArtGalleryApp.Context
         public DbSet<TeamMember> Teams { get; set; }
         public DbSet<General> Generals { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public object Artists { get; internal set; }
-        public IEnumerable<object> artists;
+        public DbSet<Artists> Artists { get; set; }
+        public IEnumerable<object> Artist { get; internal set; }
         public IEnumerable<object> Event_ { get; internal set; }
+        public IEnumerable<object> Team_ { get; internal set; }
     }
 }

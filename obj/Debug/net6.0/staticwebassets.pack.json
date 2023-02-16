@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\ArtGalleryApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About230604217.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\About\\About230604217.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About230619118.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\About\\About230619118.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About233448749.jpg",
       "PackagePath": "staticwebassets\\AdminAssessts\\About\\About233448749.jpg"
     },
@@ -21,8 +29,16 @@
       "PackagePath": "staticwebassets\\AdminAssessts\\About\\About234135057.jpg"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About234324028.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\About\\About234324028.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About235647214.jpg",
       "PackagePath": "staticwebassets\\AdminAssessts\\About\\About235647214.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About235649327.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\About\\About235649327.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners230342952.jpg",
@@ -31,6 +47,10 @@
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners233616780.jpg",
       "PackagePath": "staticwebassets\\AdminAssessts\\Banners\\Banners233616780.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners233748874.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\Banners\\Banners233748874.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners234256016.jpg",
@@ -49,8 +69,16 @@
       "PackagePath": "staticwebassets\\AdminAssessts\\Banners\\Banners234643956.jpg"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners235324595.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\Banners\\Banners235324595.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners235332699.jpg",
       "PackagePath": "staticwebassets\\AdminAssessts\\Banners\\Banners235332699.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsabout232500550.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\Events\\Eventsabout232500550.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsabout234912583.jpg",
@@ -59,6 +87,10 @@
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsabout235550020.jpg",
       "PackagePath": "staticwebassets\\AdminAssessts\\Events\\Eventsabout235550020.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsposter232500567.jpg",
+      "PackagePath": "staticwebassets\\AdminAssessts\\Events\\Eventsposter232500567.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsposter234912610.jpg",

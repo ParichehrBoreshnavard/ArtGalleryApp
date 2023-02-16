@@ -1,16 +1,17 @@
 ﻿@using ArtGalleryApp.Models.DataViewModel;
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutAdmin";
 }
-@model List<ArtGalleryApp.Models.DataViewModel.AboutViewModel>
+@model List<ArtGalleryApp.Models.DataViewModel.ArtistsViewModel>
 
 <div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg  ">
     <div class="Carouselcontainer  w-90 h-90 bg-white  p-5 ">
         <div class="admin-table-header d-flex  flex-nowrap justify-content-space-between">
             <div class=" mb-3 mt-3 mt-md-0 mb-md-0">
-                <h4>About Table</h4>
+                <h4>Team Table</h4>
             </div>
             <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
                 <label class="mr-2">Sort by:</label>
@@ -23,34 +24,48 @@
                 </div>
             </div>
         </div>
-        <a style="background-color: #193C8D" class="btn btn-success" asp-controller="About" asp-action="New">Add About</a>
+        <a style="background-color: #193C8D" class="btn btn-success" asp-controller="Artist"  asp-action="New">Add Artist</a>
 
         <table class="table table-striped Team">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <td>ImgUrl</td>
-                    <td>Action</td>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Field</th>
+                    <th>Year of Birth</th>
+                    <th>Nationality</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (AboutViewModel row in Model)
+          
+             <tbody>
+                @foreach (ArtistsViewModel row in Model)
                 {
                     <tr>
 
-                        <td>@row.Title</td>
-                        <td>@row.Description</td>
+                        <td>@row.FirstName</td>
+                        <th>@row.LastName</th>
+                        <td>@row.ArtistFieldId</td>
+                        <td>@row.YearOfBirth</td>
+                        <td>@row.Country</td>
+                        <td>@row.Phone</td>
+                        <td>@row.Email</td>
                         <td><img src="@row.ImgUrl" style="width:40px" /></td>
                         <td>
-                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-controller="Banners" asp-route-id="@row.Id">Update</a>
-                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@row.Id" asp-controller="About">Delete</a>
+                                <a class="btn btn-primary btn-sm" asp-action="Update" asp-controller="Artists" asp-route-id="@row.Id">Update</a>
+                            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
                         </td>
                     </tr>
                 }
             </tbody>
-
+     
         </table>
 
     </div>
 </div>
+
+
+
+

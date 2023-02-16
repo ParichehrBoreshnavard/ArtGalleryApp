@@ -31,6 +31,8 @@
     <Folder Include="wwwroot\ArtistsField\" />
     <Folder Include="wwwroot\AdminAssessts\Events\" />
     <Folder Include="wwwroot\Event_\" />
+    <Folder Include="wwwroot\Blog\" />
+    <Folder Include="wwwroot\Artist\" />
     <Folder Include="wwwroot\Style\Medium\" />
     <Folder Include="wwwroot\ArtworkField\" />
     <Folder Include="wwwroot\Contact\" />

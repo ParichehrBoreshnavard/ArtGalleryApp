@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UtHOq2WEfnTxzNY7zjwz/wbO4l16iJiXlfAfIXzsXwo=",
+  "Hash": "saNsKTf4kDupUGsmngVfHAmj26fN/517G4xS92CVGAk=",
   "Source": "ArtGalleryApp",
   "BasePath": "_content/ArtGalleryApp",
   "Mode": "Default",
@@ -1071,6 +1071,40 @@
       "OriginalItemSpec": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ArtGalleryApp.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About230604217.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/About/About230604217.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\About\\About230604217.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About230619118.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/About/About230619118.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\About\\About230619118.jpg"
+    },
+    {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About233448749.jpg",
       "SourceId": "ArtGalleryApp",
       "SourceType": "Discovered",
@@ -1139,6 +1173,23 @@
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\About\\About234135057.jpg"
     },
     {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About234324028.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/About/About234324028.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\About\\About234324028.jpg"
+    },
+    {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About235647214.jpg",
       "SourceId": "ArtGalleryApp",
       "SourceType": "Discovered",
@@ -1154,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\About\\About235647214.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\About\\About235649327.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/About/About235649327.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\About\\About235649327.jpg"
     },
     {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners230342952.jpg",
@@ -1188,6 +1256,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\Banners\\Banners233616780.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners233748874.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/Banners/Banners233748874.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\Banners\\Banners233748874.jpg"
     },
     {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners234256016.jpg",
@@ -1258,6 +1343,23 @@
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\Banners\\Banners234643956.jpg"
     },
     {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners235324595.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/Banners/Banners235324595.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\Banners\\Banners235324595.jpg"
+    },
+    {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Banners\\Banners235332699.jpg",
       "SourceId": "ArtGalleryApp",
       "SourceType": "Discovered",
@@ -1273,6 +1375,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\Banners\\Banners235332699.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsabout232500550.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/Events/Eventsabout232500550.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\Events\\Eventsabout232500550.jpg"
     },
     {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsabout234912583.jpg",
@@ -1307,6 +1426,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\Events\\Eventsabout235550020.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsposter232500567.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/Events/Eventsposter232500567.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\Events\\Eventsposter232500567.jpg"
     },
     {
       "Identity": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Events\\Eventsposter234912610.jpg",

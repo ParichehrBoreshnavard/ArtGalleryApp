@@ -1,15 +1,13 @@
-d
-
 
 body {
-  font-size:16px;
+  font-size:14px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin:0px;
   padding:0px;
 
 }
 .admin-body {
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
@@ -309,6 +307,7 @@ w-90 {
 {
     text-decoration:none !important;
     color:white;
+    font-size:14px;
 }
 
 .no-underline,.no-underline:hover {
@@ -440,7 +439,7 @@ w-90 {
 
 .eventsText {
     text-align: justify;
-    font-size: 24px;
+    font-size: 18px;
     font-family: "Amatic SC";
 }
 .buyTicketsBtn {

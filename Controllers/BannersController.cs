@@ -3,6 +3,7 @@ using ArtGalleryApp.Models.Data;
 using ArtGalleryApp.Models.DataViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
+using Microsoft.EntityFrameworkCore;
 
 namespace ArtGalleryApp.Controllers
 {
@@ -16,13 +17,14 @@ namespace ArtGalleryApp.Controllers
         {
             //read data from bannersViewModel Then make the information to banners db in bannersViewModel Format
             //, and read From db and assign information to new list;
-      
-            List<BannersViewModel> banners = db.Banners.Select(s=> new BannersViewModel{ 
-                Id =s.Id,
-                ImgUrl=s.ImgUrl,
-                SubDescription=s.SubDescription,
-                PublishEndDate=s.PublishEndDate,
-                PublishStartDate=s.PublishStartDate,
+
+            List<BannersViewModel> banners = db.Banners.Include(s=>s.Event_).Select(s => new BannersViewModel {
+                Id = s.Id,
+                ImgUrl = s.ImgUrl,
+                SubDescription = s.SubDescription,
+                EventTitle = s.Event_ == null ? "" : s.Event_.Title,
+                PublishEndDate = s.PublishEndDate,
+                PublishStartDate = s.PublishStartDate,
                 Title = s.Title
             }).ToList();
 
@@ -31,7 +33,9 @@ namespace ArtGalleryApp.Controllers
         public IActionResult New() 
         {
             BannersViewModel bannersViewModel = new BannersViewModel();
+            bannersViewModel.lstEvent = db.Events_.Where(s=>s.EndDate>=DateTime.Now).ToList(); ;
             return View(bannersViewModel);
+        
 
         }
         [HttpPost]
@@ -51,6 +55,7 @@ namespace ArtGalleryApp.Controllers
                 newBanner.SubDescription= bannersViewModel.SubDescription;
                 newBanner.PublishStartDate= bannersViewModel.PublishStartDate;
                 newBanner.PublishEndDate= bannersViewModel.PublishEndDate;
+                newBanner.Event_ = db.Events_.FirstOrDefault(s => s.Id == bannersViewModel.EventId);
                 newBanner.ImgUrl= await UploadImg(bannersViewModel.UploadImgUrl,"Banners");
                 db.SaveChanges();
                 return Redirect("/Banners");

@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "New";
+    Layout = "_LayoutAdmin";
+}
+}
+@model ArtGalleryApp.Models.DataViewModel.ArtistsViewModel
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-90 h-90 bg-white  p-3 d-flex">
+        <form class="register-form ml-2 form-check " asp-controller="Artist" asp-action="New" method="post" enctype="multipart/form-data">
+            <h3>Update Informations</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input type="text" class="form-control" asp-for="FirstName" placeholder="Enter first name...">
+                        <span style="color:darkred" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input type="text" class="form-control" asp-for="LastName" placeholder="Enter last name...">
+                        <span style="color:darkred" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for=YearOfBirth>Year of Birth</label>
+                        <input type="text" class="form-control" asp-for="YearOfBirth" placeholder="Enter your year of birth...">
+                        <span style="color:darkred" asp-validation-for="YearOfBirth"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PortfolioUrl"></label>
+                        <input type="text" class="form-control" asp-for="PortfolioUrl" placeholder="Enter your portfolio link...">
+                        <span style="color:darkred" asp-validation-for="PortfolioUrl"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="form-group">
+                        <label asp-for="Country"></label>
+                        <input type="text" class="form-control" asp-for="Country" placeholder="Enter your country of origin (optional)...">
+                        <span style="color:darkred" asp-validation-for="Country"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <input type="text" class="form-control" asp-for="Phone" placeholder="Enter your phoneNumber...">
+                        <span style="color:darkred" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input class="form-control" asp-for="Email" placeholder="Enter your email...">
+                        <span style="color:darkred" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"></label>
+                        <input type="password" class="form-control" id="phoneNumber" placeholder="Enter password...">
+                        <span style="color:darkred" asp-validation-for="Password"></span>
+                    </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="form-group">
+                        <label asp-for="ImgUrl">Upload a Photo</label>
+                        <input type="file" class="form-control-file" asp-for="ImgUrl">
+                        <span style="color:darkred" asp-validation-for="ImgUrl"></span>
+                    </div>
+                   @* <img class="w-100 position-relative" src="~/images/blog/pexels-marshall-jones-3652853.jpg" />*@
+                    <div class="form-group">
+                        <label asp-for="ArtistFieldId"></label>
+                        <select asp-for="ArtistFieldId" asp-items="@(new SelectList(Model.lstArtistField,"Id","Name"))" class="form-control">
+                            <option >Artist Field</option>   
+                        </select>
+                        <span style="color:darkred" asp-validation-for="ArtistFieldId"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                <span style="color:darkred" asp-validation-for="Description"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+     </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

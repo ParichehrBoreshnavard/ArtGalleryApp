@@ -70,7 +70,10 @@
 
             <form class="form-inline my-2 my-lg-0 justify-content-center">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                
+                <button class="btn btn-outline-success" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
             </form>
             <div class="divider mt-5 mb-5 border-bottom border-white"></div>
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -90,9 +93,12 @@
                         PAGES
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" asp-controller="About" asp-action="index">About</a>
+                        <a class="dropdown-item" asp-controller="Artist" asp-action="index">Artist</a>
                         <a class="dropdown-item" asp-controller="Banners"  asp-action="index">Banner</a>
-                        <a class="dropdown-item" asp-controller="About"  asp-action="index">About</a>
+                        <a class="dropdown-item" asp-controller="Blog" asp-action="index">Blog</a>
                         <a class="dropdown-item" asp-controller="Event_" asp-action="index">Event</a>
+                        <a class="dropdown-item" asp-controller="Gallery" asp-action="index">Gallery</a>
                         <a class="dropdown-item" asp-action="AdminTeam">Team</a>
                     </div>
                 </li>
@@ -101,12 +107,11 @@
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
                     <a class="admin-nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        PRODUCTS
+                        CUSTOMER
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown3">
-                        <a class="dropdown-item" asp-action="AdminGallery">Gallery</a>
-                        <a class="dropdown-item" asp-action="AdminBlog">Blog</a>
-                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" asp-controller="Customer" asp-action="index">Customer</a>
+                        <a class="dropdown-item" asp-controller="Orders" asp-action="index">Orders</a>
                         <a class="dropdown-item" asp-action="Admin-Event_1">Orders</a>
                     </div>              
                 </li>
@@ -119,11 +124,12 @@
                         DETAILS
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" asp-action="Index" asp-controller="ArtistField">Artist Field</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="ArtworkField">Artwork Field</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="Medium">Medium</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="Style">Style</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" asp-action="Index" asp-controller="ArtistField">Artist Field</a>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Tag">Tag</a>
+                       
                     </div>
                 </li>
             </ul>
@@ -137,8 +143,6 @@
                         <a class="dropdown-item" href="#">Messgage</a>
                         <a class="dropdown-item" href="#">Review</a>
                         <a class="dropdown-item" href="#">Like</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">request</a>
                     </div>
                 </li>
             </ul>

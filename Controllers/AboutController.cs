@@ -11,53 +11,63 @@ namespace ArtGalleryApp.Controllers
         {
         }
         public IActionResult Index()
-            {
+        {
             List<AboutViewModel> about = db.About.Select(s => new AboutViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
                 Description = s.Description,
                 ImgUrl = s.ImgUrl
+                //lstTeam = s.Team_ == null ? "" : s.Team_.FirstName,
+
             }).ToList();
 
             return View(about);
         }
-            public IActionResult New()
+        public IActionResult New()
+        {
+            AboutViewModel aboutViewModel = new AboutViewModel();
+            return View(aboutViewModel);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> New(AboutViewModel aboutViewModel)
+        {
+            if (aboutViewModel.UploadImgUrl == null)
             {
-                AboutViewModel aboutViewModel = new AboutViewModel();
+                ViewBag.Error = "Image File is mandatory";
                 return View(aboutViewModel);
-
             }
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> New(AboutViewModel aboutViewModel)
+            //   if (ModelState.IsValid)
             {
-                if (aboutViewModel.UploadImgUrl == null)
-                {
-                    ViewBag.Error = "Image File is mandatory";
-                    return View(aboutViewModel);
-                }
-                //   if (ModelState.IsValid)
-                {
-                    About newAboutUs = new About();
-                    db.About.Add(newAboutUs);
-                    newAboutUs.Title = aboutViewModel.Title;
-                    newAboutUs.Description = aboutViewModel.Description;
-                    newAboutUs.ImgUrl = await UploadImg(aboutViewModel.UploadImgUrl, "About");
-                    db.SaveChanges();
-                    return Redirect("/About");
-
-                }
-                // return View(aboutViewModel);
+                About newAboutUs = new About();
+                db.About.Add(newAboutUs);
+                newAboutUs.Title = aboutViewModel.Title;
+                newAboutUs.Description = aboutViewModel.Description;
+                //newAboutUs.Team_ = db.Teams.FirstOrDefault(s => s.Id == TeamViewModel.TeamId);
+                newAboutUs.ImgUrl = await UploadImg(aboutViewModel.UploadImgUrl, "About");
+                db.SaveChanges();
+                return Redirect("/About");
 
             }
-            public IActionResult Update(int Id)
-            {
-                return View();
-            }
-            public IActionResult Delete(int Id)
+            // return View(aboutViewModel);
+
+        }
+        public IActionResult Update(int Id)
         {
             return View();
+        }
+        public IActionResult Delete(int Id)
+        {
+            About about = db.About.FirstOrDefault(s => s.Id == Id);
+            if (about != null)
+            {
+                db.About.Remove(about);
+                db.SaveChanges();
+            }
+                return Redirect("/about");
+           
         }
     }
 }

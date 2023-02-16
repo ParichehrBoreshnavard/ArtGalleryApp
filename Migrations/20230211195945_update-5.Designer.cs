@@ -4,6 +4,7 @@ using ArtGalleryApp.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtGalleryApp.Migrations
 {
     [DbContext(typeof(dbSarvContext))]
-    partial class dbSarvContextModelSnapshot : ModelSnapshot
+    [Migration("20230211195945_update-5")]
+    partial class update5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,66 +65,7 @@ namespace ArtGalleryApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ArtistField_");
-                });
-
-            modelBuilder.Entity("ArtGalleryApp.Models.Data.Artists", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ArtistField_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImgUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PortfolioUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("YearOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArtistField_Id");
-
-                    b.ToTable("Artists");
+                    b.ToTable("ArtistFields");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.ArtworkField", b =>
@@ -700,17 +643,6 @@ namespace ArtGalleryApp.Migrations
                     b.HasIndex("ArtistField_Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ArtGalleryApp.Models.Data.Artists", b =>
-                {
-                    b.HasOne("ArtGalleryApp.Models.Data.ArtistField", "ArtistField_")
-                        .WithMany()
-                        .HasForeignKey("ArtistField_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ArtistField_");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Banner", b =>

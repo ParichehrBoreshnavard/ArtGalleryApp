@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ArtGalleryApp.Models.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
@@ -7,8 +8,10 @@ namespace ArtGalleryApp.Models.DataViewModel
         public int Id { get; set; }
         [Required]
         [Display(Name = "Artwork Name:")]
-
         public string Title { get; set; }
+        [Required]
+        [Display(Name = "Artwork Name:")]
+        public string Subject { get; set; }
         [Required]
         [Display (Name="Statement")]
         [MaxLength(400)]
@@ -56,6 +59,20 @@ namespace ArtGalleryApp.Models.DataViewModel
         public DateTime ProduceDate { get; set; }
         [Display(Name = "Produce Year:")]
         public int? Inventory { get; set; } = 0;
-       
+        public List<GalleryViewModel> lstGallery { get; set; }
+
+        public List<ArtworkField> lstEArtworkField { get; set; }
+        [Display(Name = "Artwork Field:")]
+        public int? ArtworkFieldId { get; set; }
+        public string ArtworkFieldName { get; set; }
+        public List<Style> lstStyle { get; set; }
+        [Display(Name = "Artwork Style:")]
+        public int? StyleId { get; set; }
+        public string? StyleName { get; set; }
+        [Display(Name = "Artwork Medium:")]
+        public List<Medium> lstMedium { get; set; }
+        public int? MediumId { get; set; }
+        public string? MediumName { get; set; }
+
     }
 }

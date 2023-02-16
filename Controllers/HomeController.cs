@@ -162,6 +162,35 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Gallery(GalleryViewModel galleryViewModel)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewBag.Error = "There is an error in record information";
+            //    return View();
+            //}
+            Gallery newArtwork = new Gallery();
+
+            dbSarv.Gallery.Add(newArtwork);
+            newArtwork.Description = galleryViewModel.Description;
+            newArtwork.UploadDate = galleryViewModel.UploadDate;
+            newArtwork.ProduceDate = galleryViewModel.ProduceDate;
+            newArtwork.Availability = galleryViewModel.Availability;
+            newArtwork.Inventory = (int)galleryViewModel.Inventory;
+            newArtwork.Price = galleryViewModel.Price;
+            newArtwork.ArtworkField = galleryViewModel.ArtworkField;
+            newArtwork.SoldDate = (DateTime)galleryViewModel.SoldDate;
+            newArtwork.Medium=galleryViewModel.Medium;
+            newArtwork.Size = galleryViewModel.Size;
+            newArtwork.Style = galleryViewModel.Style;
+            newArtwork.ImgUrl = galleryViewModel.ImgUrl;
+
+
+            dbSarv.SaveChanges();
+            return Redirect("/Home/Gallery");
+
+        }
         public IActionResult AdminTeam()
         {
             return View();
