@@ -139,7 +139,7 @@ namespace ArtGalleryApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ArtworkFields");
+                    b.ToTable("ArtworkField_");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Banner", b =>
@@ -329,10 +329,6 @@ namespace ArtGalleryApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ArtworkField")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("Availability")
                         .HasColumnType("bit");
 
@@ -350,10 +346,6 @@ namespace ArtGalleryApp.Migrations
 
                     b.Property<int>("Inventory")
                         .HasColumnType("int");
-
-                    b.Property<string>("Medium")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Price")
                         .IsRequired()
@@ -375,10 +367,6 @@ namespace ArtGalleryApp.Migrations
                     b.Property<DateTime>("SoldDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Style")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Subject")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -393,9 +381,24 @@ namespace ArtGalleryApp.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("artworkFieldId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("mediumId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("styleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("artworkFieldId");
+
+                    b.HasIndex("mediumId");
+
+                    b.HasIndex("styleId");
 
                     b.ToTable("Gallery");
                 });
@@ -746,6 +749,30 @@ namespace ArtGalleryApp.Migrations
                     b.HasOne("ArtGalleryApp.Models.Data.User", null)
                         .WithMany("Gallery")
                         .HasForeignKey("UserId");
+
+                    b.HasOne("ArtGalleryApp.Models.Data.ArtworkField", "artworkField")
+                        .WithMany("galleries")
+                        .HasForeignKey("artworkFieldId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArtGalleryApp.Models.Data.Medium", "medium")
+                        .WithMany("galleries")
+                        .HasForeignKey("mediumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArtGalleryApp.Models.Data.Style", "style")
+                        .WithMany("galleries")
+                        .HasForeignKey("styleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("artworkField");
+
+                    b.Navigation("medium");
+
+                    b.Navigation("style");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.RoleUser", b =>
@@ -836,6 +863,11 @@ namespace ArtGalleryApp.Migrations
                     b.Navigation("ArtistField_");
                 });
 
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.ArtworkField", b =>
+                {
+                    b.Navigation("galleries");
+                });
+
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Blog", b =>
                 {
                     b.Navigation("TagBlogs");
@@ -848,9 +880,19 @@ namespace ArtGalleryApp.Migrations
                     b.Navigation("SubEvents");
                 });
 
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Medium", b =>
+                {
+                    b.Navigation("galleries");
+                });
+
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Role", b =>
                 {
                     b.Navigation("RoleUsers");
+                });
+
+            modelBuilder.Entity("ArtGalleryApp.Models.Data.Style", b =>
+                {
+                    b.Navigation("galleries");
                 });
 
             modelBuilder.Entity("ArtGalleryApp.Models.Data.Tag", b =>

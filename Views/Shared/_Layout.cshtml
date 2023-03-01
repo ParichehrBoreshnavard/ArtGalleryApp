@@ -6,109 +6,164 @@
     <title>@ViewData["Title"] - ArtGalleryApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+        
     <link href="~/css/StyleSheet.scss" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
-
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout" />
+    <link rel="stylesheet" href="~/css/bootstrap-icon.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("HeaderStyle", required: false)
 
     @*<link rel="stylesheet" href="~/ArtGalleryApp.styles.css" asp-append-version="true" />*@
 </head>
 <body>
-    
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow  py-3">
-            <div class="container-fluid m-4">
-                <img src="~/images/logo.png" class="d-block " alt="logo" >
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ml-3">
-                    <ul class="navbar-nav flex-grow-1">
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow  py-1">
+        <div class="container-fluid m-4">
+            <img src="~/images/logo.png" class="d-block " alt="logo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ml-3">
+                <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-white" asp-controller="Home" asp-action="index">HOME</a>
-                        </li>
-                        <li class="nav-item" asp-controller="Home" asp-action="Artists">
+                    </li>
+                    <li class="nav-item" asp-controller="Home" asp-action="Artists">
                         <a class="nav-link text-white" asp-controller="Home" asp-action="Artists">ARTISTS</a>
-                        </li>
-                  
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown"  role="button" aria-expanded="false">EVENTS</a>
-                            <ul class="dropdown-menu">
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">EVENTS</a>
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Events">EVENT_1</a></li>
-                                <li><a class="dropdown-item" href="#">EVENT_2</a></li>
-                                <li><a class="dropdown-item" href="#">EVENT_3</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
+                            <li><a class="dropdown-item" href="#">EVENT_2</a></li>
+                            <li><a class="dropdown-item" href="#">EVENT_3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Gallery">GALLERY</a>
-                        </li>
-                   
-                        <li class="nav-item">
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Blog">BLOG</a>
-                        </li>
-                        <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" asp-controller="Home" asp-action="Contact">CONTACT</a>
-                        </li>
-                    </ul>
-                        <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Home" asp-action="Basket">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="white" class="bi bi-bag-dash" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
-                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                                </svg>
-                         </a>
-                        </li>
-                         <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Home" asp-action="Signin">
+                    </li>
+                </ul>
+              
+                <li class="nav-item dropdown ">
+                     <a class="nav-link dropdown-toggle text-white ml-5" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="white" class="bi bi-bag-dash" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg>
+                        <span class="badge bg-secondary cart-icon-badge">3</span>
+                    </a>
+                    
+                    <div class="dropdown-menu basket-dropdown-menu" aria-labelledby="cartDropdown">
+                        <div class="nav-item p-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6>Shopping Cart</h6>
+                                        <hr />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
+                                    </div>
+                                    <div class="col-8">
+                                        <p>Item 1</p>
+                                        <p>Price: $10</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                    <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
+                                    </div>
+                                    <div class="col-8">
+                                        <p>Item 2</p>
+                                        <p>Price: $20</p>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="col-4">
+                                    <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
+                                    </div>
+                                    <div class="col-8">
+                                        <p>Item 3</p>
+                                        <p>Price: $30</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <hr />
+                                    <a asp-controller="Home" asp-action="Basket" class="btn btn-primary btn-block">Go to your basket</a>
+                                    </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                   
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                         </svg>
-                         </a>
-                        </li>
-                   
-                </div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Signin">Sign In</a></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="MyAccount">My Account</a></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="MyGallery">My Gallery</a></li>
+                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Signout">Sign Out</a></li>
+                    </ul>
+                </li>
+
             </div>
-        </nav>
-    
-        <main role="main" class=" main">
-            @RenderBody()
-          
-        </main>
+        </div>
+    </nav>
+   
+    <main role="main" class=" main">
+        @RenderBody()
 
-     <footer class="text-lg-start border border-white pt-4 contactFooter flex: 0 0 20% ">
-            <!-- Grid container -->
-            <div class="container p-4 w-75">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <!--Grid column-->
+    </main>
+
+    <footer class="text-lg-start border border-white pt-4 contactFooter flex: 0 0 20% ">
+        <!-- Grid container -->
+        <div class="container p-4 w-75">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer ">
-                        <h5 class="text-uppercase mb-4">OUR WORLD</h5>
+                    <h5 class="text-uppercase mb-4">OUR WORLD</h5>
 
-                        <ul class="list-unstyled mb-4">
-                            <li>
-                                <a href="#ABOUT" class="text-white">About</a>
-                            </li>
-                            <li>
-                            <a asp-action="Artists" class="text-white">Artists</a>
-                            </li>
-                            <li>
-                            <a asp-action="Gallery" class="text-white">Gallery</a>
-                            </li>
+                    <ul class="list-unstyled mb-4">
                         <li>
-                            <a asp-action ="Evants_1" class="text-white">Evants</a>
+                            <a href="#ABOUT" class="text-white">About</a>
+                        </li>
+                        <li>
+                            <a asp-action="Artists" class="text-white">Artists</a>
+                        </li>
+                        <li>
+                            <a asp-action="Gallery" class="text-white">Gallery</a>
+                        </li>
+                        <li>
+                            <a asp-action="Evants_1" class="text-white">Evants</a>
                         </li>
                         <li>
                             <a asp-action="Blog" class="text-white">Blog</a>
                         </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
+                    </ul>
+                </div>
+                <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer">
                     <h5 class="text-uppercase mb-4">Assistance</h5>
 
@@ -136,11 +191,11 @@
                 <!--Grid column-->
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer">
-                        <h5 class="text-uppercase mb-4">Contact</h5>
+                    <h5 class="text-uppercase mb-4">Contact</h5>
 
-                        <ul class="list-unstyled">
+                    <ul class="list-unstyled">
 
-                         <li>
+                        <li>
                             <a asp-action="Signin" class="text-white">Sign in</a>
                         </li>
                         <li>
@@ -148,57 +203,57 @@
                         </li>
                         <li>
                             <a asp-action="ArtistRegistration" class="text-white">Artists registration</a>
-                        </li> 
-                        
-                         <li>
+                        </li>
+
+                        <li>
                             <a asp-action="UploadFile" class="text-white">Upload your artwork</a>
                         </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-                    <!--Grid column-->
+                    </ul>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer">
-                        <h5 class="text-uppercase mb-4">Members</h5>
+                    <h5 class="text-uppercase mb-4">Members</h5>
 
-                        <ul class="list-unstyled">
+                    <ul class="list-unstyled">
                         <li>
                             <a asp-action="Artists" class="text-white">Artists</a>
                         </li>
                         <li>
-                                <a href="#ourTeam" class="text-white">Our Team</a>
+                            <a href="#ourTeam" class="text-white">Our Team</a>
                         </li>
-                            <li>
-                                <a href="#!" class="text-white">Volentiers</a>
-                            </li>
                         <li>
-                                <a href="#sponsers" class="text-white">Sponsers</a>
+                            <a href="#!" class="text-white">Volentiers</a>
+                        </li>
+                        <li>
+                            <a href="#sponsers" class="text-white">Sponsers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="AdminStartPage">Admin</a>
                         </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer">
-                        <h5 class="text-uppercase mb-4">Sign up to our newsletter</h5>
-
-                        <div class="form-outline form-white mb-4">
-                            <input type="email" id="form5Example2" class="form-control" />
-                            <label class="form-label" for="form5Example2">Email address</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-outline-white btn-block">Subscribe</button>
-                    </div>
-                    </div>
-                    <!--Grid column-->
+                    </ul>
                 </div>
-                <!--Grid row-->
-           <div class="container text-center text-lg-start py-2 bg-secondary ">
-                &copy; 2022 - ArtGalleryApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div> 
-        </footer>
-   
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer">
+                    <h5 class="text-uppercase mb-4">Sign up to our newsletter</h5>
+
+                    <div class="form-outline form-white mb-4">
+                        <input type="email" id="form5Example2" class="form-control" />
+                        <label class="form-label" for="form5Example2">Email address</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-white btn-block">Subscribe</button>
+                </div>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+        <div class="container text-center text-lg-start py-2 bg-secondary ">
+            &copy; 2022 - ArtGalleryApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @*<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>*@
@@ -209,8 +264,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="form-validation.js"></script>
+    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="form-validation.js"></script>
 
 
     <script src="~/js/site.js" asp-append-version="true"></script>

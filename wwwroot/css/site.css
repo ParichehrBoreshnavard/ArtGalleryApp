@@ -16,7 +16,8 @@ nav {
     background-color: #272727 !important;
 }
     nav a {
-        color:#b1fba0ff
+        color:#b1fba0ff;
+      
     }
 
 .ourcontact h1, .ourcontact h2, .ourcontact h3 {
@@ -247,7 +248,81 @@ admin-nav-link a {
     }
 }
 */
+#price-slider {
+    margin-bottom: 50px;
+}
 
+#price-range {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+    position: relative;
+    margin-top: 5px;
+}
+
+    #price-range .range-bar {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #007bff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+        #price-range .range-bar:before,
+        #price-range .range-bar:after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        #price-range .range-bar:before {
+            left: 0;
+        }
+
+        #price-range .range-bar:after {
+            right: 0;
+        }
+
+    #price-range .thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #007bff;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+    }
+
+        #price-range .thumb:first-child {
+            left: 0;
+        }
+
+        #price-range .thumb:last-child {
+            right: 0;
+        }
+
+#min-price,
+#max-price {
+    width: 80px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#apply-filter {
+    margin-top: 20px;
+}
 
 
 
@@ -301,6 +376,13 @@ w-90 {
 
 .h-90 {
     height: 90% !important;
+}
+
+.card-text
+{
+    text-decoration:none !important;
+    color:white;
+    font-size:14px;
 }
 
 .no-underline,.no-underline:hover {
@@ -523,8 +605,9 @@ w-90 {
 }
 
 .BasketContainer {
-    max-width: 960px;
+    max-width: 1140px;
 }
+
 
 .lh-condensed {
     line-height: 1.25;
@@ -550,54 +633,73 @@ w-90 {
 .list-group-item {
     position: relative;
 }
-.filter-gray {
-    filter: grayscale();
-    -webkit-filter: grayscale(100%);
+
+.cart-icon-badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 12px;
+    padding: 3px 5px;
+    border-radius: 50%;
 }
-    .filter-gray:hover {
-        filter: none;
-        -webkit-filter: grayscale(0%);
+
+.img-thumbnail{
+    width:200px;
+}
+
+.basket-check {
+   background-color: #c2c2c27d;
+}
+.basket-dropdown-menu{
+    width:270px;
+}
+
+.search-btn {
+    position:absolute;
+}
+/*#slider-div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}*/
+
+    #slider-div > div {
+        margin: 8px;
     }
 
-
-
-.flip-card {
-    perspective: 10px;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-/*    height: 100%;
-*/    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    
-}
-.flip-card-front, .flip-card-back {
-    /*position: absolute;*/
-    width: 100%;
-   -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    cursor:pointer;
-}
-.flip-card-front {
-    background-color: #bbb;
-    color: black;
-}
-
-.flip-card-back {
-    background-color: #2980b9;
-    color: black;
-    transform: rotateY(180deg);
-    height: 100%;
+.slider-label {
     position: absolute;
-/*    top: 0;*/
+    background-color: #eee;
+    padding: 4px;
+    font-size:12px;
 }
-.flipCard {
-    transform: rotateY(180deg);
+
+
+.sidebar-filter {
+    background-color: #e8e8e8 !important;
+   
+}
+/*.heart {
+    display: inline-block;
+    width: 10px;linear-heart
+    height: 10px;
+    background: linear-gradient(to bottom right, black 50%, transparent 50%) no-repeat;
+    transform: rotate(-45deg);
+
+}*/
+/*.linear-heart {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(to bottom right, black 50%, transparent 50%) no-repeat;
+    transform: rotate(-45deg);
+}*/
+#heart {
+    color: grey;
+    font-size: 20px;
 }
 
-
-
+    #heart.red {
+        color: red;
+    }
 
