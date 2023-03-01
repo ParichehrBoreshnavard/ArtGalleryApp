@@ -5,244 +5,245 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ArtGalleryApp
 build_property.RootNamespace = ArtGalleryApp
-build_property.ProjectDir = C:\Projects\Git\.netCore\ArtGalleryApp\
+build_property.ProjectDir = C:\Users\parib\source\repos\ArtGalleryApp\ArtGalleryApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Projects\Git\.netCore\ArtGalleryApp
+build_property.MSBuildProjectDirectory = C:\Users\parib\source\repos\ArtGalleryApp\ArtGalleryApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/About/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/About/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/About/New.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/About/New.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/ArtistField/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/ArtistField/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0RmllbGRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Artist/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Artist/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Artist/New.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Artist/New.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0XE5ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/ArtworkField/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/ArtworkField/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0d29ya0ZpZWxkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Banners/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Banners/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFubmVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Banners/New.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Banners/New.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFubmVyc1xOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Contact/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Event_/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Event_/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRfXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Event_/New.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Event_/New.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRfXE5ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Gallery/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Gallery/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FsbGVyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Gallery/New.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Gallery/New.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FsbGVyeVxOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminArtist.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminArtist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkFydGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminBlog.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminBlog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkJsb2cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminContact.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminContact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkNvbnRhY3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminCustomer.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkN1c3RvbWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminEditArtist.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEditArtist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkVkaXRBcnRpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminEditBlog.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEditBlog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkVkaXRCbG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminEditCustomer.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEditCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkVkaXRDdXN0b21lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminEditGallery.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEditGallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkVkaXRHYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminEditTeam.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminEditTeam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkVkaXRUZWFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminGallery.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminGallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkdhbGxlcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminStartPage.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminStartPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblN0YXJ0UGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/AdminTeam.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/AdminTeam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblRlYW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/ArtistField.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ArtistField.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpc3RGaWVsZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/ArtistPage.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ArtistPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpc3RQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/ArtistRegistration.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ArtistRegistration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpc3RSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Artists.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Artists.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpc3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/ArtworkPage.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ArtworkPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnR3b3JrUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Basket.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Basket.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCYXNrZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Blog.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Blog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCbG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/blogPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxibG9nUGFnZS5jc2h0bWw=
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/BlogPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCbG9nUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Contact.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Customer.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Customer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDdXN0b21lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Dashboard.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Event.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Event.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFdmVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Events.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Events.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFdmVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/ForgetPassword.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/ForgetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb3JnZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Gallery.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Gallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Signin.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Signin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/SigninAdmin.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/SigninAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduaW5BZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Signup.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWdudXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Size.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Size.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaXplLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Test.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Test.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/Testtt.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/Testtt.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXN0dHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Home/UploadFile.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Home/UploadFile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGxvYWRGaWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Medium/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Medium/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaXVtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Shared/Error.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Style/Index.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Style/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R5bGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/_ViewImports.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/_ViewStart.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Shared/_Layout.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pe17oufn1v
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-wrlfsmhjst
 
-[C:/Projects/Git/.netCore/ArtGalleryApp/Views/Shared/_LayoutAdminStart.cshtml]
+[C:/Users/parib/source/repos/ArtGalleryApp/ArtGalleryApp/Views/Shared/_LayoutAdminStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pblN0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-z70mm72axx
