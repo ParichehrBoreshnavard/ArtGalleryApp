@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3k6XJ9FNj2hm0DZ0QruuxvrwDEVzJJwbOrlW+AjDomc=",
+  "Hash": "jE/9xZdzF1pPfoXG0HdCEo9X/SnA+klHlwnX/RsNnXc=",
   "Source": "ArtGalleryApp",
   "BasePath": "_content/ArtGalleryApp",
   "Mode": "Default",
@@ -610,6 +610,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\artur-matosyan-4YWUMaftmag-unsplash.jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\Git\\.netCore\\ArtGalleryApp\\wwwroot\\images\\artur-matosyan-4YWUMaftmag-unsplash1.jpg",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Git\\.netCore\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "images/artur-matosyan-4YWUMaftmag-unsplash1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\artur-matosyan-4YWUMaftmag-unsplash1.jpg"
     },
     {
       "Identity": "C:\\Projects\\Git\\.netCore\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-ann-h-2838545.jpg",
