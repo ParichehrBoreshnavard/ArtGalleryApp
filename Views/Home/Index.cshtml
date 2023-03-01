@@ -9,7 +9,7 @@
     <div class="Carouselcontainer w-75 h-75 bg-white  p-4" >
     <div class="text-center">
 
-            <div id="carouselExampleDark" class="carousel carousel-dark  d-flex flex-nowrap justify-content-center slide" data-bs-ride="carousel">
+            <div id="carouselExampleDark" class="carousel carousel-dark d-flex flex-nowrap justify-content-center slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -226,28 +226,34 @@
         <div id="ourTeam" class="container w-80 h-80 p-5" style="background-color:cadetblue ">
             <h1  style="color:white">Our Team</h1>
             <div class="container">
-                <div class="row pt-3 justify-content-between">
-                    <div class="col-4">
-                        <div class="card p-3">
-                            <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="row pt-3 justify-content-between flip-card">
+                    <div class="col-lg-4 col-md-1 mb-2">
+                        <div class="card p-3 flip-card-inner" id="mycard1">
+                            <div class=" flip-card-front">
+                            <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="card-img-top filter-gray" alt="...">
+                            </div>
+                            <div class="card-body flip-card-back">
+                                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="card p-3">
-                            <img src="~/images/artistsImages/olga-guryanova-Th-i7Z1ufK8-unsplash.jpg" class="card-img-top" alt="...">
-                            <div class="card-body ">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div class="col-lg-4 col-md-1 mb-2">
+                        <div class="card p-3 flip-card-inner" id="mycard2">
+                            <div class=" flip-card-front">
+                            <img src="~/images/artistsImages/olga-guryanova-Th-i7Z1ufK8-unsplash.jpg" class="card-img-top filter-gray" alt="...">
+                            </div>
+                            <div class="card-body flip-card-back">
+                                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 ">
-                        <div class="card p-3">
-                            <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="card-img-top" alt="...">
-                            <div class="card-body bg-black">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div class="col-lg-4 col-md-1 mb-2">
+                        <div class="card p-3 flip-card-inner" id="mycard3">
+                            <div class=" flip-card-front">
+                            <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="card-img-top filter-gray" alt="...">
+                            </div>
+                            <div class="card-body flip-card-back">
+                                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
@@ -268,7 +274,24 @@
         </section>
    </div>
 
+<script>
+    const card1 = document.getElementById("mycard1");
+    card1.addEventListener("click", flipCard1);
+    const card2 = document.getElementById("mycard2");
+    card2.addEventListener("click", flipCard2);
+    const card3 = document.getElementById("mycard3");
+    card3.addEventListener("click", flipCard3);
 
+    function flipCard1() {
+        card1.classList.toggle("flipCard");
+    }
+    function flipCard2() {
+        card2.classList.toggle("flipCard");
+    }
+    function flipCard3() {
+        card3.classList.toggle("flipCard");
+    }
+    </script>
 
 @*<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
