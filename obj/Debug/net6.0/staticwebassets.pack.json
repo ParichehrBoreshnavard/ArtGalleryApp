@@ -137,6 +137,10 @@
       "PackagePath": "staticwebassets\\images\\artur-matosyan-4YWUMaftmag-unsplash.jpg"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\artur-matosyan-4YWUMaftmag-unsplash1.jpg",
+      "PackagePath": "staticwebassets\\images\\artur-matosyan-4YWUMaftmag-unsplash1.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\blog\\pexels-ann-h-2838545.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\pexels-ann-h-2838545.jpg"
     },
