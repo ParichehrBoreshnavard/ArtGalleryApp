@@ -16,7 +16,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required]
-        [Display(Name = "Artist Statement ")]
+        [Display(Name = "Artist's Bio ")]
         [StringLength(500)]
         public string Description { get; set; }
         [Display(Name = "Country of Origin")]

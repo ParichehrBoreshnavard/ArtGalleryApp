@@ -26,7 +26,7 @@ namespace ArtGalleryApp.Context
         public DbSet<Gallery> Gallery { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<ArtistField> ArtistField_ { get; set; }
-        public DbSet<ArtworkField> ArtworkFields { get; set; }
+        public DbSet<ArtworkField> ArtworkField_ { get; set; }
         public DbSet<Medium> Mediums { get; set; }
         public DbSet<Style> Styles { get; set; }
         public DbSet<Role> Rols { get; set; }

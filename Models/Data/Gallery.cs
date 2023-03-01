@@ -11,10 +11,10 @@ namespace ArtGalleryApp.Models.Data
         public string Subject { get; set; }
         public string Description { get; set; }
         public string Artist { get; set; }
-        public string ArtworkField { get; set; }
-        public string Medium { get; set; }
+        public  ArtworkField artworkField { get; set; }
+        public Medium medium { get; set; }
         public string Image { get; set; }
-        public string Style { get; set; }
+        public Style  style{ get; set; }
         public string Size { get; set; }
         public DateTime ProduceYear { get; set; }
         public string Price { get; set;}
@@ -30,5 +30,6 @@ namespace ArtGalleryApp.Models.Data
         public int Inventory { get; set; } = 0;
      
         public string ImgUrl { get; internal set; }
+      
     }
 }

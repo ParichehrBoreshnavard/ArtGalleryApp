@@ -24,7 +24,18 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
-      
+        public IActionResult Basket()
+        {
+            return View();
+        }
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+        public IActionResult ArtistAdminnn()
+        {
+            return View();
+        }
         public IActionResult Testtt()
         {
             return View();
@@ -172,19 +183,19 @@ namespace ArtGalleryApp.Controllers
             //}
             Gallery newArtwork = new Gallery();
 
-            dbSarv.Gallery.Add(newArtwork);
-            newArtwork.Description = galleryViewModel.Description;
-            newArtwork.UploadDate = galleryViewModel.UploadDate;
-            newArtwork.ProduceDate = galleryViewModel.ProduceDate;
-            newArtwork.Availability = galleryViewModel.Availability;
-            newArtwork.Inventory = (int)galleryViewModel.Inventory;
-            newArtwork.Price = galleryViewModel.Price;
-            newArtwork.ArtworkField = galleryViewModel.ArtworkField;
-            newArtwork.SoldDate = (DateTime)galleryViewModel.SoldDate;
-            newArtwork.Medium=galleryViewModel.Medium;
-            newArtwork.Size = galleryViewModel.Size;
-            newArtwork.Style = galleryViewModel.Style;
-            newArtwork.ImgUrl = galleryViewModel.ImgUrl;
+            //dbSarv.Gallery.Add(newArtwork);
+            //newArtwork.Description = galleryViewModel.Description;
+            //newArtwork.UploadDate = galleryViewModel.UploadDate;
+            //newArtwork.ProduceDate = galleryViewModel.ProduceDate;
+            //newArtwork.Availability = galleryViewModel.Availability;
+            //newArtwork.Inventory = (int)galleryViewModel.Inventory;
+            //newArtwork.Price = galleryViewModel.Price;
+            //newArtwork.artworkField = galleryViewModel.artworkField;
+            //newArtwork.SoldDate = (DateTime)galleryViewModel.SoldDate;
+            //newArtwork.medium=galleryViewModel.medium;
+            //newArtwork.Size = galleryViewModel.Size;
+            //newArtwork.style = galleryViewModel.style;
+            //newArtwork.ImgUrl = galleryViewModel.ImgUrl;
 
 
             dbSarv.SaveChanges();
@@ -277,24 +288,24 @@ namespace ArtGalleryApp.Controllers
               ViewBag.Error = "There is an error in record information";
               return View();
             }
-            Gallery newArtPiece = new();
-            dbSarv.Gallery.Add(newArtPiece);
-            newArtPiece.Artist= uploadFileViewModel.Artist_.ToString();
-            newArtPiece.Style = uploadFileViewModel.Style_.ToString(); 
-            newArtPiece.ProduceDate= uploadFileViewModel.ProduceDate;
-            newArtPiece.UploadDate= uploadFileViewModel.UploadDate;
-            newArtPiece.SoldDate = uploadFileViewModel.SoldDate;
-            newArtPiece.ImgUrl = uploadFileViewModel.ImgUrl;
-            newArtPiece.Availability = uploadFileViewModel.Availability;
-            newArtPiece.Price = uploadFileViewModel.Price.ToString(); 
-            newArtPiece.ArtworkField= uploadFileViewModel.ArtworkField_.ToString();
-            newArtPiece.Description = uploadFileViewModel.Description;
-            TagGallery artworkTag = new TagGallery();
-            artworkTag.Gallery_ = newArtPiece;
-            artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Medium);
-            artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Field);
-            artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Style);
-            artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Size);
+            //Gallery newArtPiece = new();
+            //dbSarv.Gallery.Add(newArtPiece);
+            //newArtPiece.Artist= uploadFileViewModel.Artist_.ToString();
+            //newArtPiece.style = uploadFileViewModel.Style_.ToString(); 
+            //newArtPiece.ProduceDate= uploadFileViewModel.ProduceDate;
+            //newArtPiece.UploadDate= uploadFileViewModel.UploadDate;
+            //newArtPiece.SoldDate = uploadFileViewModel.SoldDate;
+            //newArtPiece.ImgUrl = uploadFileViewModel.ImgUrl;
+            //newArtPiece.Availability = uploadFileViewModel.Availability;
+            //newArtPiece.Price = uploadFileViewModel.Price.ToString(); 
+            //newArtPiece.artworkField= uploadFileViewModel.ArtworkField_.ToString();
+            //newArtPiece.Description = uploadFileViewModel.Description;
+            //TagGallery artworkTag = new TagGallery();
+            //artworkTag.Gallery_ = newArtPiece;
+            //artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Medium);
+            //artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Field);
+            //artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Style);
+            //artworkTag.Tag_ = dbSarv.Tags.First(r => r.Id == TagValues.Size);
             //dbSarv.TagGallery.Add(artgalleryTag);
             dbSarv.SaveChanges();
             return Redirect("/home/AdminGallery");
@@ -316,10 +327,7 @@ namespace ArtGalleryApp.Controllers
         {
             return View(item);
         }
-        public IActionResult Basket()
-        {
-            return View();
-        }
+       
         public IActionResult AdminEvent_1()
         {
             return View();

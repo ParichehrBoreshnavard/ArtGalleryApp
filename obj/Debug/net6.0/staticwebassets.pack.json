@@ -105,6 +105,14 @@
       "PackagePath": "staticwebassets\\css\\StyleSheet.scss"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\css\\bootstrap-icon.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-icon.css"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\css\\bootstrap-slider.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-slider.css"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

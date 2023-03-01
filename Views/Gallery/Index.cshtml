@@ -13,7 +13,7 @@
             <div class=" mb-3 mt-3 mt-md-0 mb-md-0">
                 <h4>Gallery Table</h4>
             </div>
-
+            <a style="background-color: #193C8D" class="btn btn-success" asp-controller="Gallery" asp-action="New">Add Artwork</a>
         </div>
 
 
@@ -36,14 +36,14 @@
             </thead>
             <tbody>
 
-                @*@foreach (var row in Model)
+           @foreach (var row in Model)
                 {
 
                     <tr>
                         <th>@row.Title</th>
                         <th>@row.Artist</th>
                         <th>@row.ArtworkField</th>
-                        <th>@row.Produce Year</th>
+                        <th>@row.ProduceYear</th>
                         <th>@row.Medium</th>
                         <th>@row.Style</th>
                         <th>@row.Size</th>
@@ -56,7 +56,7 @@
                             <a class="btn btn-danger btn-sm" asp-action="delete" asp-controller="Gallery" asp-route-id="@row.Id">Delete</a>
                         </td>
                     </tr>
-                }*@
+                }
 
             </tbody>
 

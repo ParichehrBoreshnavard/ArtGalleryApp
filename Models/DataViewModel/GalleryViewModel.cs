@@ -60,19 +60,19 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Produce Year:")]
         public int? Inventory { get; set; } = 0;
         public List<GalleryViewModel> lstGallery { get; set; }
-
-        public List<ArtworkField> lstEArtworkField { get; set; }
+        public List<Event_> lstEvent { get; set; }
+        public List<ArtworkField> lstArtworkField { get; set; }
         [Display(Name = "Artwork Field:")]
         public int? ArtworkFieldId { get; set; }
         public string ArtworkFieldName { get; set; }
         public List<Style> lstStyle { get; set; }
         [Display(Name = "Artwork Style:")]
         public int? StyleId { get; set; }
-        public string? StyleName { get; set; }
+        public string StyleName { get; set; }
         [Display(Name = "Artwork Medium:")]
         public List<Medium> lstMedium { get; set; }
         public int? MediumId { get; set; }
-        public string? MediumName { get; set; }
+        public string MediumName { get; set; }
 
     }
 }
