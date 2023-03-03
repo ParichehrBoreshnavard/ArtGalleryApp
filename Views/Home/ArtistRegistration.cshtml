@@ -6,12 +6,15 @@
 @model ArtGalleryApp.Models.DataViewModel.ArtistRegistrationViewModel
 
 <div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
-    <div class="Carouselcontainer w-75 h-75 bg-white  p-5 d-flex">
-        <form asp-action="ArtistRegistration" asp-controller="home" method="post" class="register-form ml-4 form-check">
-            <h3>Register</h3>
-            <div class="row justify-content-around">
+    <div class="Carouselcontainer w-75 h-75 bg-white  p-5 register-form-container">
+        <h3> Create Your Account</h3>
+        <form asp-action="ArtistRegistration" asp-controller="home" method="post" class="register-form ml-4 form-check d-flex">
+          
 
-                <div class="col-md-3 ">
+            <div class="row justify-content-around mt-4">
+                <div class="col-md-8 form-group  ">
+                <div class=" d-flex justify-content-around">
+                <div class="col-md-6" >
                    
                     <div class="form-group">
                 <label asp-for="FirstName"></label>
@@ -35,27 +38,30 @@
                         <label for="countryOfOrigin">Country of Origin</label>
                         <input type="text" class="form-control" id="countryOfOrigin" placeholder="Enter your country of origin (optional)...">
                     </div>
-                    <div class=" form-group  ">
-                        <label asp-for="Description">Short Statement about Yourself</label>
-                        <textarea class="form-control w-60" asp-for="Description" rows="3"></textarea>
-                        <span style="color:darkred" asp-validation-for="Description"></span>
-                    </div>
+                   
                 </div>
-                <div class="col-md-3 position-relative ">
+                <div class="col-md-6 position-relative">
                     <div class="form-group">
                         <label asp-for="ImgUrl">Upload a Photo</label>
                         <input type="file" class="form-control-file" asp-for="ImgUrl">
                         <span style="color:darkred" asp-validation-for="ImgUrl"></span>
                     </div>
-                    <img class="w-100 position-relative" src="~/images/blog/pexels-marshall-jones-3652853.jpg" /><br /><br />
+                    <img class="w-100 position-relative mt-2" src="~/images/blog/pexels-marshall-jones-3652853.jpg" /><br /><br />
                     <div class="form-group">
                         <label asp-for="PortfolioUrl"></label>
                         <input type="text" class="form-control" asp-for="PortfolioUrl">
                         <span style="color:darkred" asp-validation-for="PortfolioUrl"></span>
                     </div>
                 </div>
-                <div class="col-md-3 ">
-                <h3> Create Your Account</h3>
+                </div>
+                <div class="col-md-12 form-group  ">
+                    <label asp-for="Description">Short Statement about Yourself</label>
+                    <textarea class="form-control w-60" asp-for="Description" rows="3"></textarea>
+                    <span style="color:darkred" asp-validation-for="Description"></span>
+                </div>
+                    <button type="submit" class="btn btn-primary ml-5">Sign Up</button>
+                </div>
+                <div class="col-md-4 ">
                     <div class="form-group">
                         <label asp-for="Phone"></label>
                         <input class="form-control" asp-for="Phone" placeholder="Enter phone...">
@@ -74,44 +80,62 @@
                 </div>
                     <div class="form-group  ">
                     <label asp-for="ConfirmPassword"></label>
-                    <input class="form-control" asp-for="ConfirmPassword" placeholder="Confirm password">
+                    <input class="form-control" asp-for="ConfirmPassword" placeholder="Confirm password" >
                     <span style="color:darkred" asp-validation-for="ConfirmPassword"></span>
                 </div>
-                    <div class="password-strength ">
-                    <div class="password-strength-viewport">
-                        <div class="password-strength-progress">
-                            <label for="password-strength">Password Strength</label>
-                            <label for="password-roles">Password must be a minimum of 8 characters. lnclude one latter, and one number or symbol.</label>
+                    <div class="password-strength">
+                        <div class="password-strength-viewport">
+                            <div class="password-strength-progress"></div>
+                        </div>
+                        <label for="password-strength">Password Strength</label>
+                        <label for="password-roles" style="font-size:12px ">Password must be a minimum of 8 characters. Include one letter, and one number or symbol.</label>
+                    </div>
+                    <div class="form-group d-flex have-account">
+                        <label style="font-size:12px" class="mr-2 mt-1">already have an account? </label>
+                        <a asp-controller="Home" asp-action="Signin" class="sign-in-link"> Sign In</a>
+                    </div>
+                    <div class="signup-bottom-container text-center form-group">
+                       
+                        <label for="CreatAccountWith" style="font-size:12px "> ..................... or create an account with ..................... </label>
+                        <div class="form-group sign-in-with justify-content-around">
+                            <a href="#" class="btn " style="background-color:#ff0000; color:white"><i class="bi bi-google"></i></a>
+                            <a href="#" class="btn" style="background-color: #3b5998; color:white"> <i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn " style="background-color:#4b4b4b; color:white"><i class="bi bi-apple"></i></a>
+                        </div>
+                        <div class="form-group d-flex have-account">
+                            <label style="font-size:12px" class="mr-2 mt-1">need help? </label>
+                            <a asp-action="Contact" class="sign-in-link" asp-action="Contact">contact us</a>
                         </div>
                     </div>
-                </div>
-                    <div class="signup-bottom-container text-center ">
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                    <div class="form-group d-flex have-account">
-                        <h6>already have an account?</h6>
-                        <a href="#" class="sign-in-link">   Sign In</a>
-                    </div>
-                    <label for="CreatAccountWith">..............................or create an account with..............................</label>
-                        <div class="form-group sign-in-with  ">
-                        <a href="#" class="btn btn-danger">Google</a>
-                        <a href="#" class="btn btn-primary">Facebook</a>
-                        <a href="#" class="btn btn-secondary">Apple</a>
-                    </div>
-                        <div class="form-group d-flex have-account ">
-                        <h6>need help?</h6>
-                        <a href="Contact" class="sign-in-link">contact us</a>
-                    </div>
-                </div>
             </div>
             </div>
-            <div class="col-md-6 form-group  ">
-                <label asp-for="Description">Short Statement about Yourself</label>
-                <textarea class="form-control w-60" asp-for="Description" rows="3"></textarea>
-                <span style="color:darkred" asp-validation-for="Description"></span>
-            </div>
-         
+
+           
         </form>
     </div>
 </div>
 
+
+    <script>
+        $(document).ready(function () {
+            var password_strength = {
+                0: "Worst",
+                1: "Bad",
+                2: "Weak",
+                3: "Good",
+                4: "Strong"
+            }
+
+            $('#Password').keyup(function () {
+                var val = $(this).val();
+                var result = zxcvbn(val);
+
+                // Update the progress bar with the password strength score
+                $('.password-strength-progress').css('width', result.score * 20 + '%');
+
+                // Update the label with the password strength text
+                $('#password-strength').html("Password Strength: " + password_strength[result.score]);
+            });
+        });
+</script>
 

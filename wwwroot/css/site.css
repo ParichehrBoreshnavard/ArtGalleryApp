@@ -1,23 +1,24 @@
 
 body {
-  font-size:14px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin:0px;
-  padding:0px;
-
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
+
 .admin-body {
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
 }
+
 nav {
     background-color: #272727 !important;
 }
+
     nav a {
-        color:#b1fba0ff;
-      
+        color: #b1fba0ff;
     }
 
 .ourcontact h1, .ourcontact h2, .ourcontact h3 {
@@ -25,8 +26,7 @@ nav {
     font-family: 'Patua One', cursive;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color:black;
-   
+    color: black;
 }
 
 .ourcontact p {
@@ -46,7 +46,7 @@ nav {
     line-height: 1.42857143;
     text-align: center;
     white-space: nowrap;
-    justify-content:center;
+    justify-content: center;
     vertical-align: middle;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
@@ -82,9 +82,10 @@ nav {
 .ourcontact textarea.form-control {
     height: 100px;
 }
+
 .formContainer {
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
 }
 
 
@@ -94,8 +95,8 @@ nav {
     /*margin-top:200px;*/
 }
 
-.form-group{
-    margin-top:10px;
+.form-group {
+    margin-top: 10px;
 }
 
 .contactLabel {
@@ -104,32 +105,32 @@ nav {
 
 .contactBody {
     left: 0;
-  
-    background-color:dimgrey;
+    background-color: dimgrey;
 }
 
-.contactFooter{
-    background-color:black;
-} 
-.submitBtn{
-    background-color:white;
-    margin-top:10px;
+.contactFooter {
+    background-color: black;
+}
+
+.submitBtn {
+    background-color: white;
+    margin-top: 10px;
 }
 
 .navFooter {
-   /* left: 0;
+    /* left: 0;
     position: absolute;*/
 }
 
 .recentArtWorks {
     /*left: 0;*/
     /*position: absolute;*/
-
 }
-.main{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .aboutTitle {
@@ -148,7 +149,7 @@ nav {
     grid-template-columns: auto auto auto auto auto;
     grid-column-gap: 10%;
     grid-row-gap: 25px;
-    color:white;
+    color: white;
     padding: 50px;
     border-radius: 50px;
 }
@@ -161,10 +162,11 @@ nav {
 }
 
 
-.artistsTitleCard{
-    color:white;
-    font-weight:200;
+.artistsTitleCard {
+    color: white;
+    font-weight: 200;
 }
+
 .carousel-caption {
     background-color: #7ad6e27d;
 }
@@ -175,25 +177,29 @@ nav {
     max-width: 500px;
 }
 
-footer a{
-    color:red;
+footer a {
+    color: red;
 }
-footer a:hover{
-    color:green;
+
+    footer a:hover {
+        color: green;
+    }
+
+.navFooter a {
+    color: red;
 }
-.navFooter a{
-    color:red;
-}
-.navFooter a:hover {
-    color: green;
-}
+
+    .navFooter a:hover {
+        color: green;
+    }
+
 admin-nav {
     background-color: #282828 !important;
 }
 
 admin-nav-link a {
     color: white;
-    font-size:x-large;
+    font-size: x-large;
 }
 
 
@@ -203,23 +209,27 @@ admin-nav-link a {
         max-width: 100% !important;
     }
 }
+
 @media (min-width: 992px) {
     .container {
         max-width: 100% !important;
     }
 }
 
-@media (min-width: 768px){
-    .container {
-        max-width: 100% !important;
-    } 
-}
-
-@media (min-width: 576px){
+@media (min-width: 768px) {
     .container {
         max-width: 100% !important;
     }
 }
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100% !important;
+    }
+}
+
+
+
 
 /*@media (min-width: 1200px) {
     .Carouselcontainer {
@@ -247,7 +257,7 @@ admin-nav-link a {
         min-width: 460px;
     }
 }
-*/
+
 #price-slider {
     margin-bottom: 50px;
 }
@@ -431,30 +441,35 @@ w-90 {
     padding-left: 50px;
     padding-top: 50px;
 }
+
 .artistsListContainer ul {
     justify-content: left;
     font-family: "Amatic SC";
 }
+
 .artistsListContainer li {
     list-style: none;
 }
+
 .artistsListContainer a {
     text-decoration: none;
     color: white;
-    font-size:24px;
+    font-size: 24px;
     font-family: "Amatic SC";
     font-weight: 400;
 }
-    .artistsListContainer a:hover{
-    color:aqua;
+
+    .artistsListContainer a:hover {
+        color: aqua;
     }
 
-.text-uppercas h5{
-    color:red;
+.text-uppercas h5 {
+    color: red;
 }
+
 .footerTitleContainer {
     flex: 0 0 20% !important;
-    color:#474747
+    color: #474747
 }
 
 
@@ -467,6 +482,7 @@ w-90 {
     font-family: "EB Garamond";
     color: #c9ab81;
 }
+
 .blogAuthor {
     font-family: "EB Garamond";
 }
@@ -484,39 +500,45 @@ w-90 {
     top: 50%;
     bottom: 20%;
     border: 1px solid black;
-    background-color:rgb(33, 123, 126, 0.50);
-    text-align:justify;
+    background-color: rgb(33, 123, 126, 0.50);
+    text-align: justify;
 }
+
     .eventHeaderDesc p {
         color: #FFE7A8;
     }
-    .eventHeaderTitle {
-        position: absolute;
-        left: 20%;
-        top: 40%;
-    }
-    .eventContainers {
+
+.eventHeaderTitle {
+    position: absolute;
+    left: 20%;
+    top: 40%;
+}
+
+.eventContainers {
     border-bottom: solid black 1px;
 }
+
 .event-section1_position-relative {
     position: relative;
     z-index: 1;
     color: #272727;
 }
-    .eventSection_1 {
-        margin-right: auto;
-        margin-left: auto;
-        background-image: url(../images/events/pexels-annam-w-1120162.jpg);
-        background-size: cover;
-        position: relative;
-        border-bottom:1px solid black;
-    }
+
+.eventSection_1 {
+    margin-right: auto;
+    margin-left: auto;
+    background-image: url(../images/events/pexels-annam-w-1120162.jpg);
+    background-size: cover;
+    position: relative;
+    border-bottom: 1px solid black;
+}
 
 .eventsText {
     text-align: justify;
     font-size: 18px;
     font-family: "Amatic SC";
 }
+
 .buyTicketsBtn {
     border-radius: 5px 5px;
     font-family: "Amatic SC";
@@ -526,7 +548,7 @@ w-90 {
     color: black;
     position: relative;
     z-index: 1;
-    right:130px;
+    right: 130px;
 }
 
 
@@ -534,11 +556,12 @@ w-90 {
     content: "";
     position: absolute;
     top: 0px;
-    bottom:0px;
+    bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color:rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0.8);
 }
+
 .event-about-image {
     float: right;
     margin-left: 30px;
@@ -547,55 +570,61 @@ w-90 {
 .eventSection1-1 {
     margin-right: auto;
     margin-left: auto;
-    background-color:#abd3ce;
+    background-color: #abd3ce;
     border-bottom: 1px solid black;
-
 }
+
 .eventSection1-2 {
-        margin-right: auto;
-        margin-left: auto;
-        background-image: url(../images/events/pexels-wendy-wei-1918160.jpg);
-        background-size: cover;
-        position: relative;
-        border-bottom: 1px solid black;
-    }
+    margin-right: auto;
+    margin-left: auto;
+    background-image: url(../images/events/pexels-wendy-wei-1918160.jpg);
+    background-size: cover;
+    position: relative;
+    border-bottom: 1px solid black;
+}
+
 .eventSection1-4 {
     margin-right: auto;
     margin-left: auto;
     border-bottom: 1px solid black;
 }
 
-.signup-form{
-    position:relative;
-    left:15%;
+.signup-form {
+    position: relative;
+    left: 15%;
 }
-    .signup-form h3{
-        color:#34b9b5;
-    }
+
+.register-form-container h3 {
+    color: #34b9b5;
+}
+
 .register-form h3 {
     color: #34b9b5;
 }
+
 .have-account {
     justify-content: flex-end;
 }
 
-    .signin-form h3 {
-        color: #34b9b5;
-    }
-
-.admin-table-header{
-    justify-content:space-between;
+.signin-form h3 {
+    color: #34b9b5;
 }
+
+.admin-table-header {
+    justify-content: space-between;
+}
+
     .admin-table-header h4 {
         color: #34b9b5;
     }
-    .modal-title h5{
-        color: #34b9b5;
-    }
+
+.modal-title h5 {
+    color: #34b9b5;
+}
 
 .AdminBg {
     background-image: url('../images/pexels-erik-mclean-6159732.jpg');
-     background-attachment: fixed;
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -612,6 +641,7 @@ w-90 {
 .lh-condensed {
     line-height: 1.25;
 }
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -627,9 +657,10 @@ w-90 {
     }
 }
 
-.DateAndTimeAdmin{
-    color:white;
+.DateAndTimeAdmin {
+    color: white;
 }
+
 .list-group-item {
     position: relative;
 }
@@ -643,19 +674,20 @@ w-90 {
     border-radius: 50%;
 }
 
-.img-thumbnail{
-    width:200px;
+.img-thumbnail {
+    width: 200px;
 }
 
 .basket-check {
-   background-color: #c2c2c27d;
+    background-color: #c2c2c27d;
 }
-.basket-dropdown-menu{
-    width:270px;
+
+.basket-dropdown-menu {
+    width: 270px;
 }
 
 .search-btn {
-    position:absolute;
+    position: absolute;
 }
 /*#slider-div {
     display: flex;
@@ -663,37 +695,22 @@ w-90 {
     margin-top: 30px;
 }*/
 
-    #slider-div > div {
-        margin: 8px;
-    }
+#slider-div > div {
+    margin: 8px;
+}
 
 .slider-label {
     position: absolute;
     background-color: #eee;
     padding: 4px;
-    font-size:12px;
+    font-size: 12px;
 }
 
 
-.sidebar-filter {
+.sidebar-filter-gallery {
     background-color: #e8e8e8 !important;
-   
 }
-/*.heart {
-    display: inline-block;
-    width: 10px;linear-heart
-    height: 10px;
-    background: linear-gradient(to bottom right, black 50%, transparent 50%) no-repeat;
-    transform: rotate(-45deg);
 
-}*/
-/*.linear-heart {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(to bottom right, black 50%, transparent 50%) no-repeat;
-    transform: rotate(-45deg);
-}*/
 #heart {
     color: grey;
     font-size: 20px;
@@ -702,4 +719,10 @@ w-90 {
     #heart.red {
         color: red;
     }
+
+.col-md-4 form-group {
+    width: 280px;
+}
+
+
 

@@ -5,62 +5,81 @@
 
 @model ArtGalleryApp.Models.DataViewModel.SignupViewModel
 
+
 <div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
-    <div class="Carouselcontainer w-30 h-30 bg-white p-5">
-        <form class="signin-form form-check w-80 ml-5 " asp-controller="home" asp-action="Signup" method="post">
+    <div class="Carouselcontainer  bg-white p-5 pt-5 pb-5 d-flex justify-content-around">
+
+        <form class="signin-form form-check " asp-controller="home" asp-action="Signup" method="post">
             <h3> Create Your Account</h3>
-            <div class="form-group">
-                <label asp-for="FirstName"></label>
-                <input  class="form-control" asp-for="FirstName" placeholder="Enter First Name...">
-                <span style="color:darkred" asp-validation-for="FirstName"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName"></label>
-                <input  class="form-control" asp-for="LastName" placeholder="Enter Last Name...">
-                <span style="color:darkred" asp-validation-for="LastName"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone"></label>
-                <input  class="form-control" asp-for="Phone" placeholder="Enter email...">
-                <span style="color:darkred" asp-validation-for="Phone"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input type="email" class="form-control" asp-for="Email" placeholder="Enter email...">
-                <span style="color:darkred" asp-validation-for="Email"></span>
+
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input class="form-control" asp-for="FirstName" placeholder="Enter First Name...">
+                        <span style="color:darkred" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input class="form-control" asp-for="LastName" placeholder="Enter Last Name...">
+                        <span style="color:darkred" asp-validation-for="LastName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <input class="form-control" asp-for="Phone" placeholder="Enter email...">
+                        <span style="color:darkred" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label asp-for="Email"></label>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Enter email...">
+                        <span style="color:darkred" asp-validation-for="Email"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input class="form-control" asp-for="Password" placeholder="Enter password...">
+                        <span style="color:darkred" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword"></label>
+                        <input class="form-control" asp-for="ConfirmPassword" placeholder="Confirm password">
+                        <span style="color:darkred" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+
+                    
+                        <div class="form-group d-flex have-account">
+                            <label style="font-size:12px" class="mr-2 mt-1">already have an account? </label>
+                            <a asp-controller="Home" asp-action="Signin" class="sign-in-link"> Sign In</a>
+                        </div>
+                    <div class="signup-bottom-container text-center form-group">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <label for="CreatAccountWith" style="font-size:12px "> ..................... or create an account with ..................... </label>
+                        <div class="form-group sign-in-with justify-content-around">
+                            <a href="#" class="btn " style="background-color:#ff0000; color:white"><i class="bi bi-google"></i></a>
+                            <a href="#" class="btn" style="background-color: #3b5998; color:white"> <i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn " style="background-color:#4b4b4b; color:white"><i class="bi bi-apple"></i></a>
+                        </div>
+                        <div class="form-group d-flex have-account">
+                            <label style="font-size:12px" class="mr-2 mt-1">need help? </label>
+                            <a asp-action="Contact" class="sign-in-link" asp-action="Contact">contact us</a>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input class="form-control" asp-for="Password" placeholder="Enter password...">
-                <span style="color:darkred" asp-validation-for="Password"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input class="form-control" asp-for="ConfirmPassword" placeholder="Confirm password">
-                <span style="color:darkred" asp-validation-for="ConfirmPassword"></span>
-            </div>
-
-            <div class="signup-bottom-container text-center">
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-                <div class="form-group d-flex have-account">
-                    <h6>already have an account?</h6>
-                    <a asp-controller="Home" asp-action="Signin" class="sign-in-link"> Sign In</a>
-                </div>
-                <label for="CreatAccountWith">..............................or create an account with..............................</label>
-                <div class="form-group sign-in-with">
-                    <a href="#" class="btn btn-danger">Google</a>
-                    <a href="#" class="btn btn-primary">Facebook</a>
-                    <a href="#" class="btn btn-secondary">Apple</a>
-                </div>
-                <div class="form-group d-flex have-account">
-                    <h6>need help?</h6>
-                    <a asp-action="Contact" class="sign-in-link">contact us</a>
-                </div>
-            </div>
         </form>
+
+
     </div>
 </div>
+
 @section Scripts{
     <partial name="_ValidationScriptsPartial"></partial>
 }
