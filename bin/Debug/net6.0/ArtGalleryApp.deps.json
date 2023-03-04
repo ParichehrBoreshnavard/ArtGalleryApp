@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "ArtGalleryApp/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.11",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.11",
           "Microsoft.AspNetCore.Identity.UI": "6.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11",
@@ -72,14 +72,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/6.0.11": {
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/6.0.10": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "6.0.11"
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
-            "assemblyVersion": "6.0.11.0",
-            "fileVersion": "6.0.1122.52304"
+            "assemblyVersion": "6.0.10.0",
+            "fileVersion": "6.0.1022.47617"
           }
         }
       },
@@ -2398,12 +2398,12 @@
       "path": "microsoft.aspnetcore.cryptography.keyderivation/6.0.11",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.6.0.11.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/6.0.11": {
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/6.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yuR5/QxQ93+f5mJaEMVd8Yw6yImRFb7mV2eY7s3gKVwoMFP/umj9FKPMb3puJgXRLZOXf9cITkIXEK+q7hNtqA==",
-      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/6.0.11",
-      "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.6.0.11.nupkg.sha512"
+      "sha512": "sha512-QfoXqYywSKAal7dyZDpKABuFRd+eWXKXSnuLHNQNME0OAgQHDDHQLQc/ek5uK68vCRqx9QFq6mlXLh5NNxOEqQ==",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/6.0.10",
+      "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.6.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/6.0.11": {
       "type": "package",
