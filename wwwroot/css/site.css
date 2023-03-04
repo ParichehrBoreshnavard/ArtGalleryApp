@@ -333,14 +333,7 @@ admin-nav-link a {
 #apply-filter {
     margin-top: 20px;
 }
-<<<<<<< HEAD
 
-
-
-
-
-=======
->>>>>>> f1743db60ef54c44ab059d60522a7b1951437700
 .w-10 {
     width: 10% !important;
 }
@@ -735,9 +728,6 @@ w-90 {
 }
 
 
-
-<<<<<<< HEAD
-/* Set the perspective of the container */
 .card-team-container {
     perspective: 800px;
 }
@@ -830,10 +820,10 @@ w-90 {
     height: 90% !important;
 }
 
-.arrow-btn{
-    width:40px;
-    height:40px;
-=======
+.arrow-btn {
+    width: 40px;
+    height: 40px;
+}
 .filter-gray {
     filter: grayscale();
     -webkit-filter: grayscale(100%);
@@ -883,5 +873,5 @@ w-90 {
 
 .flipCard {
     transform: rotateY(180deg);
->>>>>>> f1743db60ef54c44ab059d60522a7b1951437700
+
 }
