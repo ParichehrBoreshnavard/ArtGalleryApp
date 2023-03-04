@@ -1,7 +1,4 @@
-﻿@using ArtGalleryApp.Models.DataViewModel;
-
-
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "_LayoutAdmin";
 }
@@ -41,7 +38,7 @@
             </thead>
           
              <tbody>
-                @foreach (ArtistsViewModel row in Model)
+                @foreach (var row in Model)
                 {
                     <tr>
 
