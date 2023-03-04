@@ -338,23 +338,6 @@ admin-nav-link a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .w-10 {
     width: 10% !important;
 }
@@ -722,7 +705,128 @@ w-90 {
 
 .col-md-4 form-group {
     width: 280px;
+   
+}
+
+
+.team-card-body {
+    position: absolute;
+    background-color: #42639290;
+    bottom: 30px;
+    color: white;
+    border: 1px solid black;
+    z-index:3
+}
+
+
+.team-header {
+    background-color: #42639279;
+}
+.card-img-top {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+.card-img-top:hover {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(1%);
 }
 
 
 
+/* Set the perspective of the container */
+.card-team-container {
+    perspective: 800px;
+}
+
+/* Set the initial state of the card */
+.card {
+    position: relative;
+    transition: 2s ease-in-out;
+    transform-style: preserve-3d;
+
+}
+
+/* Set the back face of the card */
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+  
+}
+
+/* Flip the card on hover */
+.card-team-container:hover .card {
+    transform: rotateY(180deg);
+    background-color: #fff;
+}
+
+/* Show the back face of the card on hover */
+.card-team-container:hover .card-back {
+    transform: rotateY(180deg);
+}
+
+/* Style the team member card */
+
+.team-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+.card-description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+
+
+.w-10 {
+    width: 10% !important;
+}
+
+.w-20 {
+    width: 20% !important;
+}
+
+.w-30 {
+    width: 30% !important;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
+.h-40 {
+    width: 40% !important;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
+.w-85 {
+    width: 85% !important;
+}
+
+.h-80 {
+    height: 80% !important;
+}
+
+w-90 {
+    width: 90% !important;
+}
+
+.h-90 {
+    height: 90% !important;
+}
+
+.arrow-btn{
+    width:40px;
+    height:40px;
+}
