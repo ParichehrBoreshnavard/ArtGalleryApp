@@ -484,14 +484,17 @@ w-90 {
     top: 50%;
     bottom: 20%;
     border: 1px solid black;
-    /*background-color: rgb(33, 123, 126, 0.50);*/
-    background-color: rgba(93 98 102 / 62%);
+    background-color: rgb(33, 123, 126, 0.50);
     text-align: justify;
 }
 
+    .eventHeaderDesc p {
+        color: #FFE7A8;
+    }
+
 .eventHeaderTitle {
     position: absolute;
-    left: 10%;
+    left: 20%;
     top: 40%;
 }
 
@@ -529,12 +532,8 @@ w-90 {
     color: black;
     position: relative;
     z-index: 1;
-    /*right: 130px;*/
+    right: 130px;
 }
-    .buyTicketsBtn:hover {
-        background-color: #6c757d !important;
-        color: white !important;
-    }
 
 
 .eventSection_1:before {
@@ -555,7 +554,7 @@ w-90 {
 .eventSection1-1 {
     margin-right: auto;
     margin-left: auto;
-    background-color: white;
+    background-color: #abd3ce;
     border-bottom: 1px solid black;
 }
 
@@ -686,29 +685,15 @@ w-90 {
 
 .slider-label {
     position: absolute;
-    background-color: #e8e8e8;
-    /* padding: 4px; */
+    background-color: #eee;
+    padding: 4px;
     font-size: 12px;
-    color: #006da3;
-    letter-spacing: 1px;
-    margin-top: 3px;
-    top:742px;
 }
-.artistpage-text-desc {
-    background-color: black;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    color: white !important;
-    border: 1px solid white;
-}
-.card-text .card-artistpage-text {
-        color: white !important;
-    }
 
 
-    .sidebar-filter-gallery {
-        background-color: #e8e8e8 !important;
-    }
+.sidebar-filter-gallery {
+    background-color: #e8e8e8 !important;
+}
 
 #heart {
     color: grey;
@@ -739,14 +724,13 @@ w-90 {
     background-color: #42639279;
 }
 .card-img-top {
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
+    /*-webkit-filter: grayscale(100%);*/ /* Safari 6.0 - 9.0 */
+    /*filter: grayscale(100%);*/
 }
 .card-img-top:hover {
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(1%);
+    /*-webkit-filter: grayscale(100%);*/ /* Safari 6.0 - 9.0 */
+    /*filter: grayscale(1%);*/
 }
-
 
 
 .card-team-container {
@@ -756,9 +740,9 @@ w-90 {
 /* Set the initial state of the card */
 .card {
     position: relative;
-    transition: 1s ease-in-out;
+    transition: 2s ease-in-out;
     transform-style: preserve-3d;
-    cursor: pointer;
+
 }
 
 /* Set the back face of the card */
@@ -774,15 +758,15 @@ w-90 {
 }
 
 /* Flip the card on hover */
-/*.card-team-container:hover .card {
+.card-team-container:hover .card {
     transform: rotateY(180deg);
     background-color: #fff;
-}*/
+}
 
 /* Show the back face of the card on hover */
-/*.card-team-container:hover .card-back {
+.card-team-container:hover .card-back {
     transform: rotateY(180deg);
-}*/
+}
 
 /* Style the team member card */
 
@@ -797,11 +781,6 @@ w-90 {
     color: #555;
     margin-top: 10px;
     text-align: justify;
-    max-height: 58%;
-    height: 58%;
-    overflow: hidden;
-    margin-bottom:0px;
-
 }
 
 
@@ -858,7 +837,6 @@ w-90 {
 .filter-gray:hover {
     filter: none;
     -webkit-filter: grayscale(0%);
-    color:white;
 }
 
 
@@ -867,51 +845,51 @@ w-90 {
     perspective: 10px;
 }
 
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    /*    height: 100%;
+*/ text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
 
-#icon-box-flip {
+.flip-card-front, .flip-card-back {
+    /*position: absolute;*/
+    width: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    cursor: pointer;
 }
 
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: black;
+    transform: rotateY(180deg);
+    height: 100%;
+    position: absolute;
+    /*    top: 0;*/
+}
 
 .flipCard {
     transform: rotateY(180deg);
 
 }
-.card-social-media-google {
-    background-color: #ff0000;
-    color: white;
-    margin: 0 5px 0 0;
-}
 
-.card-social-media-facebook {
-    background-color: #3b5998;
-    color: white;
-    margin: 0 5px 0 0;
-    /*position: absolute;
-    bottom: 5%;
-    display: inline-flex;*/
-}
-.card-social-media-apple {
-    background-color: #555555;
-    color: white;
-    margin: 0 5px 0 0;
-}
-.card-social-media-google:hover {
-    background-color: #999999;
-    color: white;
-    filter: grayscale();
-    -webkit-filter: grayscale(100%);
-}
-
-.card-social-media-facebook:hover {
-    background-color: #999999;
-    color: white;
-    filter: grayscale();
-    -webkit-filter: grayscale(100%);
-}
-
-.flipCard {
-    transform: rotateY(180deg);
-
+.header-carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #7ad6e27d;
 }
