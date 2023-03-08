@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - ArtGalleryApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
-        
+
     <link href="~/css/StyleSheet.scss" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amatic+SC" />
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -38,15 +38,20 @@
                     <li class="nav-item" asp-controller="Home" asp-action="Artists">
                         <a class="nav-link text-white" asp-controller="Home" asp-action="Artists">ARTISTS</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">EVENTS</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Events">EVENT_1</a></li>
-                            <li><a class="dropdown-item" href="#">EVENT_2</a></li>
-                            <li><a class="dropdown-item" href="#">EVENT_3</a></li>
-                        </ul>
-                    </li>
+                    @if (Model != null && Model.lstEventMenu.Count != 0)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">EVENTS</a>
+                            <ul class="dropdown-menu">
+                                @for (int i = 0; i < Model.lstEventMenu.Count; i++)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Events" asp-route-id="@Model.lstEventMenu[i].EventId">@Model.lstEventMenu[i].Title</a></li>
+                                }
+                                @*  <li><a class="dropdown-item" href="#">EVENT_2</a></li>
+                                <li><a class="dropdown-item" href="#">EVENT_3</a></li>*@
+                            </ul>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Gallery">GALLERY</a>
                     </li>
@@ -58,18 +63,19 @@
                         <a class="nav-link text-white" asp-controller="Home" asp-action="Contact">CONTACT</a>
                     </li>
                 </ul>
-              
-                <li class="nav-item dropdown ">
-                     <a class="nav-link dropdown-toggle text-white ml-5" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="white" class="bi bi-bag-dash" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                        </svg>
-                        <span class="badge bg-secondary cart-icon-badge">3</span>
-                    </a>
-                    
-                    <div class="dropdown-menu basket-dropdown-menu" aria-labelledby="cartDropdown">
-                        <div class="nav-item p-3">
+                @if (Model == null || Model.islogin == true)
+                {
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-white ml-5" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="white" class="bi bi-bag-dash" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                            </svg>
+                            <span class="badge bg-secondary cart-icon-badge">3</span>
+                        </a>
+
+                        <div class="dropdown-menu basket-dropdown-menu" aria-labelledby="cartDropdown">
+                            <div class="nav-item p-3">
                                 <div class="row">
                                     <div class="col-12">
                                         <h6>Shopping Cart</h6>
@@ -87,16 +93,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
-                                    <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
+                                        <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
                                     </div>
                                     <div class="col-8">
                                         <p>Item 2</p>
                                         <p>Price: $20</p>
                                     </div>
                                 </div>
-                                 <div class="row">
+                                <div class="row">
                                     <div class="col-4">
-                                    <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
+                                        <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
                                     </div>
                                     <div class="col-8">
                                         <p>Item 3</p>
@@ -106,14 +112,15 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <hr />
-                                    <a asp-controller="Home" asp-action="Basket" class="btn btn-primary btn-block">Go to your basket</a>
+                                        <a asp-controller="Home" asp-action="Basket" class="btn btn-primary btn-block">Go to your basket</a>
                                     </div>
-                            
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                   
-                </li>
+
+                    </li>
+                }
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -122,17 +129,23 @@
                         </svg>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        @if (Model == null || Model.islogin == false)
+                                    {
                         <li><a class="dropdown-item" asp-controller="Home" asp-action="Signin">Sign In</a></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="MyAccount">My Account</a></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="MyGallery">My Gallery</a></li>
-                        <li><a class="dropdown-item" asp-controller="Home" asp-action="Signout">Sign Out</a></li>
+                        }
+                        @if (Model == null || Model.islogin==true)
+                        {
+                            <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index">My Account</a></li>
+                            @*<li><a class="dropdown-item" asp-controller="Home" asp-action="MyGallery">My Gallery</a></li>*@
+                            <li><a class="dropdown-item" asp-controller="Profile" asp-action="Logout">Sign Out</a></li>
+                        }
                     </ul>
                 </li>
 
             </div>
         </div>
     </nav>
-   
+
     <main role="main" class=" main">
         @RenderBody()
 
@@ -166,30 +179,30 @@
                         </li>
                     </ul>
                 </div>
-@*                <!--Grid column-->
+                @*                <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footerTitleContainer">
-                    <h5 class="text-uppercase mb-4">Assistance</h5>
+                <h5 class="text-uppercase mb-4">Assistance</h5>
 
-                    <ul class="list-unstyled">
-                        <li>
-                            <a asp-action="Contact" class="text-white">Contact</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Shipping Information</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Returns & Exchanges</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Payment</a>
-                        </li>
-                        <li class="nav-item" asp-controller="Home" asp-action="Artists">
-                            <a class="nav-link text-white" asp-controller="Home" asp-action="Testtt">Testtt</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Test">TEST</a>
-                        </li>
-                    </ul>
+                <ul class="list-unstyled">
+                <li>
+                <a asp-action="Contact" class="text-white">Contact</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Shipping Information</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Returns & Exchanges</a>
+                </li>
+                <li>
+                <a href="#!" class="text-white">Payment</a>
+                </li>
+                <li class="nav-item" asp-controller="Home" asp-action="Artists">
+                <a class="nav-link text-white" asp-controller="Home" asp-action="Testtt">Testtt</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Test">TEST</a>
+                </li>
+                </ul>
                 </div>*@
                 <!--Grid column-->
                 <!--Grid column-->
@@ -208,8 +221,8 @@
                             <a asp-action="ArtistRegistration" class="text-white">Artists registration</a>
                         </li>
 
-                     @*   <li>
-                            <a asp-action="UploadFile" class="text-white">Upload your artwork</a>
+                        @*   <li>
+                        <a asp-action="UploadFile" class="text-white">Upload your artwork</a>
                         </li>*@
                     </ul>
                 </div>
@@ -225,14 +238,14 @@
                         <li>
                             <a href="/#ourTeam" class="text-white">Our Team</a>
                         </li>
-       @*                 <li>
-                            <a href="#!" class="text-white">Volentiers</a>
+                        @*                 <li>
+                        <a href="#!" class="text-white">Volentiers</a>
                         </li>*@
                         @*<li>
-                            <a href="#sponsers" class="text-white">Sponsers</a>
+                        <a href="#sponsers" class="text-white">Sponsers</a>
                         </li>*@
                         @*<li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="AdminStartPage">Admin</a>
+                        <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="AdminStartPage">Admin</a>
                         </li>*@
                     </ul>
                 </div>

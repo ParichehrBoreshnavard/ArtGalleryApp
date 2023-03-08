@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class SigninViewModel
+    public class SigninViewModel:SiteMasterViewModel
     {
         public int Id { get; set; }
         [Required]

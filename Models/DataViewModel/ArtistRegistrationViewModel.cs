@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class ArtistRegistrationViewModel
+    public class ArtistRegistrationViewModel:SiteMasterViewModel
     {
 
         public int Id { get; set; }

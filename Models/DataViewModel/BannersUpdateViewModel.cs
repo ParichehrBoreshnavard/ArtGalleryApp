@@ -25,5 +25,9 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name ="Event:")]
         public int? EventId { get; set; }
         public string? EventTitle { get; set; }
+        public DateTime? StartEventDateTime { get; set; } = null;
+        public DateTime? EndEventDateTime { get; set; } = null;
+       
+
     }
 }

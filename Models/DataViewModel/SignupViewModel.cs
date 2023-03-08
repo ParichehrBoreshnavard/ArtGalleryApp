@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class SignupViewModel
+    public class SignupViewModel : SiteMasterViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -22,12 +22,12 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Required]
         [Display(Name = "Phone Number")]
         public string? Phone { get; set; }
-     
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         [MinLength(6)]
-        [RegularExpression(@"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$", ErrorMessage ="Use at least 6 character,at least one numbers and one capitals.")]
+        [RegularExpression(@"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$", ErrorMessage = "Use at least 6 character,at least one numbers and one capitals.")]
         public string? Password { get; set; }
         [Required]
         [DataType(DataType.Password)]

@@ -4,7 +4,10 @@ using ArtGalleryApp.Models.Data;
 using ArtGalleryApp.Models.DataViewModel;
 using ArtGalleryApp.Models.Enum;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Principal;
 
@@ -25,8 +28,120 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            SiteHomeViewModel model = new SiteHomeViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            model.about = dbSarv.About.Select(s => new AboutViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Description = s.Description,
+                ImgUrl = s.ImgUrl
+
+            }).ToList().FirstOrDefault();
+            if (model.about == null)
+            {
+                model.about = new AboutViewModel();
+            }
+            model.lstGallery = dbSarv.Gallery
+            .Include(s => s.artworkField)
+            .Include(s => s.medium)
+            .Include(s => s.style)
+            .Include(s => s.Artist)
+            .OrderByDescending(s => s.UploadDate).Take(6)
+            .ToList().Select(s => new GalleryUpdateViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Subject = s.Subject,
+                Artist = s.Artist.FirstName + " " + s.Artist.LastName,
+                artistid = s.Artist.Id,
+                ProduceYear = s.ProduceDate,
+                ProduceDate = s.ProduceDate,
+                Size = s.Size,
+                SoldDate = s.SoldDate,
+                Price = s.Price,
+
+                PublishDate = s.PublishDate,
+                UploadDate = s.UploadDate,
+                Inventory = s.Inventory,
+                Description = s.Description,
+                ImgUrl = s.ImgUrl,
+                StyleId = s.style.Id,
+                StyleName = s.style.Name,
+                MediumId = s.medium.Id,
+                MediumName = s.medium.Name,
+                ArtworkFieldId = s.artworkField.Id,
+                ArtworkFieldName = s.artworkField.Name,
+
+            }).ToList();
+            model.lstTeam = dbSarv.Users.Include(s => s.ArtistField_)
+            .Include(s => s.TeamMembers)
+            .Where(s => s.TeamMembers.Any(t => t.User_.Id == s.Id))
+            .ToList().Select(s => new CustomerUpdateViewModel
+            {
+                Id = s.Id,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                Description = s.Description,
+                PortfolioUrl = s.PortfolioUrl,
+                Country = s.Country,
+                ImgUrl = s.ImgUrl,
+                YearOfBirth = s.YearOfBirth,
+                Email = s.Email,
+                Phone = s.Phone,
+                ArtistFieldId = s.ArtistField_ == null ? (int?)null : s.ArtistField_.Id,
+                ArtistFieldName = s.ArtistField_ == null ? ("") : s.ArtistField_.Name,
+
+            }).ToList();
+
+            model.lstBanners = dbSarv.Banners.Include(s => s.Event_)
+                .Where(s => s.PublishStartDate <= DateTime.Now
+                &&
+                (s.PublishEndDate == null || s.PublishEndDate >= DateTime.Now)
+                )
+                .Select(s => new BannersUpdateViewModel
+                {
+                    Id = s.Id,
+                    ImgUrl = s.ImgUrl,
+                    SubDescription = s.SubDescription,
+                    EventTitle = s.Event_ == null ? "" : s.Event_.Title,
+                    EndEventDateTime = s.Event_ == null ? null : s.Event_.EndDate,
+                    StartEventDateTime = s.Event_ == null ? null : s.Event_.StartDate,
+                    PublishEndDate = s.PublishEndDate,
+                    PublishStartDate = s.PublishStartDate,
+                    Title = s.Event_ == null ? s.Title : s.Event_.Title,
+                    EventId = s.Event_ == null ? null : s.Event_.Id
+                }).ToList();
+            return View(model);
         }
+
+        private List<BannersUpdateViewModel> getMenuList()
+        {
+            return dbSarv.Banners.Include(s => s.Event_)
+                .Where(s =>
+                s.Event_ != null
+                &&
+                s.PublishStartDate <= DateTime.Now
+                &&
+                (s.PublishEndDate == null || s.PublishEndDate >= DateTime.Now)
+                )
+                .Select(s => new BannersUpdateViewModel
+                {
+                    Id = s.Id,
+                    ImgUrl = s.ImgUrl,
+                    SubDescription = s.SubDescription,
+                    EventTitle = s.Event_ == null ? "" : s.Event_.Title,
+                    EndEventDateTime = s.Event_ == null ? null : s.Event_.EndDate,
+                    StartEventDateTime = s.Event_ == null ? null : s.Event_.StartDate,
+                    PublishEndDate = s.PublishEndDate,
+                    PublishStartDate = s.PublishStartDate,
+                    Title = s.Event_ == null ? s.Title : s.Event_.Title,
+                    EventId = s.Event_ == null ? null : s.Event_.Id
+                }).ToList();
+        }
+
         public IActionResult Basket()
         {
             return View();
@@ -51,7 +166,11 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
-        public IActionResult Events()
+        //public IActionResult Events()
+        //{
+        //    return View();
+        //}
+        public IActionResult Events(int Id)
         {
             return View();
         }
@@ -63,11 +182,11 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
-        public IActionResult ArtistPage()
+        public IActionResult ArtistPage(int Id)
         {
             return View();
         }
-        public IActionResult ArtworkPage()
+        public IActionResult ArtworkPage(int Id)
         {
             return View();
         }
@@ -82,7 +201,53 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Contact()
         {
+            ContactViewModel model = new ContactViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
             return View();
+        }
+
+        private List<HistoryViewModel>? getOrderList()
+        {
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            if (UserIsLogin())
+            {
+                return dbSarv.OrderDetailes
+                   .Include(s => s.order)
+                   .Include(s => s.order.user)
+                   .Include(s => s.gallery)
+                   .Include(s => s.gallery.Artist)
+                   .Where(s => s.order.isBuy == false && s.order.user != null && s.order.user.Id == CurrentUserId)
+                   .ToList().Select(s => new HistoryViewModel
+                   {
+                       Id = s.Id,
+                       ArtistName = s.gallery.Artist.FirstName + " " + s.gallery.Artist.LastName,
+                       Artistid = s.gallery.Artist.Id,
+                       imgurl = s.gallery.ImgUrl,
+                       customerName = s.order.user.FirstName + " " + s.order.user.LastName,
+                       customerId = s.order.user.Id,
+                       galleryTitle = s.gallery.Title,
+                       galleryid = s.gallery.Id,
+                       soldDate = s.order.buyDate,
+                       Address = s.order.Address ?? "",
+                       unitNumber = s.order.UnitNumber ?? "",
+                       State = s.order.State ?? "",
+                       Price = s.price,
+                       Email = s.order.user.Email,
+                       City = s.order.City ?? "",
+                       postalCode = s.order.PortfolioUrl ?? ""
+
+
+                   }).ToList();
+            }
+            return new List<HistoryViewModel>();
+        }
+
+        private bool UserIsLogin()
+        {
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            return dbSarv.Users.Any(s => s.Id == CurrentUserId);
         }
 
         [HttpPost]
@@ -102,6 +267,7 @@ namespace ArtGalleryApp.Controllers
             newMessage.Body = contactViewModel.Body;
 
             dbSarv.SaveChanges();
+
             return Redirect("/Home/Contact");
 
         }
@@ -109,6 +275,9 @@ namespace ArtGalleryApp.Controllers
         {
             ArtistRegistrationViewModel model = new ArtistRegistrationViewModel();
             model.lstArtistField = dbSarv.ArtistField_.ToList();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
             return View(model);
         }
         [HttpPost]
@@ -143,32 +312,49 @@ namespace ArtGalleryApp.Controllers
                 roleUser.Role_ = dbSarv.Rols.First(s => s.Id == RoleValues.Artist);
 
                 dbSarv.SaveChanges();
+                LoginUser(artist.Id);
+
+                return Redirect("/");
             }
-            return Redirect("/Profile");
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            return View(model);
 
 
         }
         public IActionResult Signin()
         {
-            return View();
+            SigninViewModel model = new SigninViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            return View(model);
         }
         [HttpPost]
         public IActionResult Signin(SigninViewModel model)
         {
-            User? user = dbSarv.Users.FirstOrDefault(s => s.Email == model.Email && s.Password == model.Password);
+            User? user = dbSarv.Users.Include(s => s.RoleUsers).FirstOrDefault(s => s.Email == model.Email && s.Password == model.Password);
             if (user != null)
             {
                 LoginUser(user.Id);
-                return Redirect("/Profile");
+                if (dbSarv.RoleUser.Include(s => s.User_).Include(s => s.Role_).Any(s => s.Role_.Id == RoleValues.Admin && s.User_.Id == user.Id))
+                {
+                    return Redirect("/Profile");
+                }
+                return Redirect("/");
             }
             ViewBag.Error = "Email or Password incorrect.";
-            return View();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            return View(model);
         }
 
         private void LoginUser(int id)
         {
             HttpContext.Session.SetInt32("artGalleryuserid", id);
-         
+
         }
 
         public IActionResult Signup()
@@ -178,11 +364,11 @@ namespace ArtGalleryApp.Controllers
         [HttpPost]
         public IActionResult Signup(SignupViewModel signupViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Error = "There is an error in record information";
-                return View();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewBag.Error = "There is an error in record information";
+            //    return View();
+            //}
             User newAccount = new User();
             dbSarv.Users.Add(newAccount);
             newAccount.Email = signupViewModel.Email;
@@ -195,7 +381,8 @@ namespace ArtGalleryApp.Controllers
             userRole.Role_ = dbSarv.Rols.First(r => r.Id == RoleValues.Customer);
             dbSarv.RoleUser.Add(userRole);
             dbSarv.SaveChanges();
-            return Redirect("/Profile");
+            LoginUser(newAccount.Id);
+            return Redirect("/");
 
         }
 

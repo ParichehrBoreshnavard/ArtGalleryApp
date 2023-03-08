@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class ContactViewModel
+    public class ContactViewModel:SiteMasterViewModel
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required.")]

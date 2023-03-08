@@ -167,10 +167,11 @@
                     <a class="admin-nav-link " asp-controller="Team" asp-action="index">Team</a>
                 </li>
             </ul>
+            
+                <div class="divider mt-3 mb-3 border-bottom border-secondary"></div>
             }
             @if (ViewBag.Role == "Admin" || ViewBag.Role == "Artist")
             {
-                <div class="divider mt-3 mb-3 border-bottom border-secondary"></div>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item ">
                         <a class="admin-nav-link " asp-controller="Gallery" asp-action="index">Gallery</a>
@@ -203,8 +204,9 @@
                     <a class="admin-nav-link " asp-controller="Sold" asp-action="index">Sold History</a>
                 </li>
             </ul>
-            }
+           
             <div class="divider mt-3 mb-3 border-bottom border-secondary"></div>
+            }
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item ">
                     <a class="admin-nav-link " asp-controller="Order" asp-action="index">Orders</a>
