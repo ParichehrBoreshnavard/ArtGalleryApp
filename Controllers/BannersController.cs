@@ -33,7 +33,7 @@ namespace ArtGalleryApp.Controllers
         public IActionResult New() 
         {
             BannersViewModel bannersViewModel = new BannersViewModel();
-            bannersViewModel.lstEvent = db.Events_.Where(s=>s.EndDate>=DateTime.Now).ToList(); ;
+            bannersViewModel.lstEvent = db.Events_.Where(s=>s.EndDate>=DateTime.Now).ToList(); 
             return View(bannersViewModel);
         
 
@@ -55,7 +55,7 @@ namespace ArtGalleryApp.Controllers
                 newBanner.SubDescription= bannersViewModel.SubDescription;
                 newBanner.PublishStartDate= bannersViewModel.PublishStartDate;
                 newBanner.PublishEndDate= bannersViewModel.PublishEndDate;
-                newBanner.Event_ = db.Events_.FirstOrDefault(s => s.Id == bannersViewModel.EventId);
+                newBanner.Event_ = bannersViewModel.EventId == null ? null : db.Events_.FirstOrDefault(s => s.Id == bannersViewModel.EventId);
                 newBanner.ImgUrl= await UploadImg(bannersViewModel.UploadImgUrl,"Banners");
                 db.SaveChanges();
                 return Redirect("/Banners");
@@ -66,11 +66,59 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id )
         {
-            return View();
+            BannersUpdateViewModel? bannersViewModel = db.Banners.Where(s => s.Id == Id)
+                .Select(s => new BannersUpdateViewModel
+                {
+                    Id = s.Id,
+                    Title = s.Title,
+                    ImgUrl = s.ImgUrl,
+                    PublishEndDate = s.PublishEndDate,
+                    PublishStartDate = s.PublishStartDate,
+                    SubDescription = s.SubDescription,
+                    EventId = s.Event_ == null ? (int?)null : s.Event_.Id
+                }).ToList().FirstOrDefault();
+            if (bannersViewModel == null)
+                return Redirect("/Banners");
+            bannersViewModel.lstEvent =  db.Events_.Where(s => s.EndDate >= DateTime.Now||s.Id == bannersViewModel.EventId).ToList();
+            
+            return View(bannersViewModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(BannersUpdateViewModel bannersViewModel)
+        {
+            //if (bannersViewModel.UploadImgUrl == null)
+            //{
+            //    ViewBag.Error = "Image File is mandatory";
+            //    return View(bannersViewModel);
+            //}
+            //   if (ModelState.IsValid)
+            {
+                Banner newBanner = db.Banners.First(s => s.Id == bannersViewModel.Id);
+                
+                newBanner.Title = bannersViewModel.Title;
+                newBanner.SubDescription = bannersViewModel.SubDescription;
+                newBanner.PublishStartDate = bannersViewModel.PublishStartDate;
+                newBanner.PublishEndDate = bannersViewModel.PublishEndDate;
+                newBanner.Event_ = bannersViewModel.EventId ==null?(Event_?)null:db.Events_.FirstOrDefault(s => s.Id == bannersViewModel.EventId);
+                if(bannersViewModel.UploadImgUrl!=null)
+                    newBanner.ImgUrl = await UploadImg(bannersViewModel.UploadImgUrl, "Banners");
+                db.SaveChanges();
+                return Redirect("/Banners");
+
+            }
+            // return View(bannersViewModel);
+
         }
         public IActionResult Delete(int Id)
         {
-            return View(); 
+            Banner removeBanner = db.Banners.First(s => s.Id == Id);
+            if(removeBanner != null)
+            {
+                db.Banners.Remove(removeBanner);
+                db.SaveChanges();
+            }
+            return Redirect("/Banners");
         }
     }
 }

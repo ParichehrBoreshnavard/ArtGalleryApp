@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class Event_ViewModel
+    public class Event_ViewModel : MasterViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -36,7 +36,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Sub Event:")]
         public Collection<SubEvent> SubEvents { get; set; }
         [Display(Name = "Event Ticket Store Url:")]
-        public string UrlTicketStore { get; set; }
+        public string? UrlTicketStore { get; set; }
         [Display(Name = "Event Users:")]
         public Collection<EventUser> EventUsers { get; set; }
         

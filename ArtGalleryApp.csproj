@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.12" />
@@ -28,15 +29,26 @@
     <Folder Include="wwwroot\AdminAssessts\Banners\" />
     <Folder Include="wwwroot\AdminAssessts\About\" />
     <Folder Include="wwwroot\AdminAssessts\Artists\" />
+    <Folder Include="wwwroot\AdminAssessts\Blogs\" />
+    <Folder Include="wwwroot\AdminAssessts\Gallery\" />
+    <Folder Include="wwwroot\AdminAssessts\SubEvents\" />
     <Folder Include="wwwroot\ArtistsField\" />
     <Folder Include="wwwroot\AdminAssessts\Events\" />
     <Folder Include="wwwroot\Event_\" />
     <Folder Include="wwwroot\Blog\" />
     <Folder Include="wwwroot\Artist\" />
+    <Folder Include="wwwroot\AdminAssessts\Users\" />
     <Folder Include="wwwroot\Style\Medium\" />
     <Folder Include="wwwroot\ArtworkField\" />
     <Folder Include="wwwroot\Contact\" />
     <Folder Include="wwwroot\Style\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Favorites\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

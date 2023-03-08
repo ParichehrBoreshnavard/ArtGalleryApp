@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Update";
+    Layout = "_LayoutAdmin";
+}
+
+@model ArtGalleryApp.Models.DataViewModel.BlogUpdateViewModel
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-90 h-90 bg-white  p-3 d-flex">
+        <form class="register-form ml-2 form-check " asp-action="Update"
+              asp-controller="Blog"
+              method="post" enctype="multipart/form-data">
+            <h3>Update Blog</h3>
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="WrittenDate"></label>
+                        <input type="date" class="form-control" asp-for="WrittenDate" disabled>
+                        <span style="color:darkred" asp-validation-for="WrittenDate"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input class="form-control" asp-for="Title" placeholder="Enter title...">
+                        <span style="color:darkred" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Author"></label>
+                        <input class="form-control" asp-for="Author" placeholder="Enter Author...">
+                        <span style="color:darkred" asp-validation-for="Author"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Summary"></label>
+                        <textarea rows="3" class="form-control" asp-for="Summary" placeholder="Enter Summary..."></textarea>
+                        <span style="color:darkred" asp-validation-for="Summary"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UploadImgUrl"></label>
+                        <input class="form-control-file" asp-for="UploadImgUrl">
+                        <span style="color:darkred" asp-validation-for="UploadImgUrl"></span>
+                        <span style="color:darkred">@Model.ErrorMessagePage</span>
+
+                    </div>
+                    <img class="w-100 position-relative" src="@Model.ImgUrl" />
+
+
+
+                </div>
+
+                <div class="col-md-6 position-relative">
+                    <div class="form-group">
+                        <label asp-for="Article"></label>
+                        <textarea rows="14" class="form-control" asp-for="Article" placeholder="Enter  Article..."></textarea>
+                        <span style="color:darkred" asp-validation-for="Article"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UploadDescriptionUrl"></label>
+                        <input class="form-control-file" asp-for="UploadDescriptionUrl">
+                        <span style="color:darkred" asp-validation-for="UploadDescriptionUrl"></span>
+                        <span style="color:darkred">@Model.ErrorMessagePage</span>
+
+                    </div>
+                    <img class="w-100 position-relative" src="@Model.ImgDescription" />
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

@@ -12,7 +12,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Index()
         {
-            List<AboutViewModel> about = db.About.Select(s => new AboutViewModel
+            AboutViewModel? about = db.About.Select(s => new AboutViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -20,8 +20,12 @@ namespace ArtGalleryApp.Controllers
                 ImgUrl = s.ImgUrl
                 //lstTeam = s.Team_ == null ? "" : s.Team_.FirstName,
 
-            }).ToList();
-
+            }).ToList().FirstOrDefault();
+            if(about ==null)
+            {
+                about = new AboutViewModel();
+                
+            }
             return View(about);
         }
         public IActionResult New()
@@ -32,23 +36,41 @@ namespace ArtGalleryApp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> New(AboutViewModel aboutViewModel)
+        public async Task<IActionResult> Index(AboutViewModel aboutViewModel)
         {
-            if (aboutViewModel.UploadImgUrl == null)
-            {
-                ViewBag.Error = "Image File is mandatory";
-                return View(aboutViewModel);
-            }
+            //if (aboutViewModel.UploadImgUrl == null)
+            //{
+            //    ViewBag.Error = "Image File is mandatory";
+            //    return View(aboutViewModel);
+            //}
             //   if (ModelState.IsValid)
             {
-                About newAboutUs = new About();
-                db.About.Add(newAboutUs);
+                About? newAboutUs = db.About.FirstOrDefault();
+                if (newAboutUs == null)
+                {
+                    newAboutUs = new About();
+                    db.About.Add(newAboutUs);
+
+                }
                 newAboutUs.Title = aboutViewModel.Title;
                 newAboutUs.Description = aboutViewModel.Description;
                 //newAboutUs.Team_ = db.Teams.FirstOrDefault(s => s.Id == TeamViewModel.TeamId);
-                newAboutUs.ImgUrl = await UploadImg(aboutViewModel.UploadImgUrl, "About");
+                if (aboutViewModel.UploadImgUrl != null)
+                {
+                    newAboutUs.ImgUrl = await UploadImg(aboutViewModel.UploadImgUrl, "About");
+                }
                 db.SaveChanges();
-                return Redirect("/About");
+
+                AboutViewModel about = new AboutViewModel();
+
+                about.Id = newAboutUs.Id;
+                about.Title = newAboutUs.Title;
+                about.Description = newAboutUs.Description;
+                about.ImgUrl = newAboutUs.ImgUrl==null?"": newAboutUs.ImgUrl;
+                about.statusOfPage = "success";
+               
+
+                return View(about);
 
             }
             // return View(aboutViewModel);
@@ -60,7 +82,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Delete(int Id)
         {
-            About about = db.About.FirstOrDefault(s => s.Id == Id);
+            About? about = db.About.FirstOrDefault(s => s.Id == Id);
             if (about != null)
             {
                 db.About.Remove(about);

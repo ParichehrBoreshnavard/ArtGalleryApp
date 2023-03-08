@@ -21,10 +21,12 @@
                         <input type="text" class="form-control" asp-for="LastName" placeholder="Enter last name...">
                         <span style="color:darkred" asp-validation-for="FirstName"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="ArtistField_"></label>
-                        <input type="text" class="form-control" asp-for="ArtistField_" placeholder="Enter your field...">
-                        <span style="color:darkred" asp-validation-for="ArtistField_"></span>
+                     <div class="form-group">
+                        <label asp-for="ArtistFieldId"></label>
+                        <select asp-for="ArtistFieldId" asp-items="@(new SelectList(Model.lstArtistField,"Id","Name"))" class="form-control">
+                            <option>Artist Field</option>
+                        </select>
+                        <span style="color:darkred" asp-validation-for="ArtistFieldId"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for=YearOfBirth>Year of Birth</label>

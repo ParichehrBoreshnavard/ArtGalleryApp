@@ -5,7 +5,7 @@ namespace ArtGalleryApp.Models.Data
     public class TeamMember
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

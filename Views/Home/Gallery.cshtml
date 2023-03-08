@@ -539,24 +539,29 @@
                 </div>
                 <div class="divider mt-5 mb-4 border-bottom border-secondary"></div>
 
-                <label class="cboLstMedium" style="color:#2c2c2c">PRICE</label>
+                <div class="form-group">
+                <label class="cboLstMedium" style="color:#2c2c2c">PRICE ( $ )</label>
                 <div id="slider-outer-div">
                     <div id="slider-max-label" class="slider-label"></div>
                     <div id="slider-min-label" class="slider-label"></div>
                     <div id="slider-div">
-                        <div>50 $</div>
+                        @* emonet :
+
+                        <div class="min-slider-handle">50 $</div>*@
+                        @*<div>50 $</div>*@
                         <div>
-                            <input id="ex2" type="text" data-slider-min="1"
-                                   data-slider-max="10000" data-slider-value="[50,300]"
-                                   data-slider-tooltip="hide" />
+                            <input id="ex2" type="text" data-slider-min="50"
+                                   data-slider-max="1000" data-slider-value="[50,1000]"
+                                   data-slider-tooltip="hide"  />
                         </div>
-                        <div>2000 $</div>
+                        @*<div>1000 $</div>*@
                     </div>
                 </div>
-                <div class="price-filter-control">
+                    </div>
+               @* <div class="price-filter-control">
                     <input type="number" class="form-control w-50 pull-left mb-2" value="50" id="price-min-control">
-                    <input type="number" class="form-control w-50 pull-right" value="150" id="price-max-control">
-                </div>
+                    <input type="number" class="form-control w-50 pull-right" value="1000" id="price-max-control">
+                </div>*@
 
                 <div class="divider mt-5 mb-4 border-bottom border-secondary"></div>
                 <button type="button" class="btn btn-block btn-outline-success">Apply Filters</button>
@@ -581,7 +586,7 @@
             const slider = $(`#slider-div .${lbl}-slider-handle`);
             const rect = slider[0].getBoundingClientRect();
             label.offset({
-                top: rect.top - 30,
+                top: rect.top + 420,
                 left: rect.left
             });
         }

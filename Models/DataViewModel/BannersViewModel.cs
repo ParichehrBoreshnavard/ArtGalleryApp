@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class BannersViewModel
+    public class BannersViewModel:MasterViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -13,7 +13,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string? SubDescription { get; set; }
         [Required]
         [Display(Name = "Publish Start Date")]
-        public DateTime PublishStartDate { get; set; }
+        public DateTime PublishStartDate { get; set; }=DateTime.Now;
         [Display(Name = "Publish End Date")]
         public DateTime? PublishEndDate { get; set; }
         [Display(Name = "Upload Image")]

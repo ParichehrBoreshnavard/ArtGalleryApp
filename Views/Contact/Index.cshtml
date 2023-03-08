@@ -23,26 +23,29 @@
                     <th>Email</th>
                     <th>Subject</th>
                     <th>Body</th>
-                    <th>Response</th>
+                    @*<th>Response</th>*@
                     <td>Action</td>
                 </tr>
             </thead>
             <tbody>
 
-                @foreach(var row in Model){
+                @foreach (var row in Model)
+                {
 
-                <tr>
+                    <tr>
 
-                    <td>@row.Name</td>
-                    <td>@row.Email</td>
-                    <td>@row.Subject</td>
-                    <td>@row.Body</td>
-                    <th>@row.Response</th>
-                    <td>
-                        <a style="background-color: #193C8D" class="btn btn-success" asp-controller="Cantact" asp-action="New">Response</a>
-                        <a class="btn btn-danger btn-sm" asp-action="delete"  asp-controller="Contact" asp-route-id="@row.Id">Delete</a>
-                    </td>
-                </tr>
+                        <td>@row.Name</td>
+                        <td>@row.Email</td>
+                        <td>@row.Subject</td>
+                        <td>@row.Body</td>
+                        @*<th>@row.Response</th>*@
+                        <td>
+                            @*<a style="background-color: #193C8D" class="btn btn-success" asp-controller="Cantact" asp-action="New">Response</a>*@
+
+                            <a class="btn btn-danger btn-sm" onclick="if(!confirm('Are you sure to remove this record?'))return false;" asp-action="Delete" asp-controller="Contact" asp-route-id="@row.Id">Delete</a>
+
+                        </td>
+                    </tr>
                 }
 
             </tbody>

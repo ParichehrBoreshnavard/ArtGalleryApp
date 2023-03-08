@@ -46,6 +46,7 @@ namespace ArtGalleryApp.Models.Data
         public Collection<RoleUser> RoleUsers { get; set; }
         [Required]
         public Collection<TeamMember> TeamMembers { get; set; }
+        ICollection<LikeGallery> likeGalleries { get; set; }
 
     }
 }

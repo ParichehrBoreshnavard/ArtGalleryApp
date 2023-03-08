@@ -13,7 +13,7 @@
             <div class=" mb-3 mt-3 mt-md-0 mb-md-0">
                 <h4>Event Table</h4>
             </div>
-            <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
+  @*          <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
                 <label class="mr-2">Sort by:</label>
                 <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
@@ -22,7 +22,7 @@
                     <a class="dropdown-item" href="#">Price Ascending</a>
                     <a class="dropdown-item" href="#">Best Selling</a>
                 </div>
-            </div>
+            </div>*@
         </div>
         <a style="background-color: #193C8D" class="btn btn-success" asp-controller="Event_" asp-action="New">Add Event</a>
 
@@ -53,7 +53,9 @@
                         
                         <td>
                             <a class="btn btn-primary btn-sm" asp-action="Update" asp-controller="Event_" asp-route-id="@row.Id">Update</a>
-                            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <a class="btn btn-danger btn-sm" onclick="if(!confirm('Are you sure to remove this record?'))return false;" asp-action="Delete" asp-controller="Event_" asp-route-id="@row.Id">Delete</a>
+
+                     
                         </td>
                     </tr>
                 }

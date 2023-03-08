@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "New";
+    Layout = "_LayoutAdmin";
+}
+
+@model ArtGalleryApp.Models.DataViewModel.BannersUpdateViewModel
+
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-90 h-90 bg-white  p-3 d-flex">
+        <form class="register-form ml-2 form-check " asp-action="Update" asp-controller="Banners" method="post" enctype="multipart/form-data">
+            <h3>Update Informations</h3>
+            <div class="row">
+                <input type="hidden" asp-for="Id" />
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input class="form-control" asp-for="Title" placeholder="Enter Banner name...">
+                        <span style="color:darkred" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SubDescription"></label>
+                        <input class="form-control" asp-for="SubDescription" placeholder="Enter description...">
+                        <span style="color:darkred" asp-validation-for="SubDescription"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublishStartDate"></label>
+                        <input class="form-control" asp-for="PublishStartDate" placeholder="Enter the publish start date...">
+                        <span style="color:darkred" asp-validation-for="PublishStartDate"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublishEndDate"></label>
+                        <input class="form-control" asp-for="PublishEndDate" placeholder="Enter the publish end date...">
+                        <span style="color:darkred" asp-validation-for="PublishEndDate"></span>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6 position-relative">
+                    <div class="form-group">
+                        <label asp-for="UploadImgUrl"></label>
+                        <input type="file" class="form-control-file" asp-for="UploadImgUrl">
+                        <span style="color:darkred" asp-validation-for="UploadImgUrl"></span>
+                        <span style="color:darkred">@ViewBag.Error</span>
+                    </div>
+                    <img class="w-100 position-relative" src="@Model.ImgUrl" />
+                    <div class="form-group">
+                        <label asp-for="EventId"></label>
+                        <select asp-for="EventId" asp-items="@(new SelectList(Model.lstEvent,"Id","Title"))" class="form-control">
+                            <option value="">select Event</option>
+                        </select>
+                        <span style="color:darkred" asp-validation-for="EventId"></span>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

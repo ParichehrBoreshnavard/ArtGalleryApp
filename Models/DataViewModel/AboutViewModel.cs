@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class AboutViewModel
+    public class AboutViewModel:MasterViewModel
     {
         public int Id { get; set; }
         
@@ -16,7 +16,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Image Url")]
         public string ImgUrl { get; set; }
         [Display(Name = "Upload Image")]
-        public IFormFile UploadImgUrl { get; set; }
+        public IFormFile? UploadImgUrl { get; set; }
         public List<TeamMember> lstTeam { get; set; }
         [Display(Name = "Team:")]
         public int? TeamId { get; set; }

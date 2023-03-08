@@ -10,7 +10,7 @@ namespace ArtGalleryApp.Models.Data
         public string Title { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
-        public string Artist { get; set; }
+        public User Artist { get; set; }
         public  ArtworkField artworkField { get; set; }
         public Medium medium { get; set; }
         public string Image { get; set; }
@@ -30,6 +30,9 @@ namespace ArtGalleryApp.Models.Data
         public int Inventory { get; set; } = 0;
      
         public string ImgUrl { get; internal set; }
-      
+        public ICollection<LikeGallery> likeGalleries { get; set; }
+
+        public ICollection<OrderDetaile> OrderDetailes { get; set; }
+
     }
 }

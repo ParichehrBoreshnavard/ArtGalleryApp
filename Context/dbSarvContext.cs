@@ -40,8 +40,12 @@ namespace ArtGalleryApp.Context
         public DbSet<General> Generals { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Artists> Artists { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<LikeGallery> LikeGalleries { get; set; }
+        public DbSet<OrderDetaile> OrderDetailes { get; set; }
         public IEnumerable<object> Artist { get; internal set; }
         public IEnumerable<object> Event_ { get; internal set; }
         public IEnumerable<object> Team_ { get; internal set; }
+       
     }
 }

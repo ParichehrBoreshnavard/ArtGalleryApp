@@ -2,7 +2,7 @@
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class BlogViewModel
+    public class BlogViewModel : MasterViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -12,12 +12,17 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Required]
         public string Article { get; set; }
         [Required]
-        public DateTime WrittenDate { get; set; }
+        public DateTime WrittenDate { get; set; } = DateTime.Now;
         [Required]
         public string Author { get; set; }
         [Required]
+        [Display(Name = "Upload Poster")]
+        public IFormFile? UploadImgUrl { get; set; }
         public string ImgUrl { get; set; }
+
         [Required]
+        [Display(Name = "Upload Blog Image")]
+        public IFormFile? UploadDescriptionUrl { get; set; }
         public string ImgDescription { get; set; }
     }
 }

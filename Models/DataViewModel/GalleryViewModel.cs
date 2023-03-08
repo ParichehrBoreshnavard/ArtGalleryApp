@@ -1,9 +1,11 @@
 ﻿using ArtGalleryApp.Models.Data;
+using ArtGalleryApp.Models.Enum;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace ArtGalleryApp.Models.DataViewModel
 {
-    public class GalleryViewModel
+    public class GalleryViewModel:MasterViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -13,7 +15,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Artwork Name:")]
         public string Subject { get; set; }
         [Required]
-        [Display (Name="Statement")]
+        [Display (Name= "Description")]
         [MaxLength(400)]
         public string Description { get; set; }
         [Required]
@@ -27,10 +29,11 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Medium:")]
 
         public string Medium { get; set; }
+
+        public IFormFile UploadImgUrl { get; set; }
         [Required]
-        [Display(Name = "Imsge File")]
-        [FileExtensions]
-        public string ImgUrl { get; internal set; }
+        [Display(Name = "Upload Image")]
+        public string ImgUrl { get;  set; }
         [Required]
         [Display(Name = "Style:")]
 
@@ -44,23 +47,20 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Required]
         [Display(Name = "Price:")]
         public string Price { get; set; }
-        [Display(Name = "Produce Year:")]
+        [Display(Name = "Sold Date:")]
         public DateTime? SoldDate { get; set; }
         [Required]
-        [Display(Name = "Produce Year:")]
-        public bool Availability { get; set; } = false;
-        [Display(Name = "Produce Year:")]
+
+        [Display(Name = "Publish Date:")]
         public DateTime? PublishDate { get; set; }
         [Required]
-        [Display(Name = "Produce Year:")]
+        [Display(Name = "Upload Date:")]
         public DateTime UploadDate { get; set; } = DateTime.Now;
         [Required]
-        [Display(Name = "Produce Year:")]
+        [Display(Name = "Produce Date:")]
         public DateTime ProduceDate { get; set; }
-        [Display(Name = "Produce Year:")]
+        [Display(Name = "Inventory")]
         public int? Inventory { get; set; } = 0;
-        public List<GalleryViewModel> lstGallery { get; set; }
-        public List<Event_> lstEvent { get; set; }
         public List<ArtworkField> lstArtworkField { get; set; }
         [Display(Name = "Artwork Field:")]
         public int? ArtworkFieldId { get; set; }
@@ -73,6 +73,11 @@ namespace ArtGalleryApp.Models.DataViewModel
         public List<Medium> lstMedium { get; set; }
         public int? MediumId { get; set; }
         public string MediumName { get; set; }
+        [Required]
+        [Display(Name = "Artist:")]
+        public int artistid { get; set; }
+        public List<CustomSelectList> lstArtist { get; set; }
+   
 
     }
 }

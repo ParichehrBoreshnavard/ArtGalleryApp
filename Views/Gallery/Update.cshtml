@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "New";
+    Layout = "_LayoutAdmin";
+}
+
+@model ArtGalleryApp.Models.DataViewModel.GalleryUpdateViewModel
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5   AdminBg   ">
+    <div class="Carouselcontainer w-90 h-90 bg-white  p-3 d-flex">
+        <form class="register-form ml-2 form-check " asp-action="Update" asp-controller="Gallery" method="post" enctype="multipart/form-data">
+            <h3>New Informations</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input class="form-control" asp-for="Title" placeholder="Enter artwork name...">
+                        <span style="color:darkred" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="artistid"></label>
+                        <select required asp-for="artistid" asp-items="@(new SelectList(Model.lstArtist,"Id","Name"))" class="form-control">
+                            <option value="">select Artist</option>
+                        </select>
+                        <span style="color:darkred" asp-validation-for="artistid"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subject"></label>
+                        <input class="form-control" asp-for="Subject" placeholder="Enter artwork subject...">
+                        <span style="color:darkred" asp-validation-for="Subject"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MediumId"></label>
+                        <select required asp-for="MediumId" asp-items="@(new SelectList(Model.lstMedium,"Id","Name"))" class="form-control">
+                            <option value="">select Medium</option>
+                        </select>
+                        <span style="color:darkred" asp-validation-for="MediumId"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ArtworkFieldId"></label>
+                        <select required asp-for="ArtworkFieldId" asp-items="@(new SelectList(Model.lstArtworkField,"Id","Name"))" class="form-control">
+                            <option value="">select Art Work Field</option>
+                        </select>
+                        <span style="color:darkred" asp-validation-for="ArtworkFieldId"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Size"></label>
+                        <input class="form-control" asp-for="Size" placeholder="Enter the size...">
+                        <span style="color:darkred" asp-validation-for="Size"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ProduceDate"></label>
+                        <input type="date" class="form-control" asp-for="ProduceDate" placeholder="Enter produce Date...">
+                        <span style="color:darkred" asp-validation-for="ProduceDate"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Inventory"></label>
+                        <input type="number" min="0" max="1000" class="form-control" asp-for="Inventory" placeholder="Enter Inventory...">
+                        <span style="color:darkred" asp-validation-for="Inventory"></span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-6 position-relative">
+
+                    <div class="form-group">
+                        <label asp-for="Price"></label>
+                        <input class="form-control" asp-for="Price" placeholder="Enter Inventory...">
+                        <span style="color:darkred" asp-validation-for="Price"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublishDate"></label>
+                        <input type="date" class="form-control" asp-for="PublishDate" placeholder="Enter upload date end date...">
+                        <span style="color:darkred" asp-validation-for="PublishDate"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StyleId"></label>
+                        <select required asp-for="StyleId" asp-items="@(new SelectList(Model.lstStyle,"Id","Name"))" class="form-control">
+                            <option value="">select Style</option>
+                        </select>
+                        <span style="color:darkred" asp-validation-for="StyleId"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImgUrl"></label>
+                        <input class="form-control-file" asp-for="UploadImgUrl">
+                        <span style="color:darkred" asp-validation-for="UploadImgUrl"></span>
+                        <span style="color:darkred">@Model.ErrorMessagePage</span>
+
+                    </div>
+                    <img class="w-100 position-relative" src="@Model.ImgUrl" />
+                </div>
+                
+
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea class="form-control row-3" asp-for="Description" placeholder="Enter description..."></textarea>
+                    <span style="color:darkred" asp-validation-for="Description"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+
+</div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}
