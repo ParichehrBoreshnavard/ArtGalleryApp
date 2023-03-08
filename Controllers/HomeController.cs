@@ -172,6 +172,7 @@ namespace ArtGalleryApp.Controllers
         //}
         public IActionResult Events(int Id)
         {
+            SiteArtistViewModel model = new SiteArtistViewModel();
             return View();
         }
         public IActionResult Artists()
@@ -184,11 +185,112 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult ArtistPage(int Id)
         {
-            return View();
+            SiteArtistViewModel model = new SiteArtistViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            var obj = dbSarv.Users.Include(s => s.ArtistField_)
+            .Include(s => s.RoleUsers)
+            .Where(s => s.Id == Id && s.RoleUsers.Any(t => t.Role_.Id == RoleValues.Artist))
+            .ToList().Select(s => new CustomerUpdateViewModel
+            {
+                Id = s.Id,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                Description = s.Description,
+                PortfolioUrl = s.PortfolioUrl,
+                Country = s.Country,
+                ImgUrl = s.ImgUrl,
+                YearOfBirth = s.YearOfBirth,
+                Email = s.Email,
+                Phone = s.Phone,
+                ArtistFieldId = s.ArtistField_ == null ? (int?)null : s.ArtistField_.Id,
+                ArtistFieldName = s.ArtistField_ == null ? ("") : s.ArtistField_.Name,
+
+            }).ToList().FirstOrDefault();
+            if (obj == null)
+                return Redirect("/");
+            model.artist = obj;
+            model.lstGallery = dbSarv.Gallery
+            .Include(s => s.artworkField)
+            .Include(s => s.medium)
+            .Include(s => s.style)
+            .Include(s => s.Artist)
+            .Where(s => s.Artist.Id == Id)
+            .OrderByDescending(s => s.UploadDate)
+            .ToList().Select(s => new GalleryUpdateViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Subject = s.Subject,
+                Artist = s.Artist.FirstName + " " + s.Artist.LastName,
+                artistid = s.Artist.Id,
+                ProduceYear = s.ProduceDate,
+                ProduceDate = s.ProduceDate,
+                Size = s.Size,
+                SoldDate = s.SoldDate,
+                Price = s.Price,
+
+                PublishDate = s.PublishDate,
+                UploadDate = s.UploadDate,
+                Inventory = s.Inventory,
+                Description = s.Description,
+                ImgUrl = s.ImgUrl,
+                StyleId = s.style.Id,
+                StyleName = s.style.Name,
+                MediumId = s.medium.Id,
+                MediumName = s.medium.Name,
+                ArtworkFieldId = s.artworkField.Id,
+                ArtworkFieldName = s.artworkField.Name,
+
+            }).ToList();
+            return View(model);
         }
         public IActionResult ArtworkPage(int Id)
         {
-            return View();
+            SiteGalleryViewModel model = new SiteGalleryViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            var obj = dbSarv.Gallery
+            .Include(s => s.artworkField)
+            .Include(s => s.medium)
+            .Include(s => s.style)
+            .Include(s => s.Artist)
+            .Where(s => s.Id == Id)
+           
+            .ToList().Select(s => new GalleryUpdateViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Subject = s.Subject,
+                Artist = s.Artist.FirstName + " " + s.Artist.LastName,
+                artistid = s.Artist.Id,
+                ProduceYear = s.ProduceDate,
+                ProduceDate = s.ProduceDate,
+                Size = s.Size,
+                SoldDate = s.SoldDate,
+                Price = s.Price,
+
+                PublishDate = s.PublishDate,
+                UploadDate = s.UploadDate,
+                Inventory = s.Inventory,
+                Description = s.Description,
+                ImgUrl = s.ImgUrl,
+                StyleId = s.style.Id,
+                StyleName = s.style.Name,
+                MediumId = s.medium.Id,
+                MediumName = s.medium.Name,
+                ArtworkFieldId = s.artworkField.Id,
+                ArtworkFieldName = s.artworkField.Name,
+
+
+            }).ToList().FirstOrDefault();
+            if (obj == null)
+                return Redirect("/");
+            model.gallery = obj;
+
+            return View(model);
         }
         public IActionResult Gallery()
         {

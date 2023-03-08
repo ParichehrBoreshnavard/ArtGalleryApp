@@ -2,10 +2,10 @@
     ViewData["Title"] = "Artwork Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model ArtGalleryApp.Models.DataViewModel.SiteGalleryViewModel
 <div id="ABOUT" class="container-fluid bg-black  ">
     <section class="p-5" style="padding-top:0">
-        <a href="ArtistPage" style="text-decoration:none">BACK</a><br /><br />
+        @*<a href="ArtistPage" style="text-decoration:none">BACK</a><br /><br />*@
         <h2 class="artistsTitle text-white">ARTWORK PAGE</h2>
         <div class="container w-100 h-100 bg-black mt-3">
 
@@ -14,27 +14,26 @@
                 <div class="row g-0 bg-black pl-6">
                     <div class="col-md-6">
                         <div class="card-body pt-0 mt-5">
-                            <h4 class="card-title artistsTitleCard">Artwork Name:</h4>
-                            <h6 class="card-title artistsTitleCard">Produce Year:</h6>
-                            <h6 class="card-title artistsTitleCard">Artist”s Name:</h6>
-                            <h6 class="card-title artistsTitleCard">Field:</h6>
-                            <h6 class="card-title artistsTitleCard">Style:</h6>
-                            <h6 class="card-title artistsTitleCard">Medium:</h6>
-                            <h6 class="card-title artistsTitleCard">Size:</h6><br />
+                            <h4 class="card-title artistsTitleCard">Artwork Name: @Model.gallery.Title</h4>
+                            <h6 class="card-title artistsTitleCard">Produce Year: @Model.gallery.ProduceDate.Year</h6>
+                            <h6 class="card-title artistsTitleCard">Artist”s Name: @Model.gallery.Artist</h6>
+                            <h6 class="card-title artistsTitleCard">Field: @Model.gallery.ArtworkFieldName</h6>
+                            <h6 class="card-title artistsTitleCard">Style: @Model.gallery.StyleName</h6>
+                            <h6 class="card-title artistsTitleCard">Medium: @Model.gallery.MediumName</h6>
+                            <h6 class="card-title artistsTitleCard">Size: @Model.gallery.Size</h6><br />
                             <div class="col-md-12 p-4 w-75" style="bottom:15px; margin-top:30px; margin-bottom:20px; color:white; border:0.5px solid white">
-                                <p class="card-text">
-                                    k’pok iihgh  [pooj h hggui lklk kpki hut7fc sssdc jkjoou9nu uh oiht  esr iuygliu;okpokok[o[poopopooj h hggui lklk kpki hut7fc sssdc jkjoou9nu uh \ok[o[poopo
-                                    ghjhsljjk;lkm zklm lk kjjb;jl;k’;m jkj kkopjpoii oisjhh; pokpokok[o[poopo[p klk klj jkm jopj opj jkpokok[o[popooj h hggui lklk kpki hut7fc sssdc jkjoou9nu uh \ok[o[poopopoo’pok iihgh  [pooj h hggui lklk kpki hut7fc  \ok[o[poopopoo.
+                                <p class="card-text" style="text-align:justify">
+                                    @Model.gallery.Description
                                 </p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                @*<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>*@
                             </div>
 
                         </div>
                     </div>
                     <div class="col-md-6 ">
-                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid rounded-start mt-5" alt="..." style="border:1px white solid">
+                        <img src="@Model.gallery.ImgUrl" class="img-fluid rounded-start mt-5" alt="..." style="border:1px white solid">
                         <div class="col-md-6 " style="display:flex;justify-content:space-between;align-items: flex-end;">
-                            <h6 class="card-title artistsTitleCard mt-3">Price: 1500 $</h6>
+                            <h6 class="card-title artistsTitleCard mt-3">Price: @Model.gallery.Price $</h6>
                             <button href="" style="float:right;
     color: white;
     border: 1px solid white;

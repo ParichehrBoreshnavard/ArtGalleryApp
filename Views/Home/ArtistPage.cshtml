@@ -3,10 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@model ArtGalleryApp.Models.DataViewModel.SiteArtistViewModel
 <div id="Artists" class="container-fluid bg-black  ">
     <section class="  p-5" style="padding-top:0">
-        <a href="Artists" style="text-decoration:none">BACK</a>
+        @*<a href="Artists" style="text-decoration:none">BACK</a>*@
         <h2 class="artistsTitle text-white">ARTIST PAGE</h2>
         <div class="container w-75 h-100 bg-black mt-3">
 
@@ -18,15 +18,15 @@
                     </div>
                     <div class="col-md-8 p-5">
                         <div class="card-body pt-0" style="padding-left:5%">
-                            <h4 class="card-title artistsTitleCard">Artist Name</h4>
-                            <h4 class="card-title artistsTitleCard">Field</h4>
-                            <h6 class="card-title artistsTitleCard">Year of Birth</h6>
-                            <h6 class="card-title artistsTitleCard">Nationality</h6>
+                            <h4 class="card-title artistsTitleCard">@Model.artist.FirstName @Model.artist.LastName</h4>
+                            <h4 class="card-title artistsTitleCard">Field : @Model.artist.ArtistFieldName</h4>
+                            <h6 class="card-title artistsTitleCard">Year of Birth : @(Model.artist.YearOfBirth == null ? "-" : @Model.artist.YearOfBirth.Value.Year.ToString())</h6>
+                            <h6 class="card-title artistsTitleCard">Nationality : @Model.artist.Country</h6>
                             <div class="col-md-12 p-5" style="margin-top:30px; margin-bottom:20px; color:white; border:1px solid white">
-                                <p class="card-text">This is a wider card This is a wider caThis is a wider caThis is a wider caThis is a wider caThis is a wider card with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentrd with supporting text below as a natural lead-in to additional contentwith supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <p class="card-text">@Model.artist.Description</p>
+                                @*<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>*@
                             </div>
-                            <a href="https://www.instagram.com/" class="artistsTitleCard float-lg-end">Artist Portfolio Link</a>
+                            <a href="@Model.artist.PortfolioUrl" class="artistsTitleCard float-lg-end">Artist Portfolio Link</a>
                         </div>
                     </div>
                 </div>
@@ -44,16 +44,33 @@
         <h2 style="color:white">Art Works</h2><br />
 
         <div class="row">
-
-            <div class="col-4 art-work-container-center">
-                <div class="card p-3" style="width: 80% ;background-color:#2e2e2e; color:white">
-                    <a href="ArtworkPage" class="mr-0 no-underline">
-                        <img src="~/images/raychan-kJQ6cDyodAM-unsplash.jpg" class="card-img-top" style="border:1px solid black" alt="...">
-                        <div class="card-body">
-                            <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
+            @for (int i = 0; i < Model.lstGallery.Count; i++)
+            {
+                <div class="col-4 art-work-container-center">
+                    <div onclick="window.location.href='/Home/ArtworkPage/@Model.lstGallery[i].Id';" style="cursor:pointer" class="card p-3" style="width: 80% ;background-color:#2e2e2e; color:white">
+                        <a href="ArtworkPage" class="mr-0 no-underline">
+                            <img src="@Model.lstGallery[i].ImgUrl" class="card-img-top" style="border:1px solid black" alt="...">
+                            <div class="card-body">
+                                <p class="card-text text-white">@Html.Raw(Model.lstGallery[i].Description.Length>100?(Model.lstGallery[i].Description.Substring(i,100)+"..."):Model.lstGallery[i].Description)</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
+            }
+
+
+
+            @*            <div class="col-4 art-work-container-center">
+
+            <div class="card p-3" style="width: 80%; background-color:#2e2e2e; color:white">
+            <a href="ArtworkPage" class="mr-0  no-underline">
+            <img src="~/images/pexels-steve-johnson-2422457.jpg" class="card-img-top" style="border:1px solid black" alt="...">
+            <div class="card-body text-white">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            </a>
+            </div>
+
             </div>
 
 
@@ -61,32 +78,16 @@
 
             <div class="col-4 art-work-container-center">
 
-                <div class="card p-3" style="width: 80%; background-color:#2e2e2e; color:white">
-                    <a href="ArtworkPage" class="mr-0  no-underline">
-                        <img src="~/images/pexels-steve-johnson-2422457.jpg" class="card-img-top" style="border:1px solid black" alt="...">
-                        <div class="card-body text-white">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-
+            <div class="card p-3" href="#ArtworkPage" style="width: 80%;background-color:#2e2e2e; color:white">
+            <a href="ArtworkPage" class="mr-0  no-underline">
+            <img src="~/images/pexels-steve-johnson-2422457.jpg" class="card-img-top" style="border:1px solid black" alt="...">
+            <div class="card-body text-white">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            </a>
             </div>
 
-
-
-
-            <div class="col-4 art-work-container-center">
-
-                <div class="card p-3" href="#ArtworkPage" style="width: 80%;background-color:#2e2e2e; color:white">
-                    <a href="ArtworkPage" class="mr-0  no-underline">
-                        <img src="~/images/pexels-steve-johnson-2422457.jpg" class="card-img-top" style="border:1px solid black" alt="...">
-                        <div class="card-body text-white">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
+            </div>*@
         </div>
 
 

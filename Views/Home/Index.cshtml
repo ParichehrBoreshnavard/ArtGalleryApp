@@ -133,9 +133,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card-body  ">
-                        <h5 class="card-title mt-3">@Model.about.Title</h5>
+                        <h5 class="card-title mt-3" style="color:white">@Model.about.Title</h5>
                         <div class="card-body  bg-white opacity-25 mt-3 mb-5">
-                            <p class="card-text">@Model.about.Description</p>
+                            <p class="card-text" style="color:white;text-align:justify" >@Model.about.Description</p>
                             @*<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>*@
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                     <!-- Team Member 1 -->
 
                     <div class="col-xl-3 col-md-6 mb-4 card-team-container">
-                        <div class="card border-0 p-3 shadow card">
+                        <div onclick="window.location.href='/Home/ArtistPage/@Model.lstTeam[i].Id';" style="cursor:pointer" class="card border-0 p-3 shadow card">
                             <img src="@Model.lstTeam[i].ImgUrl" class="card-img-top filter-gray" alt="...">
                             @*     <div class="team-card-body p-3 text-center ">
                         <h6 class="card-title mb-0 ">@Model.lstTeam[i].FirstName @Model.lstTeam[i].LastName</h6>
@@ -324,7 +324,7 @@
                                         </div>
                                         <div class="card-body text-white">
                                             <h5 class="card-title">@Model.lstGallery[i].Title</h5>
-                                            <p class="card-text">@Model.lstGallery[i].Description</p>
+                                            <p class="card-text">@Html.Raw(Model.lstGallery[i].Description.Length>100?(Model.lstGallery[i].Description.Substring(i,100)+"..."):Model.lstGallery[i].Description)</p>
 
                                         </div>
                                     </div>
