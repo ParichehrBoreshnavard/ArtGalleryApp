@@ -8,11 +8,12 @@ namespace ArtGalleryApp.Controllers
 {
     public class FavoritesController : AdminMasterController
     {
-        public FavoritesController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public FavoritesController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             List<HistoryViewModel> lst = db.LikeGalleries
            .Include(s => s.gallery)
            .Include(s => s.user)

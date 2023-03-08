@@ -10,11 +10,12 @@ namespace ArtGalleryApp.Controllers
 {
     public class GalleryController : AdminMasterController
     {
-        public GalleryController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public GalleryController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             List<GalleryViewModel> gallery = db.Gallery
             .Include(s => s.artworkField)
             .Include(s => s.medium)
@@ -54,6 +55,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult New()
         {
+            ViewBag.Role = setRole();
             GalleryViewModel galleryViewModel = new GalleryViewModel();
             galleryViewModel.lstArtworkField = db.ArtworkField_.ToList();
             galleryViewModel.lstMedium = db.Mediums.ToList();
@@ -74,6 +76,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> New(GalleryViewModel galleryViewModel)
         {
+            ViewBag.Role = setRole();
             if (galleryViewModel.UploadImgUrl == null)
             {
                 ViewBag.Error = "Image File is mandatory";
@@ -116,6 +119,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id)
         {
+            ViewBag.Role = setRole();
             GalleryUpdateViewModel? gallery = db.Gallery
             .Include(s => s.artworkField)
             .Include(s => s.medium)
@@ -175,6 +179,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(GalleryUpdateViewModel galleryViewModel)
         {
+            ViewBag.Role = setRole();
             //if (galleryViewModel.UploadImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -222,6 +227,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             Gallery? gallery = db.Gallery.FirstOrDefault(s => s.Id == Id);
             if (gallery != null)
             {

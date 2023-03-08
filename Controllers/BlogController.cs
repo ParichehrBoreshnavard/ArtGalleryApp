@@ -8,12 +8,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class BlogController : AdminMasterController
     {
-        public BlogController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public BlogController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             //read data from Event_ViewModel Then make the information to event_ db in event_ViewModel Format
             //, and read From db and assign information to new list;
 
@@ -38,6 +39,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult New()
         {
+            ViewBag.Role = setRole();
             BlogViewModel model = new BlogViewModel();
             return View(model);
 
@@ -46,6 +48,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> New(BlogViewModel model)
         {
+            ViewBag.Role = setRole();
             if (model.UploadDescriptionUrl == null || model.UploadImgUrl == null)
             {
                 model.ErrorMessagePage = "Image File is mandatory";
@@ -74,6 +77,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id)
         {
+            ViewBag.Role = setRole();
             BlogUpdateViewModel? obj = db.Blogs.Where(s => s.Id == Id).Select(s => new BlogUpdateViewModel
             {
 
@@ -99,6 +103,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(BlogUpdateViewModel model)
         {
+            ViewBag.Role = setRole();
             //if (event_ViewModel.UploadAboutImgUrl == null || event_ViewModel.UploadPosterImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -129,6 +134,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             var remove = db.Blogs.First(s => s.Id == Id);
             if (remove != null)
             {

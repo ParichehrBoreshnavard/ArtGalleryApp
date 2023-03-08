@@ -9,11 +9,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class ProfileController : AdminMasterController
     {
-        public ProfileController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public ProfileController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
+            
         }
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             if (lstCurrentuserRoles.Any(s => s.Role_.Id == RoleValues.Admin))
             {
                 AdminUpdateViewModel? obj = db.Users.Include(s => s.ArtistField_)
@@ -56,6 +58,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(AdminUpdateViewModel model)
         {
+            ViewBag.Role = setRole();
             //if (event_ViewModel.UploadAboutImgUrl == null || event_ViewModel.UploadPosterImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -95,6 +98,7 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Artist()
         {
+            ViewBag.Role = setRole();
             if (lstCurrentuserRoles.Any(s => s.Role_.Id == RoleValues.Admin))
             {
                 return Redirect("/Profile");
@@ -138,6 +142,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Artist(ArtistsUpdateViewModel model)
         {
+            ViewBag.Role = setRole();
             //if (event_ViewModel.UploadAboutImgUrl == null || event_ViewModel.UploadPosterImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -178,6 +183,7 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Information()
         {
+            ViewBag.Role = setRole();
             if (lstCurrentuserRoles.Any(s => s.Role_.Id == RoleValues.Admin))
             {
                 return Redirect("/Profile");
@@ -221,6 +227,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Information(CustomerUpdateViewModel model)
         {
+            ViewBag.Role = setRole();
             //if (event_ViewModel.UploadAboutImgUrl == null || event_ViewModel.UploadPosterImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -259,6 +266,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Logout()
         {
+            ViewBag.Role = setRole();
             LogoutUser();
             return Redirect("/");
 

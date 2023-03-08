@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "51mAf1z+ScVtNWeDG7JT656bGgfHgXuzzTg6DuUtXVc=",
+  "Hash": "ouuN3D4XyiuaY9g+O7deV2PiZht5HnGVkWtizKVr8tU=",
   "Source": "ArtGalleryApp",
   "BasePath": "_content/ArtGalleryApp",
   "Mode": "Default",
@@ -2276,6 +2276,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssessts\\Users\\UsersArtist233059522.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Users\\UsersArtist234411444.png",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/Users/UsersArtist234411444.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\Users\\UsersArtist234411444.png"
+    },
+    {
+      "Identity": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Users\\UsersArtist234702241.png",
+      "SourceId": "ArtGalleryApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\wwwroot\\",
+      "BasePath": "_content/ArtGalleryApp",
+      "RelativePath": "AdminAssessts/Users/UsersArtist234702241.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssessts\\Users\\UsersArtist234702241.png"
     },
     {
       "Identity": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\wwwroot\\AdminAssessts\\Users\\UsersArtist235133738.jpg",

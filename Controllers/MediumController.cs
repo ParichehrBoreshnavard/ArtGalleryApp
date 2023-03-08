@@ -8,12 +8,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class MediumController : AdminMasterController
     {
-        public MediumController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public MediumController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             //read data from mediumViewModel Then make the information to medium db in mediumViewModel Format
             //, and read From db and assign information to new list;
             MediumViewModel mediumViewModel = new MediumViewModel();
@@ -31,6 +32,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(MediumViewModel mediumViewModel)
         {
+            ViewBag.Role = setRole();
 
             //   if (ModelState.IsValid)
             {
@@ -46,8 +48,9 @@ namespace ArtGalleryApp.Controllers
         }
 
         public IActionResult Delete(int Id)
-             
-            {
+
+        {
+            ViewBag.Role = setRole();
             var mediumName = db.Mediums.FirstOrDefault(s => s.Id == Id);
             if (mediumName != null)
             {

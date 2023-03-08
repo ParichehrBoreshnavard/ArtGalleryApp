@@ -8,12 +8,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class SubEventController : AdminMasterController
     {
-        public SubEventController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public SubEventController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             //read data from Event_ViewModel Then make the information to event_ db in event_ViewModel Format
             //, and read From db and assign information to new list;
 
@@ -37,6 +38,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult New()
         {
+            ViewBag.Role = setRole();
             SubEvent_ViewModel obj = new SubEvent_ViewModel();
             obj.lst_events = db.Events_.ToList();
             return View(obj);
@@ -46,6 +48,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> New(SubEvent_ViewModel model)
         {
+            ViewBag.Role = setRole();
             if (model.UploadImgUrl == null)
             {
                 model.statusOfPage = "error";
@@ -76,6 +79,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id)
         {
+            ViewBag.Role = setRole();
             SubEvent_UpdateViewModel? obj = db.SubEvents.Include(s => s.Events_).Where(s => s.Id == Id).Select(s => new SubEvent_UpdateViewModel
             {
 
@@ -100,7 +104,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(SubEvent_UpdateViewModel model)
         {
-
+            ViewBag.Role = setRole();
             //   if (ModelState.IsValid)
             {
                 SubEvent? obj = db.SubEvents.FirstOrDefault(s => s.Id == model.Id);
@@ -126,6 +130,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             var remove = db.SubEvents.First(s => s.Id == Id);
             if (remove != null)
             {

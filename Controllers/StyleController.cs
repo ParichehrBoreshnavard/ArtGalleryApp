@@ -8,12 +8,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class StyleController : AdminMasterController
     {
-        public StyleController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public StyleController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             //read data from styleViewModel Then make the information to style db in styleViewModel Format
             //, and read From db and assign information to new list;
             StyleViewModel styleViewModel= new StyleViewModel();
@@ -31,7 +32,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(StyleViewModel styleViewModel)
         {
-
+            ViewBag.Role = setRole();
             //   if (ModelState.IsValid)
             {
                 Style newStyle = new Style();
@@ -47,6 +48,7 @@ namespace ArtGalleryApp.Controllers
      
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             var styleName = db.Styles.FirstOrDefault(s=>s.Id == Id);
             if (styleName != null) {
             db.Styles.Remove(styleName);

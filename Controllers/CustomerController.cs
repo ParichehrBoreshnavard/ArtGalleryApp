@@ -9,12 +9,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class CustomerController : AdminMasterController
     {
-        public CustomerController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public CustomerController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             List<CustomerUpdateViewModel> artist = db.Users.Include(s => s.ArtistField_)
                 .Include(s => s.RoleUsers)
                 .Where(s => s.RoleUsers.Any(t => t.Role_.Id == RoleValues.Customer))
@@ -37,6 +38,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult New()
         {
+            ViewBag.Role = setRole();
             CustomerViewModel obj = new CustomerViewModel();
             obj.lstArtistField = db.ArtistField_.ToList();
             return View(obj);
@@ -45,6 +47,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> New(CustomerViewModel model)
         {
+            ViewBag.Role = setRole();
             //if (event_ViewModel.UploadAboutImgUrl == null || event_ViewModel.UploadPosterImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -85,6 +88,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id)
         {
+            ViewBag.Role = setRole();
             CustomerUpdateViewModel? obj = db.Users.Include(s => s.ArtistField_)
                  .Include(s => s.RoleUsers)
                  .Where(s => s.Id == Id && s.RoleUsers.Any(t => t.Role_.Id == RoleValues.Customer))
@@ -115,6 +119,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(CustomerUpdateViewModel model)
         {
+            ViewBag.Role = setRole();
             //if (event_ViewModel.UploadAboutImgUrl == null || event_ViewModel.UploadPosterImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -148,6 +153,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             var remove = db.Users.FirstOrDefault(s => s.Id == Id);
             if (remove != null)
             {

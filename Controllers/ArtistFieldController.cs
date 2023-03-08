@@ -7,12 +7,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class ArtistFieldController : AdminMasterController
     {
-        public ArtistFieldController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public ArtistFieldController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             ArtistFieldViewModel artistFieldViewModel = new ArtistFieldViewModel();
 
 
@@ -30,7 +31,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(ArtistFieldViewModel artistFieldViewModel)
         {
-
+            ViewBag.Role = setRole();
             //   if (ModelState.IsValid)
             {
                 ArtistField newArtistField = new ArtistField();
@@ -46,6 +47,7 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             var artistFieldName = db.ArtistField_.FirstOrDefault(s => s.Id == Id);
             if (artistFieldName != null)
             {

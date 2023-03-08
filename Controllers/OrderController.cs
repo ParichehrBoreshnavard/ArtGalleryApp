@@ -8,11 +8,12 @@ namespace ArtGalleryApp.Controllers
 {
     public class OrderController : AdminMasterController
     {
-        public OrderController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public OrderController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             List<HistoryViewModel> lst = db.OrderDetailes
            .Include(s => s.order)
            .Include(s => s.order.user)
@@ -50,6 +51,7 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Detail(int Id)
         {
+            ViewBag.Role = setRole();
             HistoryViewModel? obj = db.OrderDetailes
            .Include(s => s.order)
            .Include(s => s.order.user)

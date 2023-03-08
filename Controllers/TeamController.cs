@@ -9,13 +9,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class TeamController : AdminMasterController
     {
-        public TeamController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public TeamController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment,IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
-
+            ViewBag.Role = setRole();
             TeamViewModel teamViewModel = new TeamViewModel();
 
             teamViewModel.lstTeam = db.Teams.Include(s => s.User_).Select(s => new TeamViewModel
@@ -37,7 +37,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(TeamViewModel model)
         {
-
+            ViewBag.Role = setRole();
             //   if (ModelState.IsValid)
             {
                 TeamMember team = new TeamMember();
@@ -55,6 +55,7 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             var remove = db.Teams.FirstOrDefault(s => s.Id == Id);
             if (remove != null)
             {

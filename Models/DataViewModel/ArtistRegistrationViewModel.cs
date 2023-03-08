@@ -11,17 +11,17 @@ namespace ArtGalleryApp.Models.DataViewModel
         public int Id { get; set; }
         [Required]
         [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
         [Required]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         [Required]
-        [Display(Name = "Artist's Bio ")]
+        [Display(Name = "Artist Statement ")]
         [StringLength(500)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         [Display(Name = "Country of Origin")]
 
-        public string Country { get; set; }
+        public string? Country { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -33,25 +33,30 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Compare("Password")]
         [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
-        public DateTime YearOfBirth { get; set; }
-        [Required]
-        [Display(Name = "Artist Field:")]
-        public ArtistField? ArtistField_ { get; set; }
+        public DateTime? YearOfBirth { get; set; }
+
         [Required(ErrorMessage = "Email address is required.")]
         [EmailAddress(ErrorMessage = "Invalid email address.")]
         [Display(Name = "Email")]
-        [Remote(action: "EmailIsNotExist", controller: "Shared", ErrorMessage = "this emails is already existed.", HttpMethod = "Post")]
-        public string Email { get; set; }
+        //[Remote(action: "EmailIsNotExist", controller: "Shared", ErrorMessage = "this emails is already existed.", HttpMethod = "Post")]
+        public string? Email { get; set; }
         [Required]
         [Display(Name = "Phone Number")]
         [Phone]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [Display(Name = "Artist Image")]
-        public string ImgUrl { get; set; }
-        [Required]
+        public string? ImgUrl { get; set; }
+
         [Display(Name = "Portfolio Link")]
-        [Url]
-        public string PortfolioUrl { get; set; }
+        public string? PortfolioUrl { get; set; }
+        [Display(Name = "Upload Photo")]
+        public IFormFile UploadImgUrl { get; set; }
+        public List<ArtistField>? lstArtistField { get; set; }
+
+        [Required]
+        [Display(Name = "Artist Field")]
+        public int? ArtistFieldId { get; set; }
+        public string? ArtistFieldName { get; set; }
 
     }
 }

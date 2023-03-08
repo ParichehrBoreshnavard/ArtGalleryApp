@@ -8,7 +8,7 @@ namespace ArtGalleryApp.Controllers
     public class ContactController : AdminMasterController
     {
 
-        public ContactController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public ContactController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
@@ -50,8 +50,8 @@ namespace ArtGalleryApp.Controllers
         //}
         public IActionResult Index()
         {
-          
 
+            ViewBag.Role = setRole();
             var lst = db.Contacts.Select(c => new ContactViewModel
             {
                 Body = c.Body,
@@ -67,6 +67,7 @@ namespace ArtGalleryApp.Controllers
         public IActionResult Delete(int Id)
 
         {
+            ViewBag.Role = setRole();
             var obj = db.Contacts.FirstOrDefault(c => c.Id == Id);
             if (obj != null)
             {

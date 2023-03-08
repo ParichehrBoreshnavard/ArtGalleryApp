@@ -1,5 +1,6 @@
 ﻿using ArtGalleryApp.Context;
 using ArtGalleryApp.Models.Data;
+using ArtGalleryApp.Models.Enum;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,21 +13,24 @@ namespace ArtGalleryApp.Controllers
         protected readonly dbSarvContext db;
         protected int CurrentUserId = 1;
         protected List<RoleUser> lstCurrentuserRoles ;
-
+        private readonly IHttpContextAccessor httpContextAccessor;
 
         private readonly IWebHostEnvironment webHostEnvironment;
-        public AdminMasterController(dbSarvContext _db, IWebHostEnvironment _webHostEnvironment)
+        public AdminMasterController(dbSarvContext _db, IWebHostEnvironment _webHostEnvironment, IHttpContextAccessor _httpContextAccessor)
         {
             db = _db;
+            httpContextAccessor = _httpContextAccessor;
             webHostEnvironment = _webHostEnvironment;
-            //CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 1;
+            CurrentUserId = httpContextAccessor.HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+
             lstCurrentuserRoles = new List<RoleUser>();
-            if ( db.Users.Any(s => s.Id == CurrentUserId))
+            if (db.Users.Any(s => s.Id == CurrentUserId))
             {
                 lstCurrentuserRoles = db.RoleUser
                     .Include(s => s.Role_)
                     .Where(s => s.User_.Id == CurrentUserId).ToList();
             }
+           
         }
         public async Task<string> UploadImg(IFormFile formFile, string directoryName, string name = "")
         {
@@ -44,14 +48,28 @@ namespace ArtGalleryApp.Controllers
         }
         public void LogoutUser()
         {
-            HttpContext.Session.Remove("artGalleryuserid");
+            httpContextAccessor.HttpContext.Session.Remove("artGalleryuserid");
+            httpContextAccessor.HttpContext.Session.Remove("RoleartGalleryuser");
             //clear seassion
         }
         public void LoginUser(int userid)
         {
-            HttpContext.Session.SetInt32("artGalleryuserid", userid);
+            httpContextAccessor.HttpContext.Session.SetInt32("artGalleryuserid", userid);
             //sess[""] = userid;
             //clear seassion
+        }
+        public string? setRole()
+        {
+
+            if (db.Users.Any(s => s.Id == CurrentUserId))
+            {
+
+                return lstCurrentuserRoles.Any(s => s.Role_.Id == RoleValues.Admin) ? "Admin" :
+                    (lstCurrentuserRoles.Any(s => s.Role_.Id == RoleValues.Artist) ? "Artist" :
+                    (lstCurrentuserRoles.Any(s => s.Role_.Id == RoleValues.Customer) ? "Customer" : null));
+            }
+            return null;
+          
         }
     }
 }

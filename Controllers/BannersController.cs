@@ -9,12 +9,13 @@ namespace ArtGalleryApp.Controllers
 {
     public class BannersController : AdminMasterController
     {
-        public BannersController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public BannersController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
 
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             //read data from bannersViewModel Then make the information to banners db in bannersViewModel Format
             //, and read From db and assign information to new list;
 
@@ -30,8 +31,9 @@ namespace ArtGalleryApp.Controllers
 
             return View(banners);
         }
-        public IActionResult New() 
+        public IActionResult New()
         {
+            ViewBag.Role = setRole();
             BannersViewModel bannersViewModel = new BannersViewModel();
             bannersViewModel.lstEvent = db.Events_.Where(s=>s.EndDate>=DateTime.Now).ToList(); 
             return View(bannersViewModel);
@@ -42,6 +44,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> New( BannersViewModel bannersViewModel)
         {
+            ViewBag.Role = setRole();
             if (bannersViewModel.UploadImgUrl == null)
             {
                 ViewBag.Error = "Image File is mandatory";
@@ -66,6 +69,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id )
         {
+            ViewBag.Role = setRole();
             BannersUpdateViewModel? bannersViewModel = db.Banners.Where(s => s.Id == Id)
                 .Select(s => new BannersUpdateViewModel
                 {
@@ -87,6 +91,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(BannersUpdateViewModel bannersViewModel)
         {
+            ViewBag.Role = setRole();
             //if (bannersViewModel.UploadImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -112,6 +117,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             Banner removeBanner = db.Banners.First(s => s.Id == Id);
             if(removeBanner != null)
             {

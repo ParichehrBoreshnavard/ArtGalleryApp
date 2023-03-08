@@ -8,15 +8,17 @@ namespace ArtGalleryApp.Controllers
 {
     public class SoldController : AdminMasterController
     {
-        public SoldController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public SoldController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
         public IActionResult Index()
         {
+            ViewBag.Role = setRole();
             return Redirect("/Sold/History");
         }
         public IActionResult History()
         {
+            ViewBag.Role = setRole();
             List<HistoryViewModel> lst = db.OrderDetailes
            .Include(s => s.order)
            .Include(s => s.order.user)
@@ -54,6 +56,7 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult HistoryDetail(int Id)
         {
+            ViewBag.Role = setRole();
             HistoryViewModel? obj = db.OrderDetailes
            .Include(s => s.order)
            .Include(s => s.order.user)

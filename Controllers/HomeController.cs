@@ -3,6 +3,7 @@ using ArtGalleryApp.Models;
 using ArtGalleryApp.Models.Data;
 using ArtGalleryApp.Models.DataViewModel;
 using ArtGalleryApp.Models.Enum;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Principal;
@@ -11,13 +12,15 @@ namespace ArtGalleryApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IWebHostEnvironment webHostEnvironment;
         private readonly dbSarvContext dbSarv;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger,dbSarvContext _dbSarv)
+        public HomeController(ILogger<HomeController> logger, dbSarvContext _dbSarv, IWebHostEnvironment _webHostEnvironment)
         {
             _logger = logger;
             dbSarv = _dbSarv;
+            webHostEnvironment = _webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -67,8 +70,8 @@ namespace ArtGalleryApp.Controllers
         public IActionResult ArtworkPage()
         {
             return View();
-        } 
-         public IActionResult Gallery()
+        }
+        public IActionResult Gallery()
         {
             return View();
         }
@@ -91,55 +94,82 @@ namespace ArtGalleryApp.Controllers
             //    return View();
             //}
             Contact newMessage = new Contact();
-            
+
             dbSarv.Contacts.Add(newMessage);
             newMessage.Name = contactViewModel.Name;
             newMessage.Email = contactViewModel.Email.ToString();
             newMessage.Subject = contactViewModel.Subject;
             newMessage.Body = contactViewModel.Body;
-        
+
             dbSarv.SaveChanges();
             return Redirect("/Home/Contact");
 
         }
         public IActionResult ArtistRegistration()
         {
-            return View();
+            ArtistRegistrationViewModel model = new ArtistRegistrationViewModel();
+            model.lstArtistField = dbSarv.ArtistField_.ToList();
+            return View(model);
         }
         [HttpPost]
-        public IActionResult ArtistRegistration(ArtistRegistrationViewModel artistRegistrationViewModel)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ArtistRegistration(ArtistRegistrationViewModel model)
         {
             //if (!ModelState.IsValid)
             //{
             //    ViewBag.Error = "There is an error in record information";
             //    return View();
             //}
-            User newAccount = new User();
-            dbSarv.Users.Add(newAccount);
-            newAccount.Email = artistRegistrationViewModel.Email.ToString();
-            newAccount.FirstName = artistRegistrationViewModel.FirstName;
-            newAccount.LastName = artistRegistrationViewModel.LastName;
-            newAccount.YearOfBirth = artistRegistrationViewModel.YearOfBirth;
-            newAccount.Country = artistRegistrationViewModel.Country;
-            newAccount.ArtistField_ = artistRegistrationViewModel.ArtistField_;
-            newAccount.ImgUrl = artistRegistrationViewModel.ImgUrl;
-            newAccount.PortfolioUrl = artistRegistrationViewModel.PortfolioUrl;
-            newAccount.Password = artistRegistrationViewModel.Password;
-            newAccount.Phone = artistRegistrationViewModel.Phone;
-            newAccount.Description = artistRegistrationViewModel.Description;
-            RoleUser userRole = new RoleUser();
-            userRole.User_ = newAccount;
-            userRole.Role_ = dbSarv.Rols.First(r => r.Id == RoleValues.Artist);
-            dbSarv.RoleUser.Add(userRole);
-            dbSarv.SaveChanges();
-            return Redirect("/home/AdminArtist");
+            User? artist = new User();
+            if (artist != null)
+            {
+                dbSarv.Users.Add(artist);
+                artist.FirstName = model.FirstName;
+                artist.LastName = model.LastName;
+                artist.Description = model.Description;
+                artist.Country = model.Country;
+                artist.YearOfBirth = model.YearOfBirth;
+                artist.Email = model.Email;
+                artist.Phone = model.Phone;
+                artist.Password = model.Password;
+                artist.PortfolioUrl = model.PortfolioUrl;
+                artist.ArtistField_ = dbSarv.ArtistField_.FirstOrDefault(s => s.Id == model.ArtistFieldId);
+                if (model.UploadImgUrl != null)
+                    artist.ImgUrl = await UploadImg(model.UploadImgUrl, "Users", "Artist");
+
+                RoleUser roleUser = new RoleUser();
+                dbSarv.RoleUser.Add(roleUser);
+                roleUser.User_ = artist;
+                roleUser.Role_ = dbSarv.Rols.First(s => s.Id == RoleValues.Artist);
+
+                dbSarv.SaveChanges();
+            }
+            return Redirect("/Profile");
+
 
         }
         public IActionResult Signin()
         {
             return View();
         }
-      
+        [HttpPost]
+        public IActionResult Signin(SigninViewModel model)
+        {
+            User? user = dbSarv.Users.FirstOrDefault(s => s.Email == model.Email && s.Password == model.Password);
+            if (user != null)
+            {
+                LoginUser(user.Id);
+                return Redirect("/Profile");
+            }
+            ViewBag.Error = "Email or Password incorrect.";
+            return View();
+        }
+
+        private void LoginUser(int id)
+        {
+            HttpContext.Session.SetInt32("artGalleryuserid", id);
+         
+        }
 
         public IActionResult Signup()
         {
@@ -150,25 +180,25 @@ namespace ArtGalleryApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Error="There is an error in record information";
+                ViewBag.Error = "There is an error in record information";
                 return View();
             }
             User newAccount = new User();
             dbSarv.Users.Add(newAccount);
             newAccount.Email = signupViewModel.Email;
-            newAccount.FirstName= signupViewModel.FirstName;
-            newAccount.LastName= signupViewModel.LastName;
-            newAccount.Password= signupViewModel.Password;
+            newAccount.FirstName = signupViewModel.FirstName;
+            newAccount.LastName = signupViewModel.LastName;
+            newAccount.Password = signupViewModel.Password;
             newAccount.Phone = signupViewModel.Phone;
-            RoleUser userRole= new RoleUser();
-            userRole.User_= newAccount;
+            RoleUser userRole = new RoleUser();
+            userRole.User_ = newAccount;
             userRole.Role_ = dbSarv.Rols.First(r => r.Id == RoleValues.Customer);
             dbSarv.RoleUser.Add(userRole);
             dbSarv.SaveChanges();
-            return Redirect("/home/AdminCustomer");
+            return Redirect("/Profile");
 
         }
-       
+
         public IActionResult UploadFile()
         {
             return View();
@@ -216,10 +246,10 @@ namespace ArtGalleryApp.Controllers
         {
             return View(item);
         }
-        
+
         public IActionResult AdminArtist()
         {
-         
+
             return View();
         }
         public IActionResult AdminEditCustomer()
@@ -234,10 +264,10 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult AdminCustomer()
         {
-           return View();
+            return View();
         }
-     
-    public IActionResult AdminEditArtist()
+
+        public IActionResult AdminEditArtist()
         {
             ArtistsViewModel item = new ArtistsViewModel();
             return View(item);
@@ -264,7 +294,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult ForgetPassword()
         {
-            return View(); 
+            return View();
         }
         [HttpPost]
         public IActionResult SigninAdmin(SigninViewModel item)
@@ -273,7 +303,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult AdminGallery()
         {
-            return View(); 
+            return View();
         }
         public IActionResult AdminEditGallery()
         {
@@ -284,9 +314,9 @@ namespace ArtGalleryApp.Controllers
         public IActionResult UploadFile(UploadFileViewModel uploadFileViewModel)
         {
             if (!ModelState.IsValid)
-           {
-              ViewBag.Error = "There is an error in record information";
-              return View();
+            {
+                ViewBag.Error = "There is an error in record information";
+                return View();
             }
             //Gallery newArtPiece = new();
             //dbSarv.Gallery.Add(newArtPiece);
@@ -327,7 +357,7 @@ namespace ArtGalleryApp.Controllers
         {
             return View(item);
         }
-       
+
         public IActionResult AdminEvent_1()
         {
             return View();
@@ -359,14 +389,27 @@ namespace ArtGalleryApp.Controllers
             Style newArtStyle = new Style();
             dbSarv.Styles.Add(newArtStyle);
             styleViewModel.Name = styleViewModel.Name;
-            
+
             dbSarv.SaveChanges();
             return Redirect("/home/Style");
 
         }
-        
-          
-          
+        public async Task<string> UploadImg(IFormFile formFile, string directoryName, string name = "")
+        {
+
+            string ImgUrl = "";
+            string extention = Path.GetExtension(formFile.FileName);
+            string filename = directoryName + name + DateTime.Now.ToString("yymmssfff") + extention;
+            string path = Path.Combine(webHostEnvironment.WebRootPath + "/AdminAssessts/" + directoryName + "/", filename);
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                await formFile.CopyToAsync(fileStream);
+                ImgUrl = "/AdminAssessts/" + directoryName + "/" + filename;
+            }
+            return ImgUrl;
+        }
+
+
         public IActionResult Medium()
         {
             return View();
@@ -375,12 +418,13 @@ namespace ArtGalleryApp.Controllers
         {
             return View();
         }
-       
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

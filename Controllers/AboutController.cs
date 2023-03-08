@@ -7,11 +7,12 @@ namespace ArtGalleryApp.Controllers
 {
     public class AboutController : AdminMasterController
     {
-        public AboutController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment) : base(_db, webHostEnvironment)
+        public AboutController(dbSarvContext _db, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor _httpContextAccessor) : base(_db, webHostEnvironment, _httpContextAccessor)
         {
         }
         public IActionResult Index()
         {
+            ViewBag.Role =setRole();
             AboutViewModel? about = db.About.Select(s => new AboutViewModel
             {
                 Id = s.Id,
@@ -30,6 +31,7 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult New()
         {
+            ViewBag.Role = setRole();
             AboutViewModel aboutViewModel = new AboutViewModel();
             return View(aboutViewModel);
 
@@ -38,6 +40,7 @@ namespace ArtGalleryApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(AboutViewModel aboutViewModel)
         {
+            ViewBag.Role = setRole();
             //if (aboutViewModel.UploadImgUrl == null)
             //{
             //    ViewBag.Error = "Image File is mandatory";
@@ -78,10 +81,12 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Update(int Id)
         {
+            ViewBag.Role = setRole();
             return View();
         }
         public IActionResult Delete(int Id)
         {
+            ViewBag.Role = setRole();
             About? about = db.About.FirstOrDefault(s => s.Id == Id);
             if (about != null)
             {
