@@ -121,6 +121,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\1edit.jpg",
+      "PackagePath": "staticwebassets\\images\\1edit.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\2edit.jpg",
+      "PackagePath": "staticwebassets\\images\\2edit.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\3edit.jpg",
+      "PackagePath": "staticwebassets\\images\\3edit.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\artistsImages\\atelier-unes-aYwJeBcFEQQ-unsplash.jpg",
       "PackagePath": "staticwebassets\\images\\artistsImages\\atelier-unes-aYwJeBcFEQQ-unsplash.jpg"
     },
@@ -201,12 +213,24 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-charmaine-5289727.jpg",
+      "PackagePath": "staticwebassets\\images\\pexels-charmaine-5289727.jpg"
+    },
+    {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-davide-de-giovanni-1649683 (1).jpg",
       "PackagePath": "staticwebassets\\images\\pexels-davide-de-giovanni-1649683 (1).jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-erik-mclean-6159732.jpg",
       "PackagePath": "staticwebassets\\images\\pexels-erik-mclean-6159732.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-francesco-ungaro-669319.jpg",
+      "PackagePath": "staticwebassets\\images\\pexels-francesco-ungaro-669319.jpg"
+    },
+    {
+      "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-juan-martin-lopez-5726843.jpg",
+      "PackagePath": "staticwebassets\\images\\pexels-juan-martin-lopez-5726843.jpg"
     },
     {
       "Id": "C:\\Users\\parib\\source\\repos\\ArtGalleryApp\\ArtGalleryApp\\wwwroot\\images\\pexels-steve-johnson-1550562.jpg",

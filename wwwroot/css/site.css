@@ -15,11 +15,16 @@ body {
 
 nav {
     background-color: #272727 !important;
+    z-index:1000;
 }
 
     nav a {
         color: #b1fba0ff;
     }
+/*.main-banner {
+    top: 0;
+    position: absolute;
+}*/    
 
 .ourcontact h1, .ourcontact h2, .ourcontact h3 {
     margin: 0 auto 35px auto;
@@ -719,12 +724,12 @@ w-90 {
     background-color: #42639279;
 }
 .card-img-top {
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
+    /*-webkit-filter: grayscale(100%);*/ /* Safari 6.0 - 9.0 */
+    /*filter: grayscale(100%);*/
 }
 .card-img-top:hover {
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(1%);
+    /*-webkit-filter: grayscale(100%);*/ /* Safari 6.0 - 9.0 */
+    /*filter: grayscale(1%);*/
 }
 
 
@@ -874,4 +879,17 @@ w-90 {
 .flipCard {
     transform: rotateY(180deg);
 
+}
+
+.header-carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #7ad6e27d;
 }
