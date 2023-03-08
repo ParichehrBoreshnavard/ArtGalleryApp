@@ -1,272 +1,279 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Artists";
     Layout = "_Layout";
 }
+@model ArtGalleryApp.Models.DataViewModel.SiteArtistsViewModel
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amatic+SC" />
 
 <div class="container artistsListContainer bg-black col-12 w-100">
-<div class="artistsNamecontainer col-10">
-    <div class="artistsListItem">
-        <ul>
-            A
-            <li><a href="ArtistPage">AAAAA</a></li>
-            <li><a href="ArtistPage">AAAAA</a></li>
-            <li><a href="ArtistPage">AAAAA</a></li>
-            <li><a href="ArtistPage">AAAAA</a></li>
-        </ul>
-    </div>
+    <div class="artistsNamecontainer col-10">
 
-    <div class="artistsListItem">
+        @foreach (var q in Model.alphabete)
+        {
+            @if (Model.artists.Any(s => s.LastName.ToUpper().StartsWith(q)))
+            {
+                <div class="artistsListItem">
+                    <ul>
+                        @q
+                        @foreach (var t in Model.artists.Where(s => s.LastName.ToUpper().StartsWith(q)).ToList())
+                        {
+                            <li><a href="/Home/ArtistPage/@t.Id">@t.LastName (@t.FirstName)</a></li>
+                        }
+                        
+                    </ul>
+                </div>
+            }
+        }
+        @*    <div class="artistsListItem">
         <ul>
-            B
-            <li><a href="ArtistPage">BBBB</a></li>
-                <li><a href="ArtistPage">BBBB</a></li>
-                <li><a href="ArtistPage">BBBB</a></li>
-                <li><a href="ArtistPage">BBBB</a></li>
+        B
+        <li><a href="ArtistPage">BBBB</a></li>
+        <li><a href="ArtistPage">BBBB</a></li>
+        <li><a href="ArtistPage">BBBB</a></li>
+        <li><a href="ArtistPage">BBBB</a></li>
         </ul>
-    </div>
-
-    <div class="artistsListItem">
-            <ul>
-               C
-                <li><a href="ArtistPage">CCCC</a></li>
-                <li><a href="ArtistPage">CCCC</a></li>
-                <li><a href="ArtistPage">CCCC</a></li>
-                <li><a href="ArtistPage">CCCC</a></li>
-            </ul>
         </div>
 
-    <div class="artistsListItem">
-            <ul>
-            D
-                <li><a href="ArtistPage">DDDD</a></li>
-                <li><a href="ArtistPage">DDDD</a></li>
-                <li><a href="ArtistPage">DDDD</a></li>
-            </ul>
-      
-    </div>
-
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-           E
-            <li><a href="ArtistPage">EEEEE</a></li>
-                <li><a href="ArtistPage">EEEEE</a></li>
-                <li><a href="ArtistPage">EEEEE</a></li>
-                <li><a href="ArtistPage">EEEEE</a></li>
+        C
+        <li><a href="ArtistPage">CCCC</a></li>
+        <li><a href="ArtistPage">CCCC</a></li>
+        <li><a href="ArtistPage">CCCC</a></li>
+        <li><a href="ArtistPage">CCCC</a></li>
         </ul>
-    </div>
-
-    <div class="artistsListItem">
-            <ul>
-                F
-                <li><a href="ArtistPage">FFFF</a></li>
-                <li><a href="ArtistPage">FFFF</a></li>
-                <li><a href="ArtistPage">FFFF</a></li>
-                <li><a href="ArtistPage">FFFF</a></li>
-            </ul>
-       </div>
-
-    <div class="artistsListItem">
-        <ul>
-            G
-                <li><a href="ArtistPage">GGGG</a></li>
-                <li><a href="ArtistPage">GGGG</a></li>
-                <li><a href="ArtistPage">GGGG</a></li>
-                <li><a href="GGGG">GGGG</a></li>
-       </ul>
-    </div>
-
-    <div class="artistsListItem">
-        <ul>
-           H
-            <li><a href="ArtistPage">Victor hogo</a></li>
-            <li><a href="ArtistPage">VVVV</a></li>
-            <li><a href="ArtistPage">VVVV</a></li>
-            <li><a href="ArtistPage">VVVV</a></li>
-        </ul>
-    </div>
-
-    <div class="artistsListItem">
-            <ul>
-                I
-                <li><a href="ArtistPage">IIII</a></li>
-                <li><a href="ArtistPage">IIII</a></li>
-                <li><a href="ArtistPage">IIII</a></li>
-                <li><a href="ArtistPage">IIII</a></li>
-            </ul>
-        </div>
-           
-    <div class="artistsListItem">
-        <ul>
-            J
-            <li><a href="ArtistPage">JJJJ</a></li>
-            <li><a href="ArtistPage">JJJJ</a></li>
-            <li><a href="ArtistPage">JJJJ</a></li>
-            <li><a href="ArtistPage">JJJJ</a></li>
-        </ul>
-    </div>
-
-    <div class="artistsListItem">
-        
-        <ul>
-                K
-                <li><a href="ArtistPage">KKKK</a></li>
-                <li><a href="ArtistPage">KKKK</a></li>
-                <li><a href="ArtistPage">KKKK</a></li>     
-        </ul>
-    </div>
-
-    <div class="artistsListItem">
-       <ul>
-             L
-                <li><a href="ArtistPageL">LLLL</a></li>
-                <li><a href="ArtistPage">LLLL</a></li>
-                <li><a href="ArtistPage">LLLL</a></li>
-                <li><a href="ArtistPage">LLLL</a></li>
-       </ul>
-    </div>
-
-    <div class="artistsListItem">
-            <ul>
-                M
-                <li><a href="ArtistPage">MMMM</a></li>
-                <li><a href="ArtistPage">MMMM</a></li>
-                <li><a href="ArtistPage">MMMM</a></li>
-                <li><a href="ArtistPage">MMMM</a></li>
-            </ul>
         </div>
 
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-                N
-                <li><a href="ArtistPage">NNNN</a></li>
-                <li><a href="ArtistPage">NNNN</a></li>
-                <li><a href="ArtistPage">NNNN</a></li>
-                <li><a href="ArtistPage">NNNN</a></li>
+        D
+        <li><a href="ArtistPage">DDDD</a></li>
+        <li><a href="ArtistPage">DDDD</a></li>
+        <li><a href="ArtistPage">DDDD</a></li>
         </ul>
-    </div>
 
-    <div class="artistsListItem">
-            <ul>
-                O
-                <li><a href="ArtistPage">OOOO</a></li>
-                <li><a href="ArtistPage">OOOO</a></li>
-                <li><a href="ArtistPage">OOOO</a></li>
-                <li><a href="ArtistPage">OOOO</a></li>
-            </ul>
-    </div>
+        </div>
 
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-           P
-
-                <li><a href="ArtistPage">Parichehr Boreshnavard</a></li>
-                <li><a href="ArtistPage">PPPP</a></li>
-                <li><a href="ArtistPage">PPPP</a></li>
-                <li><a href="ArtistPage">PPPP</a></li>
-         </ul>
-    </div>
-
-    <div class="artistsListItem">
-        <ul>
-           Q
-           <li>
-                <a href="ArtistPage">QQQQQ</a></li>
-                <li><a href="ArtistPage">QQQQQ</a></li>
-                <li><a href="ArtistPage">QQQQQ</a></li>
-                <li><a href="ArtistPage">QQQQQ</a></li>
+        E
+        <li><a href="ArtistPage">EEEEE</a></li>
+        <li><a href="ArtistPage">EEEEE</a></li>
+        <li><a href="ArtistPage">EEEEE</a></li>
+        <li><a href="ArtistPage">EEEEE</a></li>
         </ul>
-    </div>
+        </div>
 
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-            R
-                <li><a href="ArtistPage">RRRR</a></li>
-                <li><a href="ArtistPage">RRRR</a></li>
-                <li><a href="ArtistPage">RRRR</a></li>
-             </ul>
-    </div>
-
-    <div class="artistsListItem">
-            <ul>
-                S
-            <li><a href="ArtistPage">SSSS</a></li>
-            <li><a href="ArtistPage">SSSS</a></li>
-            <li><a href="ArtistPage">SSSS</a></li>
+        F
+        <li><a href="ArtistPage">FFFF</a></li>
+        <li><a href="ArtistPage">FFFF</a></li>
+        <li><a href="ArtistPage">FFFF</a></li>
+        <li><a href="ArtistPage">FFFF</a></li>
         </ul>
-    </div>
+        </div>
 
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-            T
-                <li><a href="ArtistPage">TTTT</a></li>
-                <li><a href="ArtistPage">TTTT</a></li>
-                <li><a href="ArtistPage">TTTT</a></li>
-                <li><a href="ArtistPage">TTTT</a></li>
-            </ul>
-    </div>
-
-    <div class="artistsListItem">
-            <ul>
-                U
-                <li><a href="ArtistPage">UUUU</a></li>
-                <li><a href="ArtistPage">UUUU</a></li>
-                <li><a href="ArtistPage">UUUU</a></li>
-                <li><a href="ArtistPage">UUUU</a></li>
-            </ul>
-       </div>
-
-    <div class="artistsListItem">
-            <ul>
-                V
-                <li><a href="ArtistPage">VVVVV</a></li>
-                <li><a href="ArtistPage">VVVVV</a></li>
-                <li><a href="ArtistPage">VVVVV</a></li>
-            </ul>
-    </div>
-
-    <div class="artistsListItem">
-        <ul>
-            W
-                <li><a href="ArtistPage">WWWW</a></li>
-                <li><a href="ArtistPage">WWWW</a></li>
-                <li><a href="ArtistPage">WWWW</a></li>
- </ul>
-    </div>
-
-    <div class="artistsListItem">
-        <ul>
-           X
-                <li><a href="ArtistPage">XXXX</a></li>
-                <li><a href="ArtistPage">XXXX</a></li>
-                <li><a href="ArtistPage">XXXX</a></li>
-                <li><a href="ArtistPage">XXXX</a></li>
+        G
+        <li><a href="ArtistPage">GGGG</a></li>
+        <li><a href="ArtistPage">GGGG</a></li>
+        <li><a href="ArtistPage">GGGG</a></li>
+        <li><a href="GGGG">GGGG</a></li>
         </ul>
-    </div>
+        </div>
 
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-            Y
-                <li><a href="ArtistPage">YYYY</a></li>
-                <li><a href="ArtistPage">YYYY</a></li>
-                <li><a href="ArtistPage">YYYY</a></li>
-                <li><a href="ArtistPage">YYYY</a></li>
-      </ul>
-    </div>
+        H
+        <li><a href="ArtistPage">Victor hogo</a></li>
+        <li><a href="ArtistPage">VVVV</a></li>
+        <li><a href="ArtistPage">VVVV</a></li>
+        <li><a href="ArtistPage">VVVV</a></li>
+        </ul>
+        </div>
 
-    <div class="artistsListItem">
+        <div class="artistsListItem">
         <ul>
-            Z
-                <li><a href="ArtistPage">ZZZZ</a></li>
-                <li><a href="ArtistPage">ZZZZ</a></li>
-                <li><a href="ArtistPage">ZZZZ</a></li>
-                <li><a href="ArtistPage">ZZZZ</a></li>
+        I
+        <li><a href="ArtistPage">IIII</a></li>
+        <li><a href="ArtistPage">IIII</a></li>
+        <li><a href="ArtistPage">IIII</a></li>
+        <li><a href="ArtistPage">IIII</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        J
+        <li><a href="ArtistPage">JJJJ</a></li>
+        <li><a href="ArtistPage">JJJJ</a></li>
+        <li><a href="ArtistPage">JJJJ</a></li>
+        <li><a href="ArtistPage">JJJJ</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+
+        <ul>
+        K
+        <li><a href="ArtistPage">KKKK</a></li>
+        <li><a href="ArtistPage">KKKK</a></li>
+        <li><a href="ArtistPage">KKKK</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        L
+        <li><a href="ArtistPageL">LLLL</a></li>
+        <li><a href="ArtistPage">LLLL</a></li>
+        <li><a href="ArtistPage">LLLL</a></li>
+        <li><a href="ArtistPage">LLLL</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        M
+        <li><a href="ArtistPage">MMMM</a></li>
+        <li><a href="ArtistPage">MMMM</a></li>
+        <li><a href="ArtistPage">MMMM</a></li>
+        <li><a href="ArtistPage">MMMM</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        N
+        <li><a href="ArtistPage">NNNN</a></li>
+        <li><a href="ArtistPage">NNNN</a></li>
+        <li><a href="ArtistPage">NNNN</a></li>
+        <li><a href="ArtistPage">NNNN</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        O
+        <li><a href="ArtistPage">OOOO</a></li>
+        <li><a href="ArtistPage">OOOO</a></li>
+        <li><a href="ArtistPage">OOOO</a></li>
+        <li><a href="ArtistPage">OOOO</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        P
+
+        <li><a href="ArtistPage">Parichehr Boreshnavard</a></li>
+        <li><a href="ArtistPage">PPPP</a></li>
+        <li><a href="ArtistPage">PPPP</a></li>
+        <li><a href="ArtistPage">PPPP</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        Q
+        <li>
+        <a href="ArtistPage">QQQQQ</a></li>
+        <li><a href="ArtistPage">QQQQQ</a></li>
+        <li><a href="ArtistPage">QQQQQ</a></li>
+        <li><a href="ArtistPage">QQQQQ</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        R
+        <li><a href="ArtistPage">RRRR</a></li>
+        <li><a href="ArtistPage">RRRR</a></li>
+        <li><a href="ArtistPage">RRRR</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        S
+        <li><a href="ArtistPage">SSSS</a></li>
+        <li><a href="ArtistPage">SSSS</a></li>
+        <li><a href="ArtistPage">SSSS</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        T
+        <li><a href="ArtistPage">TTTT</a></li>
+        <li><a href="ArtistPage">TTTT</a></li>
+        <li><a href="ArtistPage">TTTT</a></li>
+        <li><a href="ArtistPage">TTTT</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        U
+        <li><a href="ArtistPage">UUUU</a></li>
+        <li><a href="ArtistPage">UUUU</a></li>
+        <li><a href="ArtistPage">UUUU</a></li>
+        <li><a href="ArtistPage">UUUU</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        V
+        <li><a href="ArtistPage">VVVVV</a></li>
+        <li><a href="ArtistPage">VVVVV</a></li>
+        <li><a href="ArtistPage">VVVVV</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        W
+        <li><a href="ArtistPage">WWWW</a></li>
+        <li><a href="ArtistPage">WWWW</a></li>
+        <li><a href="ArtistPage">WWWW</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        X
+        <li><a href="ArtistPage">XXXX</a></li>
+        <li><a href="ArtistPage">XXXX</a></li>
+        <li><a href="ArtistPage">XXXX</a></li>
+        <li><a href="ArtistPage">XXXX</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        Y
+        <li><a href="ArtistPage">YYYY</a></li>
+        <li><a href="ArtistPage">YYYY</a></li>
+        <li><a href="ArtistPage">YYYY</a></li>
+        <li><a href="ArtistPage">YYYY</a></li>
+        </ul>
+        </div>
+
+        <div class="artistsListItem">
+        <ul>
+        Z
+        <li><a href="ArtistPage">ZZZZ</a></li>
+        <li><a href="ArtistPage">ZZZZ</a></li>
+        <li><a href="ArtistPage">ZZZZ</a></li>
+        <li><a href="ArtistPage">ZZZZ</a></li>
 
 
-            </ul>
+        </ul>
+        </div>*@
     </div>
-</div>
 </div>
 
 

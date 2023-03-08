@@ -177,7 +177,40 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Artists()
         {
-            return View();
+            SiteArtistsViewModel model= new SiteArtistsViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            model.artists = dbSarv.Users.Include(s => s.ArtistField_)
+            .Include(s => s.RoleUsers)
+            .Where(s => s.RoleUsers.Any(t => t.Role_.Id == RoleValues.Artist))
+            .ToList().Select(s => new CustomerUpdateViewModel
+            {
+                Id = s.Id,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                Description = s.Description,
+                PortfolioUrl = s.PortfolioUrl,
+                Country = s.Country,
+                ImgUrl = s.ImgUrl,
+                YearOfBirth = s.YearOfBirth,
+                Email = s.Email,
+                Phone = s.Phone,
+                ArtistFieldId = s.ArtistField_ == null ? (int?)null : s.ArtistField_.Id,
+                ArtistFieldName = s.ArtistField_ == null ? ("") : s.ArtistField_.Name,
+
+            }).ToList();
+
+            model.alphabete = new List<string>();
+            model.alphabete.Add("A"); model.alphabete.Add("B"); model.alphabete.Add("C");
+            model.alphabete.Add("D"); model.alphabete.Add("E"); model.alphabete.Add("F");
+            model.alphabete.Add("G"); model.alphabete.Add("H"); model.alphabete.Add("I");
+            model.alphabete.Add("J"); model.alphabete.Add("K"); model.alphabete.Add("L");
+            model.alphabete.Add("M"); model.alphabete.Add("N"); model.alphabete.Add("O");
+            model.alphabete.Add("P"); model.alphabete.Add("Q"); model.alphabete.Add("R");
+            model.alphabete.Add("S"); model.alphabete.Add("T"); model.alphabete.Add("W");
+            model.alphabete.Add("X"); model.alphabete.Add("Y");model.alphabete.Add("Z");
+            return View(model);
         }
         public IActionResult ArtistsAccount()
         {
