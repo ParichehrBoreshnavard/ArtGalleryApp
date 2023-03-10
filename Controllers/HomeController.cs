@@ -3,14 +3,19 @@ using ArtGalleryApp.Models;
 using ArtGalleryApp.Models.Data;
 using ArtGalleryApp.Models.DataViewModel;
 using ArtGalleryApp.Models.Enum;
+using Humanizer.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using PayPal.Api;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Principal;
+using Order = ArtGalleryApp.Models.Data.Order;
 
 namespace ArtGalleryApp.Controllers
 {
@@ -156,21 +161,21 @@ namespace ArtGalleryApp.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Basket(int Id,string btn)
+        public IActionResult Basket(int Id, string btn)
         {
             int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
             SiteMasterViewModel model = new SiteMasterViewModel();
             model.islogin = UserIsLogin();
             model.orderlist = getOrderList();
             model.lstEventMenu = getMenuList();
-            if(btn=="Remove")
+            if (btn == "Remove")
             {
-                var obj = dbSarv.OrderDetailes.Include(s=>s.order).FirstOrDefault(x => x.Id == Id);
-                if(obj!=null)
+                var obj = dbSarv.OrderDetailes.Include(s => s.order).FirstOrDefault(x => x.Id == Id);
+                if (obj != null)
                 {
                     var cart = dbSarv.Orders.First(s => s.Id == obj.order.Id);
                     cart.orderPrice -= obj.price;
-                    if(cart.orderPrice<0)
+                    if (cart.orderPrice < 0)
                     {
                         cart.orderPrice = 0;
                     }
@@ -181,6 +186,11 @@ namespace ArtGalleryApp.Controllers
             }
             return View(model);
         }
+
+        private PayPal.Api.Payment payment;
+
+
+
         public IActionResult Checkout()
         {
             int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
@@ -188,13 +198,13 @@ namespace ArtGalleryApp.Controllers
             model.islogin = UserIsLogin();
             model.orderlist = getOrderList();
             model.lstEventMenu = getMenuList();
-            
-            if (model.orderlist==null||!model.orderlist.Any())
+
+            if (model.orderlist == null || !model.orderlist.Any())
             {
                 return Redirect("/Home/Basket");
             }
             model.user_ = dbSarv.Users.Include(s => s.ArtistField_)
-               
+
                  .Where(s => s.Id == CurrentUserId)
                  .ToList().Select(s => new CustomerUpdateViewModel
                  {
@@ -214,6 +224,159 @@ namespace ArtGalleryApp.Controllers
                  }).ToList().First();
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Checkout(SiteCheckoutViewModel model)
+        {
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            var cart = dbSarv.Orders.Include(s => s.user).FirstOrDefault(s => s.isBuy == false &&s.user!=null&& s.user.Id == CurrentUserId);
+            if(cart==null)
+            {
+                return Redirect("/Home/Checkout");
+            }
+
+            
+            cart.Address = model.address;
+            cart.State = model.state;
+            cart.PortfolioUrl = model.zip;
+            dbSarv.SaveChanges();
+            return PaymentWithPaypal();
+        }
+
+        public IActionResult PaymentWithPaypal(string Cancel = null, string blogId = "", string _payerId = "", string guidId = "")
+        {
+            var clientID = "PaypalKey";
+            var clientScret = "PaypalSecret";
+            var mode = "sandbox";
+            APIContext aPIContext = PayPalConfiguration.GetAPIContext(clientID, clientScret, mode);
+            try
+            {
+                string payerId = _payerId;
+                if (string.IsNullOrEmpty(payerId))
+                {
+                    string baseUrl = this.Request.Scheme + "://" + this.Request.Host + "/Home/PaymentWithPaypal?";
+                    var guid = Convert.ToString((new Random()).Next(100000));
+                    guidId = guid;
+                    var createPayment = CreatePayment(aPIContext, baseUrl + "guid=" + guid, blogId);
+                    var links = createPayment.links.GetEnumerator();
+                    string paypalRedirectUrl = null;
+                    while (links.MoveNext())
+                    {
+                        Links lnk = links.Current;
+                        if (lnk.rel.ToLower().Trim().Equals("approval_url"))
+                        {
+                            paypalRedirectUrl = lnk.href;
+                        }
+                    }
+                    HttpContext.Session.SetString("paymentid", createPayment.id);
+                    return Redirect(paypalRedirectUrl);
+                }
+                else
+                {
+                    var paymentId = HttpContext.Session.GetString("paymentid");
+                    var executepayment = ExecutePayment(aPIContext, payerId, paymentId);
+                    if (executepayment.state.ToLower() != "approved")
+                    {
+                        SiteMasterViewModel obj = new SiteMasterViewModel();
+                        obj.islogin = UserIsLogin();
+                        obj.orderlist = getOrderList();
+                        obj.lstEventMenu = getMenuList();
+                        return View("PaymentFaield", obj);
+                    }
+                    int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+
+                    var cart = dbSarv.Orders.Include(s => s.user).First(s => s.Id.ToString() == executepayment.transactions.First().invoice_number);
+                    cart.isBuy = true;
+                    dbSarv.SaveChanges();
+
+                    SiteMasterViewModel model = new SiteMasterViewModel();
+                    model.islogin = UserIsLogin();
+                    model.orderlist = getOrderList();
+                    model.lstEventMenu = getMenuList();
+                    return View("PaymentSuccess", model);
+
+                }
+            }
+            catch
+            {
+
+
+            }
+            SiteMasterViewModel obj1 = new SiteMasterViewModel();
+            obj1.islogin = UserIsLogin();
+            obj1.orderlist = getOrderList();
+            obj1.lstEventMenu = getMenuList();
+            return View("PaymentFaield", obj1);
+        }
+        private Payment ExecutePayment(APIContext apiContext, string payerId, string paymentId)
+        {
+            var paymentExecurion = new PaymentExecution()
+            {
+                payer_id = payerId
+            };
+            payment = new Payment()
+            {
+                id = paymentId
+            };
+            return this.payment.Execute(apiContext, paymentExecurion);
+        }
+        private Payment CreatePayment(APIContext apiContext, string redirectUrl, string blogid)
+        {
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            var model = getOrderList();
+            var orderid = dbSarv.Orders.Include(s => s.user).Where(s => s.isBuy == false && s.user.Id == CurrentUserId).First().Id;
+
+            var item_list = new ItemList()
+            {
+                items = new List<Item>()
+            };
+            foreach (var item in model)
+            {
+                item_list.items.Add(new Item()
+                {
+                    name = item.galleryTitle,
+                    currency = "USD",
+                    price = item.Price.ToString("#.00"),
+                    quantity = "1",
+                    sku = "SKU"
+                });
+            }
+            var payer = new Payer()
+            {
+                payment_method = "paypal"
+            };
+            var redirUrls = new RedirectUrls()
+            {
+                cancel_url = redirectUrl + "Cancel=true",
+                return_url = redirectUrl
+            };
+            Amount amount = new Amount()
+            {
+                currency = "USD",
+                total = model.Sum(s => s.Price).ToString("#.00")
+            };
+            var transactionList = new List<Transaction>();
+            transactionList.Add(new Transaction()
+            {
+                description = "App Gallery",
+                invoice_number = orderid.ToString(),
+                amount = amount,
+                item_list = item_list
+            });
+
+            payment = new Payment()
+            {
+                intent = "sale",
+                payer = payer,
+                transactions = transactionList,
+                redirect_urls = redirUrls
+            };
+            return payment.Create(apiContext);
+        }
+
+
+
+
         public IActionResult ArtistAdminnn()
         {
             return View();
@@ -549,7 +712,7 @@ namespace ArtGalleryApp.Controllers
                 item.price = double.TryParse(item.gallery.Price, out temp) ? temp : 0;
                 cart.orderPrice += item.price;
                 dbSarv.SaveChanges();
-                
+
             }
             model.orderlist = getOrderList();
 
@@ -673,9 +836,9 @@ namespace ArtGalleryApp.Controllers
                        Email = s.order.user.Email,
                        City = s.order.City ?? "",
                        postalCode = s.order.PortfolioUrl ?? "",
-                       artistField=s.gallery.Artist.ArtistField_==null?"": s.gallery.Artist.ArtistField_.Name,
-                       style=s.gallery.style.Name,
-                       Medium=s.gallery.medium.Name,
+                       artistField = s.gallery.Artist.ArtistField_ == null ? "" : s.gallery.Artist.ArtistField_.Name,
+                       style = s.gallery.style.Name,
+                       Medium = s.gallery.medium.Name,
                        artworkField = s.gallery.artworkField.Name,
 
                    }).ToList();

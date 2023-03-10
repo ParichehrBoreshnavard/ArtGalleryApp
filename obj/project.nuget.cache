@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "b5lN0Zy5kegZEDenmkXseaTftoIx1Jbw+AaA0jmgWwqQ0YQJGSuQgspWruJ15vD4C99HvTQq7aTQ424t9hPj3Q==",
+  "dgSpecHash": "DtHC2gR1V8BmZiHKmxqiD8ehb0YpmxOXvLURl6LDjF/19EYyi82HuoGGLNWj616RS/NGigr8Aw5Uj3C4fKdXzQ==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\ArtGalleryApp.csproj",
   "expectedPackageFiles": [
@@ -96,6 +96,7 @@
     "C:\\Users\\pc\\.nuget\\packages\\nuget.projectmodel\\6.3.1\\nuget.projectmodel.6.3.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\nuget.protocol\\6.3.1\\nuget.protocol.6.3.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\nuget.versioning\\6.3.1\\nuget.versioning.6.3.1.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\paypal\\1.9.1\\paypal.1.9.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -195,5 +196,16 @@
     "C:\\Users\\pc\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PayPal",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

@@ -836,3 +836,4 @@ D:\Projects\Git\.netCore\new1\ArtGalleryApp\obj\Debug\net6.0\refint\ArtGalleryAp
 D:\Projects\Git\.netCore\new1\ArtGalleryApp\obj\Debug\net6.0\ArtGalleryApp.pdb
 D:\Projects\Git\.netCore\new1\ArtGalleryApp\obj\Debug\net6.0\ArtGalleryApp.genruntimeconfig.cache
 D:\Projects\Git\.netCore\new1\ArtGalleryApp\obj\Debug\net6.0\ref\ArtGalleryApp.dll
+D:\Projects\Git\.netCore\new1\ArtGalleryApp\bin\Debug\net6.0\PayPal.dll
