@@ -12,7 +12,7 @@ namespace ArtGalleryApp.Models.DataViewModel
         [Display(Name = "Artwork Name:")]
         public string Title { get; set; }
         [Required]
-        [Display(Name = "Artwork Name:")]
+        [Display(Name = "Subject:")]
         public string Subject { get; set; }
         [Required]
         [Display (Name= "Description")]

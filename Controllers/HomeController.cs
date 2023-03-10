@@ -6,6 +6,7 @@ using ArtGalleryApp.Models.Enum;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,6 +16,7 @@ namespace ArtGalleryApp.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly dbSarvContext dbSarv;
         private readonly ILogger<HomeController> _logger;
@@ -24,11 +26,13 @@ namespace ArtGalleryApp.Controllers
             _logger = logger;
             dbSarv = _dbSarv;
             webHostEnvironment = _webHostEnvironment;
+
         }
 
         public IActionResult Index()
         {
             SiteHomeViewModel model = new SiteHomeViewModel();
+
             model.islogin = UserIsLogin();
             model.orderlist = getOrderList();
             model.lstEventMenu = getMenuList();
@@ -144,11 +148,71 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult Basket()
         {
-            return View();
+
+            SiteMasterViewModel model = new SiteMasterViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Basket(int Id,string btn)
+        {
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            SiteMasterViewModel model = new SiteMasterViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            if(btn=="Remove")
+            {
+                var obj = dbSarv.OrderDetailes.Include(s=>s.order).FirstOrDefault(x => x.Id == Id);
+                if(obj!=null)
+                {
+                    var cart = dbSarv.Orders.First(s => s.Id == obj.order.Id);
+                    cart.orderPrice -= obj.price;
+                    if(cart.orderPrice<0)
+                    {
+                        cart.orderPrice = 0;
+                    }
+                    dbSarv.OrderDetailes.Remove(obj);
+                    dbSarv.SaveChanges();
+                }
+                model.orderlist = getOrderList();
+            }
+            return View(model);
         }
         public IActionResult Checkout()
         {
-            return View();
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            SiteCheckoutViewModel model = new SiteCheckoutViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            
+            if (model.orderlist==null||!model.orderlist.Any())
+            {
+                return Redirect("/Home/Basket");
+            }
+            model.user_ = dbSarv.Users.Include(s => s.ArtistField_)
+               
+                 .Where(s => s.Id == CurrentUserId)
+                 .ToList().Select(s => new CustomerUpdateViewModel
+                 {
+                     Id = s.Id,
+                     FirstName = s.FirstName,
+                     LastName = s.LastName,
+                     Description = s.Description,
+                     Country = s.Country,
+                     ImgUrl = s.ImgUrl,
+                     YearOfBirth = s.YearOfBirth,
+                     Email = s.Email,
+                     PortfolioUrl = s.PortfolioUrl,
+                     Phone = s.Phone,
+                     ArtistFieldId = s.ArtistField_ == null ? (int?)null : s.ArtistField_.Id,
+                     ArtistFieldName = s.ArtistField_ == null ? ("") : s.ArtistField_.Name,
+
+                 }).ToList().First();
+            return View(model);
         }
         public IActionResult ArtistAdminnn()
         {
@@ -160,11 +224,57 @@ namespace ArtGalleryApp.Controllers
         }
         public IActionResult Blog()
         {
-            return View();
+            SiteBlogsGalleriesViewModel model = new SiteBlogsGalleriesViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            model.lst = dbSarv.Blogs.OrderByDescending(s => s.WrittenDate).Select(s => new BlogUpdateViewModel
+            {
+
+                Id = s.Id,
+                Title = s.Title,
+                ImgDescription = s.ImgDescription,
+                ImgUrl = s.ImgUrl,
+                Article = s.Article,
+                Summary = s.Summary,
+                Author = s.Author,
+                WrittenDate = s.WrittenDate,
+
+
+
+
+            }).ToList();
+            model.first = model.lst.FirstOrDefault();
+            if (model.first != null)
+                model.lst.Remove(model.first);
+            return View(model);
         }
-        public IActionResult BlogPage()
+        public IActionResult BlogPage(int Id)
         {
-            return View();
+            SiteBlogGalleriesViewModel model = new SiteBlogGalleriesViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            BlogUpdateViewModel? obj = dbSarv.Blogs.Where(s => s.Id == Id).Select(s => new BlogUpdateViewModel
+            {
+
+                Id = s.Id,
+                Title = s.Title,
+                ImgDescription = s.ImgDescription,
+                ImgUrl = s.ImgUrl,
+                Article = s.Article,
+                Summary = s.Summary,
+                Author = s.Author,
+                WrittenDate = s.WrittenDate,
+
+
+
+
+            }).ToList().FirstOrDefault();
+            if (obj == null)
+                return Redirect("/Home/Blog");
+            model.blog = obj;
+            return View(model);
         }
         //public IActionResult Events()
         //{
@@ -172,12 +282,52 @@ namespace ArtGalleryApp.Controllers
         //}
         public IActionResult Events(int Id)
         {
-            SiteArtistViewModel model = new SiteArtistViewModel();
-            return View();
+            SiteEventViewModel model = new SiteEventViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            var obj = dbSarv.Events_.Where(s => s.Id == Id).Select(s => new Event_UpdateViewModel
+            {
+
+                Id = s.Id,
+                Title = s.Title,
+                ImgUrlAbout = s.ImgUrlAbout,
+                ImgUrlPoster = s.ImgUrlPoster,
+                Description = s.Description,
+                AboutDescription = s.AboutDescription,
+                SubEvents = s.SubEvents,
+                EndDate = s.EndDate,
+                UrlTicketStore = s.UrlTicketStore,
+                StartDate = s.StartDate
+
+
+
+            }).ToList().FirstOrDefault();
+            if (obj == null)
+            {
+                return Redirect("/");
+            }
+            model.event_ = obj;
+            model.lstsubEvent = dbSarv.SubEvents.Include(s => s.Events_).Where(s => s.Events_.Id == Id).Select(s => new SubEvent_UpdateViewModel
+            {
+
+                Id = s.Id,
+                Title = s.Title,
+                ImgUrl = s.ImgUrl,
+                eventId = s.Events_.Id,
+                Description = s.Description,
+                eventTitle = s.Events_.Title,
+                EndDate = (s.EndDate.HasValue ? s.EndDate.Value : DateTime.Now),
+                UrlTicketStore = s.UrlTicketStore,
+                StartDate = (s.StartDate.HasValue ? s.StartDate.Value : DateTime.Now)
+
+
+            }).ToList();
+            return View(model);
         }
         public IActionResult Artists()
         {
-            SiteArtistsViewModel model= new SiteArtistsViewModel();
+            SiteArtistsViewModel model = new SiteArtistsViewModel();
             model.islogin = UserIsLogin();
             model.orderlist = getOrderList();
             model.lstEventMenu = getMenuList();
@@ -209,7 +359,7 @@ namespace ArtGalleryApp.Controllers
             model.alphabete.Add("M"); model.alphabete.Add("N"); model.alphabete.Add("O");
             model.alphabete.Add("P"); model.alphabete.Add("Q"); model.alphabete.Add("R");
             model.alphabete.Add("S"); model.alphabete.Add("T"); model.alphabete.Add("W");
-            model.alphabete.Add("X"); model.alphabete.Add("Y");model.alphabete.Add("Z");
+            model.alphabete.Add("X"); model.alphabete.Add("Y"); model.alphabete.Add("Z");
             return View(model);
         }
         public IActionResult ArtistsAccount()
@@ -242,7 +392,7 @@ namespace ArtGalleryApp.Controllers
 
             }).ToList().FirstOrDefault();
             if (obj == null)
-                return Redirect("/");
+                return Redirect("/Home/Artists");
             model.artist = obj;
             model.lstGallery = dbSarv.Gallery
             .Include(s => s.artworkField)
@@ -291,7 +441,7 @@ namespace ArtGalleryApp.Controllers
             .Include(s => s.style)
             .Include(s => s.Artist)
             .Where(s => s.Id == Id)
-           
+
             .ToList().Select(s => new GalleryUpdateViewModel
             {
                 Id = s.Id,
@@ -320,14 +470,161 @@ namespace ArtGalleryApp.Controllers
 
             }).ToList().FirstOrDefault();
             if (obj == null)
-                return Redirect("/");
+                return Redirect("/Home/Gallery");
             model.gallery = obj;
+
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult ArtworkPage(int Id, string btn)
+        {
+
+            SiteGalleryViewModel model = new SiteGalleryViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            var obj = dbSarv.Gallery
+            .Include(s => s.artworkField)
+            .Include(s => s.medium)
+            .Include(s => s.style)
+            .Include(s => s.Artist)
+            .Where(s => s.Id == Id)
+
+            .ToList().Select(s => new GalleryUpdateViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Subject = s.Subject,
+                Artist = s.Artist.FirstName + " " + s.Artist.LastName,
+                artistid = s.Artist.Id,
+                ProduceYear = s.ProduceDate,
+                ProduceDate = s.ProduceDate,
+                Size = s.Size,
+                SoldDate = s.SoldDate,
+                Price = s.Price,
+
+                PublishDate = s.PublishDate,
+                UploadDate = s.UploadDate,
+                Inventory = s.Inventory,
+                Description = s.Description,
+                ImgUrl = s.ImgUrl,
+                StyleId = s.style.Id,
+                StyleName = s.style.Name,
+                MediumId = s.medium.Id,
+                MediumName = s.medium.Name,
+                ArtworkFieldId = s.artworkField.Id,
+                ArtworkFieldName = s.artworkField.Name,
+
+
+            }).ToList().FirstOrDefault();
+            if (obj == null)
+                return Redirect("/Home/Gallery");
+
+            model.gallery = obj;
+
+            if (btn == "addCart")
+            {
+                if (!model.islogin)
+                {
+                    return Redirect("/Home/Signin");
+                }
+                int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+                var cart = dbSarv.Orders.Include(s => s.user).FirstOrDefault(s => s.user != null && s.user.Id == CurrentUserId && s.isBuy == false);
+                if (cart == null)
+                {
+                    cart = new Order();
+                    cart.user = dbSarv.Users.First(s => s.Id == CurrentUserId);
+                    cart.isBuy = false;
+                    cart.orderPrice = 0;
+                    dbSarv.Orders.Add(cart);
+
+                    dbSarv.SaveChanges();
+                }
+                double temp = 0;
+                var item = new OrderDetaile();
+                dbSarv.OrderDetailes.Add(item);
+                item.gallery = dbSarv.Gallery.First(s => s.Id == Id);
+                item.order = cart;
+                item.orderDateTime = DateTime.Now;
+                item.price = double.TryParse(item.gallery.Price, out temp) ? temp : 0;
+                cart.orderPrice += item.price;
+                dbSarv.SaveChanges();
+                
+            }
+            model.orderlist = getOrderList();
 
             return View(model);
         }
         public IActionResult Gallery()
         {
-            return View();
+
+            SiteGalleriesViewModel model = new SiteGalleriesViewModel();
+            model.islogin = UserIsLogin();
+            model.orderlist = getOrderList();
+            model.lstEventMenu = getMenuList();
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            model.lstlikeGallery = dbSarv.LikeGalleries.Where(s => s.userId == CurrentUserId)
+                .Select(s => s.galleryId).ToList();
+            model.lstGallery = dbSarv.Gallery
+                .Include(s => s.artworkField)
+                .Include(s => s.medium)
+                .Include(s => s.style)
+                .Include(s => s.Artist)
+                .OrderByDescending(s => s.UploadDate)
+                .ToList().Select(s => new GalleryUpdateViewModel
+                {
+                    Id = s.Id,
+                    Title = s.Title,
+                    Subject = s.Subject,
+                    Artist = s.Artist.FirstName + " " + s.Artist.LastName,
+                    artistid = s.Artist.Id,
+                    ProduceYear = s.ProduceDate,
+                    ProduceDate = s.ProduceDate,
+                    Size = s.Size,
+                    SoldDate = s.SoldDate,
+                    Price = s.Price,
+
+                    PublishDate = s.PublishDate,
+                    UploadDate = s.UploadDate,
+                    Inventory = s.Inventory,
+                    Description = s.Description,
+                    ImgUrl = s.ImgUrl,
+                    StyleId = s.style.Id,
+                    StyleName = s.style.Name,
+                    MediumId = s.medium.Id,
+                    MediumName = s.medium.Name,
+                    ArtworkFieldId = s.artworkField.Id,
+                    ArtworkFieldName = s.artworkField.Name,
+
+                }).ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public JsonResult LikeGallery(int id)
+        {
+
+            int CurrentUserId = HttpContext.Session.GetInt32("artGalleryuserid") ?? 0;
+            string _status = "";
+            try
+            {
+                var like = dbSarv.LikeGalleries.FirstOrDefault(s => s.userId == CurrentUserId && s.galleryId == id);
+                if (like == null)
+                {
+                    dbSarv.LikeGalleries.Add(new LikeGallery() { userId = CurrentUserId, galleryId = id });
+                    _status = "ADD";
+                }
+                else
+                {
+                    dbSarv.LikeGalleries.Remove(like);
+                    _status = "REMOVE";
+                }
+                dbSarv.SaveChanges();
+            }
+            catch
+            {
+                _status = "";
+            }
+            return Json(new { status = _status });
         }
         public IActionResult Test()
         {
@@ -340,7 +637,7 @@ namespace ArtGalleryApp.Controllers
             model.islogin = UserIsLogin();
             model.orderlist = getOrderList();
             model.lstEventMenu = getMenuList();
-            return View();
+            return View(model);
         }
 
         private List<HistoryViewModel>? getOrderList()
@@ -352,6 +649,10 @@ namespace ArtGalleryApp.Controllers
                    .Include(s => s.order)
                    .Include(s => s.order.user)
                    .Include(s => s.gallery)
+                   .Include(s => s.gallery.style)
+                   .Include(s => s.gallery.medium)
+                   .Include(s => s.gallery.artworkField)
+                   .Include(s => s.gallery.Artist.ArtistField_)
                    .Include(s => s.gallery.Artist)
                    .Where(s => s.order.isBuy == false && s.order.user != null && s.order.user.Id == CurrentUserId)
                    .ToList().Select(s => new HistoryViewModel
@@ -371,8 +672,11 @@ namespace ArtGalleryApp.Controllers
                        Price = s.price,
                        Email = s.order.user.Email,
                        City = s.order.City ?? "",
-                       postalCode = s.order.PortfolioUrl ?? ""
-
+                       postalCode = s.order.PortfolioUrl ?? "",
+                       artistField=s.gallery.Artist.ArtistField_==null?"": s.gallery.Artist.ArtistField_.Name,
+                       style=s.gallery.style.Name,
+                       Medium=s.gallery.medium.Name,
+                       artworkField = s.gallery.artworkField.Name,
 
                    }).ToList();
             }

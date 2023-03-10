@@ -27,5 +27,11 @@ namespace ArtGalleryApp.Models.DataViewModel
         public string postalCode { get; set; }
         public int customerId { get; set; }
         public int Artistid { get; set; }
+        public string ArtWork { get; set; } = "";
+        public string style { get; set; } = "";
+        public string artistField { get; set; } = "";
+        public string Medium { get; set; } = "";
+        public string artworkField { get; set; } = "";
+        
     }
 }

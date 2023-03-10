@@ -34,12 +34,17 @@
                         <img src="@Model.gallery.ImgUrl" class="img-fluid rounded-start mt-5" alt="..." style="border:1px white solid">
                         <div class="col-md-6 " style="display:flex;justify-content:space-between;align-items: flex-end;">
                             <h6 class="card-title artistsTitleCard mt-3">Price: @Model.gallery.Price $</h6>
-                            <button href="" style="float:right;
-    color: white;
-    border: 1px solid white;
-    padding: 6px 50px;" class="btn">
-                                add to card
-                            </button>
+                            @if (Model.gallery.Inventory != null && Model.gallery.Inventory > 0)
+                            {
+                                <form asp-controller="Home" asp-action="ArtworkPage" asp-route-id="@Model.gallery.Id" method="post">
+                                    <button name="btn" value="addCart" style="float:right;
+                                color: white;
+                                border: 1px solid white;
+                                padding: 6px 50px;" class="btn">
+                                        add to card
+                                    </button>
+                                </form>
+                            }
                         </div>
                     </div>
                 </div>

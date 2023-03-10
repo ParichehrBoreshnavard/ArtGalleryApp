@@ -6,8 +6,8 @@ namespace ArtGalleryApp.Models.DataViewModel
     public class SiteEventViewModel : SiteMasterViewModel
     {
 
-        public CustomerUpdateViewModel artist { get; set; }
-        public List<GalleryUpdateViewModel> lstGallery { get; set; }
+        public Event_UpdateViewModel event_ { get; set; }
+        public List<SubEvent_UpdateViewModel> lstsubEvent{ get; set; }
 
 
     }

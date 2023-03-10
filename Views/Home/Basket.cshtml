@@ -1,230 +1,133 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Basket";
     Layout = "_Layout";
 }
 
-
-    <div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg  ">
+@model ArtGalleryApp.Models.DataViewModel.SiteMasterViewModel
+<div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  AdminBg  ">
     <div class="container w-80 py-5 bg-white">
-       
+
         <div class="row d-flex justify-content-around align-items-center h-100">
             <div class="col-7">
 
                 <div class="d-flex justify-content-between align-items-center mb-4 ">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
-                    <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
-                        <label class="mr-2">Sort by:</label>
-                        <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            
-                            <a class="dropdown-item" href="#">Price Descending</a>
-                            <a class="dropdown-item" href="#">Price Ascending</a>
-                            <a class="dropdown-item" href="#">Best Selling</a>
-                            <a class="dropdown-item" href="#">Rating</a>
-                        </div>
+                    @* <div class="dropdown  text-end mb-3 mt-3 mt-md-0 mb-md-0">
+                    <label class="mr-2">Sort by:</label>
+                    <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+                    <a class="dropdown-item" href="#">Price Descending</a>
+                    <a class="dropdown-item" href="#">Price Ascending</a>
+                    <a class="dropdown-item" href="#">Best Selling</a>
+                    <a class="dropdown-item" href="#">Rating</a>
                     </div>
+                    </div>*@
                 </div>
 
-                <div class="card rounded-3 mb-4">
-                    <div class="card-body p-4">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                                <img src="~/images/pexels-davide-de-giovanni-1649683 (1).jpg"
+                @if (Model.orderlist.Count > 0)
+                {
+                    @foreach (var row in Model.orderlist)
+                    {
+                        <div class="card rounded-3 mb-4">
+                            <div class="card-body p-4">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src="@row.imgurl"
                                      class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                <p class="lead fw-normal mb-2">Last supper </p>
-                                <p><span class="text-muted">Artist: </span>Davide de Giovanni<span class="text-muted">Classic Painting, </span>Oil Color</p>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">-</button>
-                                </span>
+                                    </div>
+                                    <div class="col-md-5 col-lg-5 col-xl-5">
+                                        <p class="lead fw-normal mb-2">@row.galleryTitle </p>
+                                        <p><span class="text-muted">Artist: </span>@row.ArtistName <span class="text-muted">@row.artistField, </span>@row.Medium, @row.style</p>
+                                    </div>
 
-                                <input id="form1" min="0" name="quantity" value="2" type="number"
-                                       class="form-control form-control-sm" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">+</button>
-                                </span>
-                            </div>
 
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h5 class="mb-0">$6500,00</h5>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-
-                                <a class="btn btn-light"> <i class="fa fa-trash"></i></a>
+                                    <div class="col-md-3 col-lg-3 col-xl-3 offset-lg-1">
+                                        <h5 class="mb-0">$@row.Price</h5>
+                                    </div>
+                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <form asp-action="Basket" asp-controller="Home" asp-route-id="@row.Id" method="post">
+                                            <button name="btn" value="Remove" class="btn btn-light"> <i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                    @*<div class="card rounded-3 mb-4">
+                <div class="card-body p-4">
+                <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                <img src="~/images/pexels-davide-de-giovanni-1649683 (1).jpg"
+                class="img-fluid rounded-3" alt="Cotton T-shirt">
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Last supper </p>
+                <p><span class="text-muted">Artist: </span>Davide de Giovanni<span class="text-muted">Classic Painting, </span>Oil Color</p>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">-</button>
+                </span>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                class="form-control form-control-sm" />
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">+</button>
+                </span>
                 </div>
 
-                <div class="card rounded-3 mb-4">
-                    <div class="card-body p-4">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                                <img src="~/images/pexels-davide-de-giovanni-1649683 (1).jpg"
-                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                <p class="lead fw-normal mb-2">Last supper </p>
-                                <p><span class="text-muted">Artist: </span>Davide de Giovanni<span class="text-muted">Classic Painting, </span>Oil Color</p>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">-</button>
-                                </span>
-
-                                <input id="form1" min="0" name="quantity" value="2" type="number"
-                                       class="form-control form-control-sm" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">+</button>
-                                </span>
-                            </div>
-
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h5 class="mb-0">$6500,00</h5>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-
-                                <a class="btn btn-light"> <i class="fa fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$6500,00</h5>
                 </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
 
-                <div class="card rounded-3 mb-4">
-                    <div class="card-body p-4">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                                <img src="~/images/pexels-davide-de-giovanni-1649683 (1).jpg"
-                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                <p class="lead fw-normal mb-2">Last supper </p>
-                                <p><span class="text-muted">Artist: </span>Davide de Giovanni<span class="text-muted">Classic Painting, </span>Oil Color</p>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">-</button>
-                                </span>
-
-                                <input id="form1" min="0" name="quantity" value="2" type="number"
-                                       class="form-control form-control-sm" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">+</button>
-                                </span>
-                            </div>
-
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h5 class="mb-0">$6500,00</h5>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-
-                                <a class="btn btn-light"> <i class="fa fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <a class="btn btn-light"> <i class="fa fa-trash"></i></a>
                 </div>
-
-                <div class="card rounded-3 mb-4">
-                    <div class="card-body p-4">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                                <img src="~/images/pexels-davide-de-giovanni-1649683 (1).jpg"
-                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                <p class="lead fw-normal mb-2">Last supper </p>
-                                <p><span class="text-muted">Artist: </span>Davide de Giovanni<span class="text-muted">Classic Painting, </span>Oil Color</p>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">-</button>
-                                </span>
-
-                                <input id="form1" min="0" name="quantity" value="2" type="number"
-                                       class="form-control form-control-sm" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">+</button>
-                                </span>
-                            </div>
-
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h5 class="mb-0">$6500,00</h5>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-
-                                <a class="btn btn-light"> <i class="fa fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                </div>
+                </div>
+                *@
 
-                <a asp-action="Checkout" asp-controller="home" class="btn basket-check btn-block btn-lg">Proceed to Pay</a>
-                   
+                    <a asp-action="Checkout" asp-controller="home" class="btn basket-check btn-block btn-lg">Proceed to Pay</a>
 
+                }
             </div>
+
             <div class="col-md-3 basket-check pt-4 pb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">3</span>
+                    <span class="badge badge-secondary badge-pill">@Model.orderlist.Count</span>
                 </h4>
                 <ul class="list-group mb-3">
+                    @foreach(var row in Model.orderlist){
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
+                            <h6 class="my-0">@row.galleryTitle</h6>
+                            <small class="text-muted">@row.artworkField</small>
                         </div>
-                        <span class="text-muted">$12</span>
+                        <span class="text-muted">$@row.Price</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Third item</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                            <small>EXAMPLECODE</small>
-                        </div>
-                        <span class="text-success">-$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Subtotal: (USD)</span>
-                        <strong>$30</strong>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Tax: (USD)</span>
-                        <strong>$3</strong>
-                    </li>
+                    }
+                    
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
-                        <strong>$33</strong>
+                        <strong>$@Model.orderlist.Sum(s=>s.Price)</strong>
                     </li>
                 </ul>
 
-                <form class="card p-2">
+            @*    <form class="card p-2">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Promo code">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-secondary">Redeem</button>
                         </div>
                     </div>
-                </form></br>
-               
-                
-                <a asp-action="Checkout" asp-controller="home" class="btn bg-white btn-block btn-lg">Go to Checkout</a>
+                </form>*@
+                </br>
+
+
+                @*<a asp-action="Checkout" asp-controller="home" class="btn bg-white btn-block btn-lg">Go to Checkout</a>*@
             </div>
         </div>
     </div>

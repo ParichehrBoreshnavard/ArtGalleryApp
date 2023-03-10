@@ -71,7 +71,9 @@
                                 <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
                                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                             </svg>
-                            <span class="badge bg-secondary cart-icon-badge">3</span>
+                            @if(@Model.orderlist.Count>0){
+                            <span class="badge bg-secondary cart-icon-badge">@Model.orderlist.Count</span>
+                            }
                         </a>
 
                         <div class="dropdown-menu basket-dropdown-menu" aria-labelledby="cartDropdown">
@@ -82,40 +84,38 @@
                                         <hr />
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
+                                @if (@Model.orderlist.Count > 0)
+                                {
+                                    @foreach (var row in @Model.orderlist)
+                                    {
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="@row.imgurl" class="img-fluid" />
+                                        </div>
+                                        <div class="col-8">
+                                                <p>@row.galleryTitle</p>
+                                                <p>Price: $@row.Price</p>
+                                        </div>
                                     </div>
-                                    <div class="col-8">
-                                        <p>Item 1</p>
-                                        <p>Price: $10</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Item 2</p>
-                                        <p>Price: $20</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="~/images/klaudia-piaskowska-g55bG1O5Lf0-unsplash.jpg" class="img-fluid" />
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Item 3</p>
-                                        <p>Price: $30</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <hr />
-                                        <a asp-controller="Home" asp-action="Basket" class="btn btn-primary btn-block">Go to your basket</a>
-                                    </div>
+                                    }
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr />
+                                            <a asp-controller="Home" asp-action="Basket" class="btn btn-primary btn-block">Go to your basket</a>
+                                        </div>
 
-                                </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="col-12">
+                                           
+                                            basket is Empty!
+                                        </div>
+
+                                    </div>
+                                }
                             </div>
                         </div>
 

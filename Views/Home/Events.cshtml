@@ -1,165 +1,122 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Events";
     Layout = "_Layout";
 }
-
+@model ArtGalleryApp.Models.DataViewModel.SiteEventViewModel
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amatic+SC" />
 
 <div class="container w-100 bg-secondary  justify-content-center ">
-    <section >
+    <section>
 
-<div class="container eventContainers w-85 pt-5 pb-5 d-flex bg-white ">
-   
-    <div class="text-center">
-        <img src="~/images/events/pexels-annam-w-1120162.jpg" class="w-75" alt="gallery_1">
-        <div class="container eventHeaderTitle  w-25 ">
-        <h1 style="color:red">EVENT_1</h1>
-        <h3 class="event-section1_position-relative">Event Date And Time</h3>
-        <h3>Feb 19 - Feb 23 2023 </h3>
+        <div class="container eventContainers w-85 pt-5 pb-5 d-flex bg-white ">
+
+            <div class="text-center">
+                <img src="@Model.event_.ImgUrlPoster" class="w-75" alt="gallery_1">
+                <div class="container eventHeaderTitle  w-25 ">
+                    <h1 style="color:red">@Model.event_.Title</h1>
+                    @*<h3 class="event-section1_position-relative">Event Date And Time</h3>*@
+                    <h3>@Html.Raw(Model.event_.EndDate.Year == Model.event_.StartDate.Year?(Model.event_.StartDate.ToString(" d MMM")+" - "+Model.event_.EndDate.ToString("d MMM yyyy")):(Model.event_.StartDate.ToString(" d MMM yyyy")+" - "+Model.event_.EndDate.ToString("d MMM yyyy"))) </h3>
+                </div>
+                <div class="container eventHeaderDesc pt-3 pb-2  w-40 ">
+                    <p class="card-text">
+                        @Model.event_.Description
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="container eventHeaderDesc pt-3 pb-2  w-40 ">
-                    <p class="card-text">Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide. 
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                    .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-         
-            </p>
-          </div>
-        </div>
-    </div>
     </section>
-   
+
     <section class="w-85 bg-white p-5 bg-white eventSection_1">
 
-        <h1 class="ml-5 mt-5 event-section1_position-relative"> About EVENT_1</h1><br />
-        <h3 class="event-section1_position-relative ml-5">Event Date And Time</h3><br />
+        <h1 class="ml-5 mt-5 event-section1_position-relative"> About @Model.event_.Title</h1><br />
+        <h3 class="event-section1_position-relative ml-5">@Html.Raw(Model.event_.EndDate.Year == Model.event_.StartDate.Year?(Model.event_.StartDate.ToString(" d MMM HH:mm")+" - "+Model.event_.EndDate.ToString("d MMM yyyy HH:mm")):(Model.event_.StartDate.ToString(" d MMM yyyy HH:mm")+" - "+Model.event_.EndDate.ToString("d MMM yyyy HH:mm")))</h3><br />
         <div class="container eveContainerAbout d-flex event-section1_position-relative">
 
-                        <div class="container  p-3  w-85 d-lg-inline-block " style="color:black">
-                             <p class="card-text eventsText ml-2" style="color:black">
-                    <img src="~/images/events/pexels-jj-jordan-4014053.jpg" class="w-40 event-about-image" alt="gallery_1">
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                                .  Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                                .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                    .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                    .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                    .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    .  Some representative placeholder content for the first slide.
+            <div class="container  p-3  w-85 d-lg-inline-block " style="color:black">
+                <p class="card-text eventsText ml-2" style="color:black">
+                    <img src="@Model.event_.ImgUrlAbout" class="w-40 event-about-image" alt="gallery_1">
+                    @Model.event_.AboutDescription
 
-                            </p>
-                        </div>
+                </p>
+            </div>
 
-                       @* <div class="text-center w-50 h-50 mr-2 mr-5">
-                            <img src="~/images/events/pexels-jj-jordan-4014053.jpg" class="w-75" alt="gallery_1">
-                        </div>*@
+            @* <div class="text-center w-50 h-50 mr-2 mr-5">
+            <img src="~/images/events/pexels-jj-jordan-4014053.jpg" class="w-75" alt="gallery_1">
+            </div>*@
         </div>
-<a href="https://www.ticketmaster.ca/">
+        @if (Model.event_.UrlTicketStore != null && Model.event_.UrlTicketStore != "" && Model.event_.EndDate >= DateTime.Now)
+        {
+            <a href="@Model.event_.UrlTicketStore" target="_blank" style="text-align:center;border:1px solid gray" class="buyTicketsBtn btn-outline-secondary btn-lg float-end">
+                Buy Tikets
+
+            </a>
+        }
+        <br /><br />
+        @* <a href="https://www.ticketmaster.ca/">
         <button class="buyTicketsBtn btn-outline-secondary btn-lg float-end">Buy Tikets</button><br /><br />
-        </a>
-       @* <a href="https://www.ticketmaster.ca/">
-            <button class="buyTicketsBtn btn-outline-secondary btn-lg float-end">Buy Tikets</button><br /><br />
         </a>*@
     </section>
-    <section class="w-85 p-5  eventSection1-1">
+    @for (var i = 0; i < Model.lstsubEvent.Count; i++)
+    {
+        @if (i % 2 == 0)
+        {
+            <section class="w-85 p-5 eventSection1-1">
 
-        <h1 class="ml-5 mt-5 w-50 ">EVENT_1-1</h1><br />
-        <h3 class="event-section1_position-relative ml-5">Event Date And Time</h3><br />
-        <div class="row eve-1-container d-flex ">
-            <div class=" text-end col-5 ">
-                <img src="~/images/events/pexels-davide-de-giovanni-1649683.jpg" class="w-80 event-1-1-image" alt="Event-1-1">
-            </div>
-            <div class="container  p-3 col-5 d-lg-inline-block  bg-white">
-                <p class="card-text eventsText " style="color:black">
-                    
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                    .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.
-                </p>
-             </div>
-        </div><br /><br />
-        <a href="https://www.ticketmaster.ca/">
-        <button class="buyTicketsBtn btn-outline-secondary btn-lg float-end ">Buy Tikets</button><br /><br />
-        </a>
-    </section>
+                <h1 class="ml-5 mt-5 w-50 ">@Model.lstsubEvent[i].Title</h1><br />
+                <h3 class="event-section1_position-relative ml-5">@Html.Raw(Model.lstsubEvent[i].EndDate.Year == Model.lstsubEvent[i].StartDate.Year?(Model.lstsubEvent[i].StartDate.ToString(" d MMM HH:mm")+" - "+Model.lstsubEvent[i].EndDate.ToString("d MMM yyyy HH:mm")):(Model.lstsubEvent[i].StartDate.ToString(" d MMM yyyy HH:mm")+" - "+Model.lstsubEvent[i].EndDate.ToString("d MMM yyyy HH:mm")))</h3><br />
+                <div class="row eve-1-container d-flex ">
+                    <div class=" text-end col-5 ">
+                        <img src="@Model.lstsubEvent[i].ImgUrl" class="w-80 event-1-1-image" alt="Event-1-1">
+                    </div>
+                    <div class="container  p-3 col-5 d-lg-inline-block  bg-white">
+                        <p class="card-text eventsText " style="color:black">
+                            @Model.lstsubEvent[i].Description
+                        </p>
+                    </div>
+                </div><br /><br />
+                @if (Model.lstsubEvent[i].UrlTicketStore != null && Model.lstsubEvent[i].UrlTicketStore != "" && Model.lstsubEvent[i].StartDate >= DateTime.Now)
+                {
+                    <a href="@Model.event_.UrlTicketStore" target="_blank" style="text-align:center;border:1px solid gray" class="buyTicketsBtn btn-outline-secondary btn-lg float-end">
+                        Buy Tikets
 
-
-<section class="w-85 bg-white p-5 bg-white eventSection_1">
-
-    <h1 class="ml-5 mt-5 event-section1_position-relative"> About EVENT_1</h1><br />
-        <h3 class="event-section1_position-relative ml-5">Event Date And Time</h3><br />
-    <div class="container eveContainerAbout d-flex event-section1_position-relative">
-
-        <div class="container justify-content-center  p-3  w-85 d-lg-inline-block " style="color:black">
-            <p class="card-text eventsText ml-5" style="color:black">
-                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                .  Some representative placeholder content for the first slide.
-                Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                Some representative placeholder content for the first slide.
-            </p>
+                    </a>
+                }
                 <br /><br />
-                <a href="https://www.ticketmaster.ca/">
-                <button class="buyTicketsBtn btn-outline-secondary btn-lg float-end " href="https://www.ticketmaster.ca/">Buy Tikets</button><br /><br />
-                </a>
-        </div>
-            <div class="container  p-3  mr-3 d-lg-inline-block  text-center col-6" style="color:black">
-            <img src="~/images/events/pexels-wendy-wei-1918160.jpg" class="w-50 event1-2-image" alt="gallery_1">
-        </div>
-        </div>
-</section>
-    <section class="w-85 p-5  bg-white eventSection1-4">
-        <div class="row eve-1-container d-flex mt-5">
-            <div class=" text-end col-5 ">
-                <img src="~/images/events/pexels-dalila-dalprat-2244441.jpg" class="w-80 event-1-1-image" alt="Event-1-1">
-            </div>
-            <div class="container  p-3 col-5 d-lg-inline-block  bg-white">
-                <h1 class="ml-5 mt-5 w-50 ">EVENT_1-1</h1><br />
-                <h3 class="event-section1_position-relative ">Event Date And Time</h3><br />
-                <p class="card-text eventsText " style="color:black">
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide
-                    .  Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.Some representative placeholder content for the first slide.
-                    Some representative placeholder content for the first slide.
-                </p>
-                <br /><br />
-                <a href="https://www.ticketmaster.ca/">
-                <button class="buyTicketsBtn btn-outline-secondary btn-lg float-end ">Buy Tikets</button><br /><br />
-                </a>
-            </div>
-           
-        </div>
-    </section>
+            </section>
+
+        }
+        else
+        {
+            <section class="w-85 bg-white p-5 bg-white eventSection_1">
+
+                <h1 class="ml-5 mt-5 event-section1_position-relative"> @Model.lstsubEvent[i].Title</h1><br />
+                <h3 class="event-section1_position-relative ml-5">@Html.Raw(Model.lstsubEvent[i].EndDate.Year == Model.lstsubEvent[i].StartDate.Year?(Model.lstsubEvent[i].StartDate.ToString(" d MMM HH:mm")+" - "+Model.lstsubEvent[i].EndDate.ToString("d MMM yyyy HH:mm")):(Model.lstsubEvent[i].StartDate.ToString(" d MMM yyyy HH:mm")+" - "+Model.lstsubEvent[i].EndDate.ToString("d MMM yyyy HH:mm")))</h3><br />
+                <div class="container eveContainerAbout d-flex event-section1_position-relative">
+
+                    <div class="container justify-content-center  p-3  w-85 d-lg-inline-block " style="color:black">
+                        <p class="card-text eventsText ml-5" style="color:black">
+                            @Model.lstsubEvent[i].Description
+                        </p>
+                        <br /><br />
+
+
+                        @if (Model.lstsubEvent[i].UrlTicketStore != null && Model.lstsubEvent[i].UrlTicketStore != "" && Model.lstsubEvent[i].StartDate >= DateTime.Now)
+                        {
+                            <a href="@Model.event_.UrlTicketStore" target="_blank" style="text-align:center;border:1px solid gray" class="buyTicketsBtn btn-outline-secondary btn-lg float-end">
+                                Buy Tikets
+
+                            </a>
+                            <br />
+
+                            <br />
+                        }
+                    </div>
+                    <div class="container  p-3  mr-3 d-lg-inline-block  text-center col-6" style="color:black">
+                        <img src="@Model.lstsubEvent[i].ImgUrl" class="w-50 event1-2-image" alt="gallery_1">
+                    </div>
+                </div>
+            </section>
+            
+        }
+    }
 </div>

@@ -2,7 +2,7 @@
     ViewData["Title"] = "Gallery";
     Layout = "_Layout";
 }
-@model ArtGalleryApp.Models.DataViewModel.GalleryViewModel
+@model ArtGalleryApp.Models.DataViewModel.SiteGalleriesViewModel
 
 @section HeaderStyle{
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -12,437 +12,90 @@
 
 }
 
-<div class="container p-0 ">
     <div class="container p-0 ">
-        <div class="row p-0 m-0">
-            <div class="col-md-9  p-5 order-md-2 col-lg-10">
-                <div class="container-fluid">
-                    <div class="row   mb-5">
-                        <div class="col-12">
-                            <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
-                                <label class="mr-2">Sort by:</label>
-                                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                    <a class="dropdown-item" href="#">Relevance</a>
-                                    <a class="dropdown-item" href="#">Price Descending</a>
-                                    <a class="dropdown-item" href="#">Price Ascending</a>
-                                    <a class="dropdown-item" href="#">Best Selling</a>
+        <div class="container p-0 ">
+            <div class="row p-0 m-0">
+                <div class="col-md-9  p-5 order-md-2 col-lg-10">
+                    <div class="container-fluid">
+                        <div class="row   mb-5">
+                            <div class="col-12">
+                                @*          <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
+                            <label class="mr-2">Sort by:</label>
+                            <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <a class="dropdown-item" href="#">Relevance</a>
+                            <a class="dropdown-item" href="#">Price Descending</a>
+                            <a class="dropdown-item" href="#">Price Ascending</a>
+                            <a class="dropdown-item" href="#">Best Selling</a>
+                            </div>
+                            </div>*@
+                                @*<div class="btn-group float-md-right ml-3">
+                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
+                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+                            </div>*@
+                                @* <div class="dropdown float-right">
+                            <label class="mr-2">View:</label>
+                            <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">15<span class="caret"></span></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
+                            <a class="dropdown-item" href="#">12</a>
+                            <a class="dropdown-item" href="#">24</a>
+                            <a class="dropdown-item" href="#">48</a>
+                            <a class="dropdown-item" href="#">96</a>
+                            </div>
+                            </div>*@
+                            </div>
+                        </div>
+                        <div class="row">
+
+                        @foreach (var row in Model.lstGallery)
+                        {
+                            <div class="col-6 col-md-6 col-lg-4 mb-5">
+                                <div class="card h-100 border-0">
+                                    <a href="/Home/ArtworkPage/@row.Id" class="mr-0  no-underline">
+                                        <div class="card-img-top position-relative">
+                                            <img src="@row.ImgUrl" class="img-fluid mx-auto d-block" alt="Card image cap">
+
+                                        </div>
+                                        <div class="gallery-Artwork-details p-3 pb-5">
+                                            <div class="card-title position-absolute bottom-1 start-0 ml-4">
+                                                <a href="/Home/ArtworkPage/@row.Id" class="font-weight-bold text-dark text-uppercase small">@row.Title</a>
+                                                <h5 class="card-price small text-warning">
+                                                    <i>
+                                                        $@row.Price
+                                                    </i>
+                                                </h5>
+                                            </div>
+                                            <div onclick="likeGallery(this,'@row.Id');" style="cursor:pointer;color:@Html.Raw(Model.lstlikeGallery.Contains(row.Id)?"red":"gray")" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
+
+                                                <i class="fa fa-heart"></i>
+
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="btn-group float-md-right ml-3">
-                                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
-                            </div>
-                            <div class="dropdown float-right">
-                                <label class="mr-2">View:</label>
-                                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">15<span class="caret"></span></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
-                                    <a class="dropdown-item" href="#">12</a>
-                                    <a class="dropdown-item" href="#">24</a>
-                                    <a class="dropdown-item" href="#">48</a>
-                                    <a class="dropdown-item" href="#">96</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
+                        }
 
-
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4 mb-5">
-                            <div class="card h-100 border-0">
-                                <a href="ArtworkPage" class="mr-0  no-underline">
-                                    <div class="card-img-top position-relative">
-                                        <img src="~/images/dannie-jing-3GZlhROZIQg-unsplash.jpg" class="img-fluid mx-auto d-block" alt="Card image cap">
-
-                                    </div>
-                                    <div class="gallery-Artwork-details p-3 pb-5">
-                                        <div class="card-title position-absolute bottom-1 start-0 ml-4">
-                                            <a href="ArtworkPage" class="font-weight-bold text-dark text-uppercase small">Product name</a>
-                                            <h5 class="card-price small text-warning">
-                                                <i>
-                                                    <s>$999999</s> $8888
-                                                </i>
-                                            </h5>
-                                        </div>
-                                        <div onclick="this.style.color='red';" class="card-heart position-absolute bottom-1 end-0 mr-4" id="heart">
-
-                                            <i class="fa fa-heart"></i>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <div class="row sorting mb-5 mt-5">
                         <div class="col-12">
-                            <a class="btn btn-light">
-                                <i class="fas fa-arrow-up mr-2"></i> Back to top
+                            @*        <a class="btn btn-light">
+                            <i class="fas fa-arrow-up mr-2"></i> Back to top
                             </a>
                             <div class="btn-group float-md-right ml-3">
-                                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
+                            <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                             </div>
                             <div class="dropdown float-md-right">
-                                <label class="mr-2">View:</label>
-                                <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">15 <span class="caret"></span></a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">12</a>
-                                    <a class="dropdown-item" href="#">24</a>
-                                    <a class="dropdown-item" href="#">48</a>
-                                    <a class="dropdown-item" href="#">96</a>
-                                </div>
+                            <label class="mr-2">View:</label>
+                            <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">15 <span class="caret"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">12</a>
+                            <a class="dropdown-item" href="#">24</a>
+                            <a class="dropdown-item" href="#">48</a>
+                            <a class="dropdown-item" href="#">96</a>
                             </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -457,7 +110,7 @@
                     <label class="sr-only" for="inlineFormInputGroup">Search</label>
                     <div class="input-group mb-2">
 
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search">
                         <div class="input-group-prepend">
                             <div class="input-group-text"> <i class="fa fa-search"></i>  </div>
                         </div>
@@ -539,18 +192,18 @@
                 </div>
                 <div class="divider mt-5 mb-4 border-bottom border-secondary"></div>
 
-                <label class="cboLstMedium" style="color:#2c2c2c">PRICE</label>
-                <div id="slider-outer-div">
-                    <div id="slider-max-label" class="slider-label"></div>
-                    <div id="slider-min-label" class="slider-label"></div>
+                <label class="cboLstMedium" style="color:#2c2c2c">PRICE $</label>
+                <div id="slider-outer-div" style="position:relative">
+                    <div id="slider-max-label" class="slider-label" style="top:0px"></div>
+                    <div id="slider-min-label" class="slider-label" style="top:0px"></div>
                     <div id="slider-div">
-                        <div>50 $</div>
+                        <br />
                         <div>
                             <input id="ex2" type="text" data-slider-min="1"
-                                   data-slider-max="10000" data-slider-value="[50,300]"
+                                   data-slider-max="10000" data-slider-value="[0,10000]"
                                    data-slider-tooltip="hide" />
                         </div>
-                        <div>2000 $</div>
+                        @*<div>2000 $</div>*@
                     </div>
                 </div>
                 <div class="price-filter-control">
@@ -572,6 +225,38 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>
     <script>
+        function likeGallery(obj, id) {
+           
+         
+                parametr = {
+                    "id": id
+                }
+                let options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify(parametr)
+                }
+                fetch('/Home/LikeGallery/'+id, options).then(response => response.json())
+                .then(data => { 
+                    if (data.status=='')
+                    {
+                        alert('Please log in first');
+                    }
+                    else if (data.status=="ADD")
+                    {
+                        obj.style.color = 'Red';
+                    }
+                    else if (data.status == "REMOVE") {
+                        obj.style.color = 'gray';
+                    }
+                
+                });
+            
+   
+
+        }
         $('.js-selec2-field').select2();
         $('.js-selec2-style').select2();
         $('.js-selec2-medium').select2();
@@ -580,8 +265,9 @@
             label.text(val);
             const slider = $(`#slider-div .${lbl}-slider-handle`);
             const rect = slider[0].getBoundingClientRect();
+
             label.offset({
-                top: rect.top - 30,
+                //top:rect-top,
                 left: rect.left
             });
         }
@@ -598,21 +284,23 @@
         setLabels($('#ex2').attr("data-value").split(","));
 
 
-        
 
-        //    const heartBtn = document.getElementById('heart-btn');
-        //    heartBtn.addEventListener('click', function () {
-        //        const heartIcon = this.querySelector('svg');
-        //        heartIcon.classList.toggle('text-danger');
-        //    });
-        //});
-   
-        //(function () {
-        //    const heart = document.getElementById('heart');
-        //    heart.addEventListener('click', function () {
-        //        heart.classList.toggle('heart.red');
-        //    });
-        //})();
+
+                                //    const heartBtn = document.getElementById('heart-btn');
+                                //    heartBtn.addEventListener('click', function () {
+                                //        const heartIcon = this.querySelector('svg');
+                                //        heartIcon.classList.toggle('text-danger');
+                                //    });
+                                //});
+
+                                //(function () {
+                                //    const heart = document.getElementById('heart');
+                                //    heart.addEventListener('click', function () {
+                                //        heart.classList.toggle('heart.red');
+                                //    });
+                                //})();
+
+
     </script>
 }
 

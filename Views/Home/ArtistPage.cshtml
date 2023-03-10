@@ -14,7 +14,7 @@
 
                 <div class="row g-0 bg-black pl-6">
                     <div class="col-md-4">
-                        <img src="~/images/artistsImages/jonathan-borba-lsGZlrdvd_c-unsplash.jpg" class="img-fluid rounded-start mt-5" alt="...">
+                        <img src="@Model.artist.ImgUrl" class="img-fluid rounded-start mt-5" alt="...">
                     </div>
                     <div class="col-md-8 p-5">
                         <div class="card-body pt-0" style="padding-left:5%">
@@ -46,9 +46,9 @@
         <div class="row">
             @for (int i = 0; i < Model.lstGallery.Count; i++)
             {
-                <div class="col-4 art-work-container-center">
-                    <div onclick="window.location.href='/Home/ArtworkPage/@Model.lstGallery[i].Id';" style="cursor:pointer" class="card p-3" style="width: 80% ;background-color:#2e2e2e; color:white">
-                        <a href="ArtworkPage" class="mr-0 no-underline">
+                <div class="col-4 art-work-container-center mt-5">
+                    <div  class="card p-3" style="cursor:pointer;width: 80% ;background-color:#2e2e2e; color:white">
+                        <a href="/Home/ArtworkPage/@Model.lstGallery[i].Id" class="mr-0 no-underline">
                             <img src="@Model.lstGallery[i].ImgUrl" class="card-img-top" style="border:1px solid black" alt="...">
                             <div class="card-body">
                                 <p class="card-text text-white">@Html.Raw(Model.lstGallery[i].Description.Length>100?(Model.lstGallery[i].Description.Substring(i,100)+"..."):Model.lstGallery[i].Description)</p>

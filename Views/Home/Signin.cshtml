@@ -7,7 +7,7 @@
 
 <div class="container w-100 d-flex flex-nowrap justify-content-center pt-5 pb-5  homeSliderBg  ">
     <div class="Carouselcontainer bg-white p-5">
-        <form class="signin-form form-check w-80 ml-4 " asp-action="Signin" asp-controller="Home">
+        <form class="signin-form form-check ml-2 " asp-action="Signin" asp-controller="Home">
             <h3>log in</h3>
             <div class="form-group">
                 <label asp-for="Email"></label>
@@ -20,7 +20,7 @@
                 <span style="color:darkred" asp-validation-for="Password"></span>
             </div>
             <label style="color:red">@ViewBag.Error</label>
-            <div class="signup-bottom-container text-center">
+            <div class="signup-bottom-container text-center mt-0">
                 <div class="form-group d-flex have-account">
                     <a class="sign-in-link" asp-action="ForgetPassword">forget your password?</a>
                 </div>
@@ -35,7 +35,7 @@
                     <a href="#" class="btn btn-primary">Facebook</a>
                     <a href="#" class="btn btn-secondary">linkedin</a>
                 </div>
-                <div class="row d-flex  flex-nowrap justify-content-space-between">
+                <div class="row d-flex flex-column  flex-nowrap justify-content-space-between">
                     <div class="form-group form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" name="remember"> Remember me

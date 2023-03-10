@@ -119,7 +119,7 @@
 </div>*@
 
 <div id="ABOUT" class="container-fluid bg-black  ">
-    <header class="  w-100 text-start py-2 ">
+    <header class="w-100 text-start py-2 ">
         <div class="container">
             <h1 class="fw-light text-white">About Us</h1>
         </div>
@@ -132,22 +132,21 @@
                     <img src="@Model.about.ImgUrl" class="img-fluid rounded-start mt-3 mb-3" alt="@Model.about.Title">
                 </div>
                 <div class="col-md-6">
-                    <div class="card-body  ">
-                        <h5 class="card-title mt-3" style="color:white">@Model.about.Title</h5>
-                        <div class="card-body  bg-white opacity-25 mt-3 mb-5">
-                            <p class="card-text" style="color:white;text-align:justify" >@Model.about.Description</p>
+                    <div class="card-body">
+                        <h5 class="card-title text-white">@Model.about.Title</h5>
+                        <div class="card-body bg-black mb-5 text-white">
+                            <p class="card-text" style="text-align:justify;">@Model.about.Description</p>
                             @*<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>*@
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card mb-3" style="max-width: 540px;">
-            </div>
+
         </div>
     </section>
 
     <section class="pb-5">
-        <header class="  w-100 text-start py-2 ">
+        <header class="w-100 text-start py-2 ">
             <div class="container">
                 <h1 class="fw-light text-white">Meet the Team</h1>
             </div>
@@ -324,97 +323,97 @@
                                         </div>
                                         <div class="card-body text-white">
                                             <h5 class="card-title">@Model.lstGallery[i].Title</h5>
-                                            <p class="card-text">@Html.Raw(Model.lstGallery[i].Description.Length>100?(Model.lstGallery[i].Description.Substring(i,100)+"..."):Model.lstGallery[i].Description)</p>
+                                            <p class="card-text">@Model.lstGallery[i].Description</p>
 
                                         </div>
                                     </div>
 
 
-                                    @Html.Raw(i%4==3||i==Model.lstGallery.Count-1?" </div>":"")
-                                    @Html.Raw(i%4==3||i==Model.lstGallery.Count-1?" </div>":"")
+                                    @Html.Raw(i%3==2||i==Model.lstGallery.Count-1?" </div>":"")
+                                    @Html.Raw(i%3==2||i==Model.lstGallery.Count-1?" </div>":"")
                                 }
-                                @*                            <div class="carousel-item">
-                            <div class="row">
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                            @*    <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
 
 
-                            </div>
-                            <div class="card-body text-white">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+                                            <div class="card-body text-white">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
-                            </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-
-
-                            </div>
-                            <div class="card-body text-white">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                            </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
 
 
-                            </div>
-                            <div class="card-body text-white">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+                                            <div class="card-body text-white">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
-                            </div>
-                            </div>
-
-                            </div>
-                            </div>
-                            <div class="carousel-item">
-                            <div class="row">
-
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
 
 
-                            </div>
-                            <div class="card-body text-white">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+                                            <div class="card-body text-white">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
-                            </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
 
-                            </div>
-                            <div class="card-body text-white">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                            </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
 
 
-                            </div>
-                            <div class="card-body text-white">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+                                            <div class="card-body text-white">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
-                            </div>
-                            </div>
-                            </div>
-                            </div>*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+
+
+                                            </div>
+                                            <div class="card-body text-white">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+
+
+                                            </div>
+                                            <div class="card-body text-white">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
                                 <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                                     <i class="fa fa-arrow-left"></i>
                                 </a>
