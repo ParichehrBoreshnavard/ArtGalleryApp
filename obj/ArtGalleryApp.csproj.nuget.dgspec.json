@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\ArtGalleryApp.csproj": {}
+    "C:\\2023-Projects\\new3\\ArtGalleryApp\\ArtGalleryApp.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\ArtGalleryApp.csproj": {
+    "C:\\2023-Projects\\new3\\ArtGalleryApp\\ArtGalleryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\ArtGalleryApp.csproj",
+        "projectUniqueName": "C:\\2023-Projects\\new3\\ArtGalleryApp\\ArtGalleryApp.csproj",
         "projectName": "ArtGalleryApp",
-        "projectPath": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\ArtGalleryApp.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Git\\.netCore\\new1\\ArtGalleryApp\\obj\\",
+        "projectPath": "C:\\2023-Projects\\new3\\ArtGalleryApp\\ArtGalleryApp.csproj",
+        "packagesPath": "C:\\Users\\parib\\.nuget\\packages\\",
+        "outputPath": "C:\\2023-Projects\\new3\\ArtGalleryApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\parib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +27,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -92,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

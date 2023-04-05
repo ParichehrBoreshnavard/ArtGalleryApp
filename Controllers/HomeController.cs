@@ -245,8 +245,8 @@ namespace ArtGalleryApp.Controllers
 
         public IActionResult PaymentWithPaypal(string Cancel = null, string blogId = "", string _payerId = "", string guidId = "")
         {
-            var clientID = "PaypalKey";
-            var clientScret = "PaypalSecret";
+            var clientID = "ASzzj_ATvoYAVyimR0Mb-tcj9ILN1SgqEdHLFmAPCE8P1rJRzXVA6i1fv34chi7F-BmxFD8R__T1HW2e";
+            var clientScret = "EDLaCo-7r6s_M73RI_51FkOZGJHefxzS0s7GqyOf2WhuvGR9dVOY57zoPhva3w268G9rQQA079oBchFn";
             var mode = "sandbox";
             APIContext aPIContext = PayPalConfiguration.GetAPIContext(clientID, clientScret, mode);
             try

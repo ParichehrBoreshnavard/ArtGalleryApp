@@ -159,18 +159,20 @@ nav {
     border-radius: 50px;
 }
 
-.artistsListItem {
-    background-color: black;
-    padding: 10px;
-    font-size: 24px;
-    text-align: left;
-}
+   
+    .artistsListItem {
+        background-color: black;
+        padding: 10px;
+        font-size: 24px;
+        text-align: left;
+    }
 
 
-.artistsTitleCard {
-    color: white;
-    font-weight: 200;
-}
+
+        .artistsTitleCard {
+            color: white;
+            font-weight: 200;
+        }
 
 .carousel-caption {
     background-color: #7ad6e27d;

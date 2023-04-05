@@ -12,12 +12,12 @@
         {
             @if (Model.artists.Any(s => s.LastName.ToUpper().StartsWith(q)))
             {
-                <div class="artistsListItem">
+                <div class="artistsListItem" >
                     <ul>
                         @q
                         @foreach (var t in Model.artists.Where(s => s.LastName.ToUpper().StartsWith(q)).ToList())
                         {
-                            <li><a href="/Home/ArtistPage/@t.Id">@t.LastName (@t.FirstName)</a></li>
+                            <li><a href="/Home/ArtistPage/@t.Id" style="font-size:18px">@t.LastName (@t.FirstName)</a></li>
                         }
                         
                     </ul>
